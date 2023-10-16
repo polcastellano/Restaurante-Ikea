@@ -4,7 +4,7 @@ class pedidoController{
 
     public function index(){
         //cabecera
-
+        echo 'Nose';
         // panel include
 
         //footer
