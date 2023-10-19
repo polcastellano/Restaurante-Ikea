@@ -12,11 +12,11 @@ class ProductoDAO{
         $start->execute();
         var_dump($start->get_result());
 */
-        if ($result = $con->query("SELECT * FROM producto")){
+        if ($result = $con->query("SELECT * FROM productos")){
 
             while($procuto = $result->fetch_array()){
-                echo $procuto['name'];
-                echo '<p<</p>';
+                echo $procuto['nombre'];
+                echo '<p></p>';
             }
         }
     }

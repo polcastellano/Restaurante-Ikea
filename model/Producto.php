@@ -7,14 +7,14 @@ abstract class Producto{
 
     protected $id;
     protected $name;
-    protected $tipo;
-    protected $genero;
+    protected $categoria;
+    protected $precio;
 
-    public function __construct($id, $name, $tipo , $genero){
+    public function __construct($id, $name, $categoria , $precio){
         $this->id = $id;
         $this->name = $name;
-        $this->tipo = $tipo;
-        $this->genero = $genero;
+        $this->categoria = $categoria;
+        $this->precio = $precio;
     }
 
     /**
@@ -58,46 +58,46 @@ abstract class Producto{
     }
 
     /**
-     * Get the value of tipo
+     * Get the value of categoria
      */ 
-    public function getTipo()
+    public function getCategoria()
     {
-        return $this->tipo;
+        return $this->categoria;
     }
 
     /**
-     * Set the value of tipo
+     * Set the value of categoria
      *
      * @return  self
      */ 
-    public function setTipo($tipo)
+    public function setCategoria($categoria)
     {
-        $this->tipo = $tipo;
+        $this->categoria = $categoria;
 
         return $this;
     }
-
+    
     /**
-     * Get the value of genero
+     * Get the value of precio
      */ 
-    public function getGenero()
+    public function getPrecio()
     {
-        return $this->genero;
+        return $this->precio;
     }
 
     /**
-     * Set the value of genero
+     * Set the value of precio
      *
      * @return  self
      */ 
-    public function setGenero($genero)
+    public function setPrecio($precio)
     {
-        $this->genero = $genero;
+        $this->precio = $precio;
 
         return $this;
     }
-
     
     public abstract function calculaPrecioTotal($numDias,);
     public abstract function devuelvePrecioDia();
+
 }

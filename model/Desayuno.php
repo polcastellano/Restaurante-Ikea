@@ -4,33 +4,32 @@ include_once 'Producto.php';
 
 class Desayuno extends Producto{
 
-    private $plataforma;
+    private $cafe;
 
-    public function __construct($id, $name, $tipo, $genero, $plataforma){
-        parent::__construct($id, $name, $tipo, $genero);
-        $this->plataforma = $plataforma;
+    public function __construct($id, $name, $categoria, $precio, $cafe){
+        parent::__construct($id, $name, $categoria, $precio);
+        $this->cafe = $cafe;
     }
 
     /**
-     * Get the value of plataforma
+     * Get the value of cafe
      */ 
-    public function getPlataforma()
+    public function getCafe()
     {
-        return $this->plataforma;
+        return $this->cafe;
     }
 
     /**
-     * Set the value of plataforma
+     * Set the value of cafe
      *
      * @return  self
      */ 
-    public function setPlataforma($plataforma)
+    public function setCafe($cafe)
     {
-        $this->plataforma = $plataforma;
+        $this->cafe = $cafe;
 
         return $this;
     }
-
 
     public function calculaPrecioTotal($numDias){
         $precioTotal = $numDias*self::PRECIODESAYUNO;
@@ -40,4 +39,5 @@ class Desayuno extends Producto{
     public function devuelvePrecioDia(){
         return self::PRECIODESAYUNO;
     }
+
 }

@@ -6,8 +6,8 @@ class Plato extends Producto{
 
 
 
-    public function __construct($id, $name, $tipo, $genero){
-        parent::__construct($id, $name, $tipo, $genero);
+    public function __construct($id, $name, $categoria, $precio){
+        parent::__construct($id, $name, $categoria, $precio);
     }
     
     public function calculaPrecioTotal($numDias){
