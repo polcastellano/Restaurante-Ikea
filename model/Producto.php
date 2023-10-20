@@ -102,7 +102,7 @@ abstract class Producto{
         return $this;
     }
     
-    public abstract function calculaPrecioTotal($numDias,);
+    public abstract function calculaPrecioTotal($numDias);
     public abstract function devuelvePrecioDia();
 
 }
