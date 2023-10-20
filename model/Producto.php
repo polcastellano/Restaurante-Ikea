@@ -5,74 +5,79 @@ abstract class Producto{
     const PRECIOPLATO = 3;
     const PRECIODESAYUNO = 2;
 
-    protected $id;
-    protected $name;
-    protected $categoria;
+    protected $producto_id;
+    protected $nombre;
+    protected $categoria_id;
     protected $precio;
 
-    public function __construct($id, $name, $categoria , $precio){
-        $this->id = $id;
-        $this->name = $name;
-        $this->categoria = $categoria;
+    public function __construct(){
+    }
+
+/*
+    public function __construct($producto_id, $nombre, $categoria_id , $precio){
+        $this->producto_id = $producto_id;
+        $this->nombre = $nombre;
+        $this->categoria_id = $categoria_id;
         $this->precio = $precio;
     }
+*/
 
     /**
-     * Get the value of id
+     * Get the value of producto_id
      */ 
-    public function getId()
+    public function getProducto_id()
     {
-        return $this->id;
+        return $this->producto_id;
     }
 
     /**
-     * Set the value of id
+     * Set the value of producto_id
      *
      * @return  self
      */ 
-    public function setId($id)
+    public function setProducto_id($producto_id)
     {
-        $this->id = $id;
+        $this->producto_id = $producto_id;
 
         return $this;
     }
 
     /**
-     * Get the value of name
+     * Get the value of nombre
      */ 
-    public function getName()
+    public function getNombre()
     {
-        return $this->name;
+        return $this->nombre;
     }
 
     /**
-     * Set the value of name
+     * Set the value of nombre
      *
      * @return  self
      */ 
-    public function setName($name)
+    public function setNombre($nombre)
     {
-        $this->name = $name;
+        $this->nombre = $nombre;
 
         return $this;
     }
 
     /**
-     * Get the value of categoria
+     * Get the value of categoria_id
      */ 
-    public function getCategoria()
+    public function getCategoria_id()
     {
-        return $this->categoria;
+        return $this->categoria_id;
     }
 
     /**
-     * Set the value of categoria
+     * Set the value of categoria_id
      *
      * @return  self
      */ 
-    public function setCategoria($categoria)
+    public function setCategoria_id($categoria_id)
     {
-        $this->categoria = $categoria;
+        $this->categoria_id = $categoria_id;
 
         return $this;
     }

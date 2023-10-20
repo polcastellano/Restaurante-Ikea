@@ -5,11 +5,16 @@ include_once 'Producto.php';
 class Plato extends Producto{
 
 
-
-    public function __construct($id, $name, $categoria, $precio){
-        parent::__construct($id, $name, $categoria, $precio);
+    public function __construct(){
     }
-    
+
+/*
+    public function __construct($producto_id, $nmobre, $categoria_id, $precio){
+        parent::__construct($producto_id, $nmobre, $categoria_id, $precio);
+    }
+*/
+
+
     public function calculaPrecioTotal($numDias){
         $precioTotal = $numDias*self::PRECIOPLATO;
         return $precioTotal;

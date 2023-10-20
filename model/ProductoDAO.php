@@ -1,23 +1,43 @@
 <?php
 
 include_once 'config/dataBase.php';
+include_once 'model/Producto.php';
+
+include_once 'model/Desayuno.php';
+include_once 'model/Plato.php';
+
 
 class ProductoDAO{
 
-    public static function getAllProductos(){
+    public static function getAllPlatos(){
         $con = DataBase::connect();
 
-/*  Lo que ha hecho el ruben en clase!!!!     
-        $start = $con->query("SELECT * FROM producto");
-        $start->execute();
-        var_dump($start->get_result());
-*/
-        if ($result = $con->query("SELECT * FROM productos")){
+        if ($result = $con->query("SELECT * FROM productos WHERE categoria_id = 1")){
 
-            while($procuto = $result->fetch_array()){
-                echo $procuto['nombre'];
-                echo '<p></p>';
+            $res =[];
+
+            
+            while($producto = $result->fetch_object('Plato')){
+                $res[] = $producto;
             }
+            return $res;
+            
+        }
+    }
+
+    public static function getAllDesayunos(){
+        $con = DataBase::connect();
+
+        if ($result = $con->query("SELECT * FROM productos WHERE categoria_id = 2")){
+
+            $res =[];
+
+            
+            while($producto = $result->fetch_object('Desayuno')){
+                $res[] = $producto;
+            }
+            return $res;
+            
         }
     }
 
