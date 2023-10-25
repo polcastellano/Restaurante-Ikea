@@ -20,13 +20,22 @@
             <td><?=$plato->getCategoria_id()?></td>
             <td><?=$plato->getNombre()?></td>
             <td><?=$plato->getPrecio()?></td>
-            <td><a href="modificarProducto.php">Modificar</a></td>
-            <td><a href="eliminarProducto.php">Eliminar</a></td>
+            <td>
+                <form action=<?=url."?controller=producto&action=modificar"?> method="post">
+                    <input name="producto_id" value="<?= $plato->getProducto_id()?>" hidden />
+                    <button type="submit">Modificar</button>
+                </form>
+            <td>
+                <form action=<?=url."?controller=producto&action=eliminar"?> method="post">
+                    <input name="producto_id" value="<?= $plato->getProducto_id()?>" hidden />
+                    <button type="submit">Eliminar</button>
+                </form>
+            </td>
             </tr>
         <?php } ?>
         </table>
 
-    <h2>Platos Principales</h2>
+    <h2>Desayunos</h2>
         <table border=1 style='text-align: center;'>
         <th>Producto id</th>
         <th>Categoria id</th>
@@ -40,8 +49,16 @@
             <td><?=$desayuno->getCategoria_id()?></td>
             <td><?=$desayuno->getNombre()?></td>
             <td><?=$desayuno->getPrecio()?></td>
-            <td><a href="modificarProducto.php">Modificar</a></td>
-            <td><a href="eliminarProducto.php">Eliminar</a></td>
+            <td>
+                <form action=<?=url."?controller=producto&action=modificar"?> method="post">
+                    <input name="producto_id" value="<?= $desayuno->getProducto_id()?>" hidden />
+                    <button type="submit">Modificar</button>
+                </form>
+            <td>
+                <form action=<?=url."?controller=producto&action=eliminar"?> method="post">
+                    <input name="producto_id" value="<?= $desayuno->getProducto_id()?>" hidden />
+                    <button type="submit">Eliminar</button>
+                </form>
             </tr>
         <?php } ?>
         </table>
