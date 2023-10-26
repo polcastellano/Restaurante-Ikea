@@ -19,7 +19,7 @@
             <td><?=$plato->getProducto_id()?></td>
             <td><?=$plato->getCategoria_id()?></td>
             <td><?=$plato->getNombre()?></td>
-            <td><?=$plato->getPrecio()?></td>
+            <td><?=$plato->getPrecio()?> €</td>
             <td>
                 <form action=<?=url."?controller=producto&action=modificar"?> method="post">
                     <input name="producto_id" value="<?= $plato->getProducto_id()?>" hidden />
@@ -48,7 +48,7 @@
             <td><?=$desayuno->getProducto_id()?></td>
             <td><?=$desayuno->getCategoria_id()?></td>
             <td><?=$desayuno->getNombre()?></td>
-            <td><?=$desayuno->getPrecio()?></td>
+            <td><?=$desayuno->getPrecio()?> €</td>
             <td>
                 <form action=<?=url."?controller=producto&action=modificar"?> method="post">
                     <input name="producto_id" value="<?= $desayuno->getProducto_id()?>" hidden />

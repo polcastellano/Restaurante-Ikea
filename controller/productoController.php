@@ -17,8 +17,6 @@ class productoController{
 
         $desayunos = ProductoDAO::getAllProductos(2);
 
-        ProductoDAO::getProductoById(1);
-
         include_once 'view/panelPedido.php';
 
         //footer
@@ -43,7 +41,15 @@ class productoController{
     
     public function modificar(){
 
-        include_once 'view/modificarPedido.php';
+        if (isset($_POST['producto_id'])){
+            $producto_id = $_POST['producto_id'];
+            ProductoDAO::getProductoById($producto_id);
+            include_once 'view/modificarPedido.php';
+        }else{
+            header("Location:".url."?controller=producto");
+        }
+        
+        
 
     }
 
@@ -55,7 +61,6 @@ class productoController{
             isset($_POST['precio'])
             ){
             
-            include_once 'view/modificarPedido.php';
             
             $producto_id = $_POST['producto_id'];
             $categoria_id = $_POST['categoria_id'];

@@ -5,24 +5,28 @@ include_once 'config/dataBase.php';
 
 class ProductoDAO{
 
-    public static function getAllProductos($tipo){
+    public static function getAllProductos($categoria_id){
         $con = DataBase::connect();
 
         $stmt = $con->prepare("SELECT * FROM productos WHERE categoria_id = ?");
-        $stmt->bind_param("i", $tipo); //Bindea el tipo con un integer
+        $stmt->bind_param("i", $categoria_id); //Bindea la categoria_id con un integer
 
         $stmt->execute();
         $result = $stmt->get_result();
 
+        // $stmt->bind_result($producto_id, $categoria_id, $nombre, $precio); //Para extraer el producto_id de la consulta
+
         $con->close();
 
+        // $obj = self::getProductoById($producto_id);
+        
         $res =[];
 
         $obj = "";
 
-        if ($tipo = 1){
+        if ($categoria_id = 1){
             $obj = "Plato";
-        }elseif ($tipo = 2){
+        }elseif ($categoria_id = 2){
             $obj = "Desayunos";
         } 
 
@@ -68,9 +72,9 @@ class ProductoDAO{
         $stmt->bind_param("i", $producto_id); //Bindea el tipo con un integer
 
         $stmt->execute();
-        $categoria = $stmt->get_result()->fetch_object(); //Falta algo al final del fetch obj
+        $categoria = $stmt->get_result()->fetch_object()->nombre; //Nose si el nombre esta bien
         $con->close();
 
-        var_dump($categoria);
+        return $categoria;
     }
 }
