@@ -23,6 +23,7 @@
             <td>
                 <form action=<?=url."?controller=producto&action=modificar"?> method="post">
                     <input name="producto_id" value="<?= $plato->getProducto_id()?>" hidden />
+                    <input name="categoria_id" value="<?= $plato->getCategoria_id()?>" hidden />
                     <button type="submit">Modificar</button>
                 </form>
             <td>
@@ -52,6 +53,7 @@
             <td>
                 <form action=<?=url."?controller=producto&action=modificar"?> method="post">
                     <input name="producto_id" value="<?= $desayuno->getProducto_id()?>" hidden />
+                    <input name="categoria_id" value="<?= $desayuno->getCategoria_id()?>" hidden />
                     <button type="submit">Modificar</button>
                 </form>
             <td>

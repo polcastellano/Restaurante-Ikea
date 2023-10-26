@@ -8,29 +8,26 @@ class ProductoDAO{
     public static function getAllProductos($categoria_id){
         $con = DataBase::connect();
 
+        //Consulta para coger todos los productos de la categoria que le paso por parametro
         $stmt = $con->prepare("SELECT * FROM productos WHERE categoria_id = ?");
         $stmt->bind_param("i", $categoria_id); //Bindea la categoria_id con un integer
 
         $stmt->execute();
         $result = $stmt->get_result();
 
-        // $stmt->bind_result($producto_id, $categoria_id, $nombre, $precio); //Para extraer el producto_id de la consulta
+        //Consulta para recoger el nombre de la categoria_id que le paso por parametro
+        $consultaCat = $con->prepare("SELECT categorias.nombre FROM productos INNER JOIN categorias 
+                                        ON productos.categoria_id = categorias.categoria_id WHERE productos.categoria_id = ?");
+        $consultaCat->bind_param("i", $categoria_id); //Bindea la categoria_id con un integer
+
+        $consultaCat->execute();
+        $categoria = $consultaCat->get_result()->fetch_object()->nombre;
 
         $con->close();
 
-        // $obj = self::getProductoById($producto_id);
-        
         $res =[];
 
-        $obj = "";
-
-        if ($categoria_id = 1){
-            $obj = "Plato";
-        }elseif ($categoria_id = 2){
-            $obj = "Desayunos";
-        } 
-
-        while($producto = $result->fetch_object($obj)){
+        while($producto = $result->fetch_object($categoria)){
             $res[] = $producto;
         }
         return $res;
@@ -53,8 +50,8 @@ class ProductoDAO{
     public static function modificarProducto($producto_id, $categoria_id, $nombre, $precio){
         $con = DataBase::connect();
 
-        $stmt = $con->prepare("UPDATE productos SET producto_id = ?, categoria_id = ?, nombre = ?, precio = ? WHERE producto_id = ?");
-        $stmt->bind_param("iisd", $producto_id, $categoria_id, $nombre, $precio);
+        $stmt = $con->prepare("UPDATE productos SET categoria_id = ?, nombre = ?, precio = ? WHERE producto_id = ?");
+        $stmt->bind_param("isdi", $categoria_id, $nombre, $precio, $producto_id);
 
         $stmt->execute();
         $result = $stmt->get_result();
@@ -64,17 +61,32 @@ class ProductoDAO{
         return $result;
     }
 
-    public static function getProductoById($producto_id){
+    public static function getProductoById($producto_id, $categoria_id){
         $con = DataBase::connect();
 
-        $stmt = $con->prepare("SELECT categorias.nombre FROM productos INNER JOIN categorias 
-                                ON productos.categoria_id=categorias.categoria_id WHERE productos.producto_id = ?");
+        //Consulta para extraer todos los datos del producto que le pasamos por parametro
+        $stmt = $con->prepare("SELECT * FROM productos WHERE producto_id = ?");
         $stmt->bind_param("i", $producto_id); //Bindea el tipo con un integer
 
         $stmt->execute();
-        $categoria = $stmt->get_result()->fetch_object()->nombre; //Nose si el nombre esta bien
-        $con->close();
 
-        return $categoria;
+        //Almacenamos el resultado de la consulta
+        $result = $stmt->get_result();
+
+        //Consulta para recoger el nombre de la categoria_id que le paso por parametro
+        $consultaCat = $con->prepare("SELECT categorias.nombre FROM productos INNER JOIN categorias 
+                                        ON productos.categoria_id = categorias.categoria_id WHERE productos.categoria_id = ?");
+        $consultaCat->bind_param("i", $categoria_id); //Bindea la categoria_id con un integer
+
+        $consultaCat->execute();
+        //Cogemos el nombre de la categoria
+        $categoria = $consultaCat->get_result()->fetch_object()->nombre;
+
+        //Indicamos que el resultado de la consulta es un objeto de nuestra categoria extraida en la consulta anterior
+        $result = $result->fetch_object($categoria);
+
+        $con->close();
+        
+        return $result;
     }
 }

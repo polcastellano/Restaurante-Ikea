@@ -1,5 +1,4 @@
 <?php
-//Creamos el controlador de producto
 include_once 'model/Plato.php';
 include_once 'model/Desayuno.php';
 
@@ -41,9 +40,10 @@ class productoController{
     
     public function modificar(){
 
-        if (isset($_POST['producto_id'])){
+        if (isset($_POST['producto_id']) & isset($_POST['categoria_id'])){
             $producto_id = $_POST['producto_id'];
-            ProductoDAO::getProductoById($producto_id);
+            $categoria_id = $_POST['categoria_id'];
+            $producto = ProductoDAO::getProductoById($producto_id, $categoria_id);
             include_once 'view/modificarPedido.php';
         }else{
             header("Location:".url."?controller=producto");
@@ -60,12 +60,12 @@ class productoController{
             isset($_POST['nombre'])&
             isset($_POST['precio'])
             ){
-            
-            
+
             $producto_id = $_POST['producto_id'];
             $categoria_id = $_POST['categoria_id'];
             $nombre = $_POST['nombre'];
             $precio = $_POST['precio'];
+            
             ProductoDAO::modificarProducto($producto_id, $categoria_id, $nombre, $precio);
             header("Location:".url."?controller=producto");
         }else{
