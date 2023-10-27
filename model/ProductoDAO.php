@@ -47,11 +47,11 @@ class ProductoDAO{
         return $result;
     }
 
-    public static function modificarProducto($producto_id, $categoria_id, $nombre, $precio){
+    public static function modificarProducto($producto_id, $nombre, $precio){
         $con = DataBase::connect();
 
-        $stmt = $con->prepare("UPDATE productos SET categoria_id = ?, nombre = ?, precio = ? WHERE producto_id = ?");
-        $stmt->bind_param("isdi", $categoria_id, $nombre, $precio, $producto_id);
+        $stmt = $con->prepare("UPDATE productos SET nombre = ?, precio = ? WHERE producto_id = ?");
+        $stmt->bind_param("sdi", $nombre, $precio, $producto_id);
 
         $stmt->execute();
         $result = $stmt->get_result();
@@ -88,5 +88,52 @@ class ProductoDAO{
         $con->close();
         
         return $result;
+    }
+
+    public static function insertarProducto($categoria, $nombre, $precio){
+        $con = DataBase::connect();
+
+        $categoria = ucfirst($categoria);//Establecemos la primera letra del string en mayuscula
+
+        //Consulta para extraer el id del nombre de la categoria que recibimos
+        $stmt = $con->prepare("SELECT productos.categoria_id FROM productos INNER JOIN categorias 
+                                ON productos.categoria_id = categorias.categoria_id WHERE categorias.nombre = ?");
+        $stmt->bind_param("s", $categoria);
+        
+        $stmt->execute();
+
+        $categoria_id = $stmt->get_result()->fetch_object()->categoria_id;//Guardamos el resultado de la consulta con la variable $categoria_id
+
+        $insProd = $con->prepare("INSERT INTO productos (producto_id, categoria_id, nombre, precio) VALUES (NULL, ?, ?, ?)");
+
+        $insProd->bind_param("isd", $categoria_id, $nombre, $precio);
+
+        $insProd->execute();
+
+        $result = $insProd->get_result();
+
+        $con->close();
+
+        return $result;
+    }
+
+    public static function getAllCategorias(){
+        $con = DataBase::connect();
+
+        $allCategorias = $con->prepare("SELECT nombre FROM categorias");
+
+        $allCategorias->execute();
+
+        $result = $allCategorias->get_result();
+        var_dump($result);
+        $res =[];
+
+        while($categoria = $result->fetch_object()->nombre){
+            $res[] = $categoria;
+        }
+
+        $con->close();
+
+        return $res;
     }
 }

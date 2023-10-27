@@ -44,7 +44,7 @@ class productoController{
             $producto_id = $_POST['producto_id'];
             $categoria_id = $_POST['categoria_id'];
             $producto = ProductoDAO::getProductoById($producto_id, $categoria_id);
-            include_once 'view/modificarPedido.php';
+            include_once 'view/modificarProducto.php';
         }else{
             header("Location:".url."?controller=producto");
         }
@@ -56,22 +56,46 @@ class productoController{
     public function actualizar(){
 
         if (isset($_POST['producto_id'])&
-            isset($_POST['categoria_id'])&
             isset($_POST['nombre'])&
             isset($_POST['precio'])
             ){
 
             $producto_id = $_POST['producto_id'];
-            $categoria_id = $_POST['categoria_id'];
             $nombre = $_POST['nombre'];
             $precio = $_POST['precio'];
             
-            ProductoDAO::modificarProducto($producto_id, $categoria_id, $nombre, $precio);
+            ProductoDAO::modificarProducto($producto_id, $nombre, $precio);
             header("Location:".url."?controller=producto");
         }else{
             header("Location:".url."?controller=producto");
         }
     }
+
+    public function agregar(){
+
+        $categorias = ProductoDAO::getAllCategorias();
+        include_once 'view/agregarProducto.php';
+    }
+
+    public function insertar(){
+
+        if (isset($_POST['categoria'])&
+            isset($_POST['nombre'])&
+            isset($_POST['precio'])
+            ){
+
+            $categoria = $_POST['categoria'];
+            $nombre = $_POST['nombre'];
+            $precio = $_POST['precio'];
+            
+            ProductoDAO::insertarProducto($categoria, $nombre, $precio);
+
+            header("Location:".url."?controller=producto");
+        }else{
+            header("Location:".url."?controller=producto&action=agregar");
+        }
+    }
+
 }
 
 

@@ -6,6 +6,9 @@
 </head>
 <body>
 <h1>Productos</h1>
+    <form action=<?=url."?controller=producto&action=agregar"?> method="post">
+        <button type="submit">Agregar</button>
+    </form>
     <h2>Platos Principales</h2>
         <table border=1 style='text-align: center;'>
         <th>Producto id</th>
