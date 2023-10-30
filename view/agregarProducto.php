@@ -7,9 +7,8 @@
                 <!-- <input name="producto_id" hidden/> -->
                 <td>
                     <select name="categoria">
-                        <?php foreach($result as $categoria){ ?>
-                            
-                            <option value="<?= $categoria ?>"><?= $categoria ?></option>
+                        <?php foreach($categorias as $categoria){ ?>
+                            <option value="<?= $categoria[0] ?>"><?= $categoria[0] ?></option>
                         <?php } ?>
                     </select>
                 </td>

@@ -1,6 +1,8 @@
 <?php
 include_once 'model/Plato.php';
 include_once 'model/Desayuno.php';
+include_once 'model/Entrante.php';
+include_once 'model/Pizza.php';
 
 include_once 'model/ProductoDAO.php';
 
@@ -15,6 +17,10 @@ class productoController{
         $platos = ProductoDAO::getAllProductos(1);
 
         $desayunos = ProductoDAO::getAllProductos(2);
+
+        $entrantes = ProductoDAO::getAllProductos(3);
+
+        $pizzas = ProductoDAO::getAllProductos(4);
 
         include_once 'view/panelPedido.php';
 

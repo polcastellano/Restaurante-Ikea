@@ -93,8 +93,6 @@ class ProductoDAO{
     public static function insertarProducto($categoria, $nombre, $precio){
         $con = DataBase::connect();
 
-        $categoria = ucfirst($categoria);//Establecemos la primera letra del string en mayuscula
-
         //Consulta para extraer el id del nombre de la categoria que recibimos
         $stmt = $con->prepare("SELECT productos.categoria_id FROM productos INNER JOIN categorias 
                                 ON productos.categoria_id = categorias.categoria_id WHERE categorias.nombre = ?");
@@ -120,20 +118,12 @@ class ProductoDAO{
     public static function getAllCategorias(){
         $con = DataBase::connect();
 
-        $allCategorias = $con->prepare("SELECT nombre FROM categorias");
+        $allCategorias = $con->query("SELECT nombre FROM categorias");
 
-        $allCategorias->execute();
-
-        $result = $allCategorias->get_result();
-        var_dump($result);
-        $res =[];
-
-        while($categoria = $result->fetch_object()->nombre){
-            $res[] = $categoria;
-        }
+        $categorias = $allCategorias->fetch_all();
 
         $con->close();
 
-        return $res;
+        return $categorias;
     }
 }

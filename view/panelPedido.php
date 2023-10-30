@@ -9,6 +9,7 @@
     <form action=<?=url."?controller=producto&action=agregar"?> method="post">
         <button type="submit">Agregar</button>
     </form>
+
     <h2>Platos Principales</h2>
         <table border=1 style='text-align: center;'>
         <th>Producto id</th>
@@ -62,6 +63,64 @@
             <td>
                 <form action=<?=url."?controller=producto&action=eliminar"?> method="post">
                     <input name="producto_id" value="<?= $desayuno->getProducto_id()?>" hidden />
+                    <button type="submit">Eliminar</button>
+                </form>
+            </tr>
+        <?php } ?>
+        </table>
+    
+    <h2>Entrantes</h2>
+        <table border=1 style='text-align: center;'>
+        <th>Producto id</th>
+        <th>Categoria id</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+
+        <?php foreach($entrantes as $entrante){ ?>
+            
+            <tr>
+            <td><?=$entrante->getProducto_id()?></td>
+            <td><?=$entrante->getCategoria_id()?></td>
+            <td><?=$entrante->getNombre()?></td>
+            <td><?=$entrante->getPrecio()?> €</td>
+            <td>
+                <form action=<?=url."?controller=producto&action=modificar"?> method="post">
+                    <input name="producto_id" value="<?= $entrante->getProducto_id()?>" hidden />
+                    <input name="categoria_id" value="<?= $entrante->getCategoria_id()?>" hidden />
+                    <button type="submit">Modificar</button>
+                </form>
+            <td>
+                <form action=<?=url."?controller=producto&action=eliminar"?> method="post">
+                    <input name="producto_id" value="<?= $entrante->getProducto_id()?>" hidden />
+                    <button type="submit">Eliminar</button>
+                </form>
+            </tr>
+        <?php } ?>
+        </table>
+
+    <h2>Pizzas</h2>
+        <table border=1 style='text-align: center;'>
+        <th>Producto id</th>
+        <th>Categoria id</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+
+        <?php foreach($pizzas as $pizza){ ?>
+            
+            <tr>
+            <td><?=$pizza->getProducto_id()?></td>
+            <td><?=$pizza->getCategoria_id()?></td>
+            <td><?=$pizza->getNombre()?></td>
+            <td><?=$pizza->getPrecio()?> €</td>
+            <td>
+                <form action=<?=url."?controller=producto&action=modificar"?> method="post">
+                    <input name="producto_id" value="<?= $pizza->getProducto_id()?>" hidden />
+                    <input name="categoria_id" value="<?= $pizza->getCategoria_id()?>" hidden />
+                    <button type="submit">Modificar</button>
+                </form>
+            <td>
+                <form action=<?=url."?controller=producto&action=eliminar"?> method="post">
+                    <input name="producto_id" value="<?= $pizza->getProducto_id()?>" hidden />
                     <button type="submit">Eliminar</button>
                 </form>
             </tr>
