@@ -16,8 +16,7 @@ class ProductoDAO{
         $result = $stmt->get_result();
 
         //Consulta para recoger el nombre de la categoria_id que le paso por parametro
-        $consultaCat = $con->prepare("SELECT categorias.nombre FROM productos INNER JOIN categorias 
-                                        ON productos.categoria_id = categorias.categoria_id WHERE productos.categoria_id = ?");
+        $consultaCat = $con->prepare("SELECT nombre FROM categorias WHERE categoria_id = ?");
         $consultaCat->bind_param("i", $categoria_id); //Bindea la categoria_id con un integer
 
         $consultaCat->execute();
