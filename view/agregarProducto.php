@@ -4,7 +4,6 @@
         <th>Precio</th>            
         <tr>
             <form action=<?=url."?controller=producto&action=insertar"?> method="post">
-                <!-- <input name="producto_id" hidden/> -->
                 <td>
                     <select name="categoria">
                         <?php foreach($categorias as $categoria){ ?>

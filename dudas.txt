@@ -1,0 +1,3 @@
+entrar directamente al carrito por url - ProductoController
+
+eliminar o modificar producto no aplica en carrito
