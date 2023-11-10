@@ -12,6 +12,8 @@
     <th>Nombre</th>
     <th>Precio</th>
 
+    <!-- Hacer condicional por si no hay sesion iniciada -->
+
     <?php foreach($_SESSION['selecciones'] as $pedido){ ?>
         
         <tr>

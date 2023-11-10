@@ -46,7 +46,7 @@ class ProductoDAO{
         return $result;
     }
 
-    public static function modificarProducto($producto_id, $nombre, $precio){
+    public static function updateProducto($producto_id, $nombre, $precio){
         $con = DataBase::connect();
 
         $stmt = $con->prepare("UPDATE productos SET nombre = ?, precio = ? WHERE producto_id = ?");
@@ -60,7 +60,7 @@ class ProductoDAO{
         return $result;
     }
 
-    public static function getCategoriaByProductoId($producto_id, $categoria_id){
+    public static function getProductoById($producto_id, $categoria_id){
         $con = DataBase::connect();
 
         //Consulta para extraer todos los datos del producto que le pasamos por parametro
@@ -73,8 +73,7 @@ class ProductoDAO{
         $result = $stmt->get_result();
 
         //Consulta para recoger el nombre de la categoria_id que le paso por parametro
-        $consultaCat = $con->prepare("SELECT categorias.nombre FROM productos INNER JOIN categorias 
-                                        ON productos.categoria_id = categorias.categoria_id WHERE productos.categoria_id = ?");
+        $consultaCat = $con->prepare("SELECT nombre FROM categorias WHERE categoria_id = ?");
         $consultaCat->bind_param("i", $categoria_id); //Bindea la categoria_id con un integer
 
         $consultaCat->execute();
@@ -126,29 +125,4 @@ class ProductoDAO{
         return $categorias;
     }
 
-    public static function getProductoById($producto_id, $categoria_id){
-        $con = DataBase::connect();
-
-        //Consulta para extraer todos los datos del producto que le pasamos por parametro
-        $stmt = $con->prepare("SELECT * FROM productos WHERE producto_id = ?");
-        $stmt->bind_param("i", $producto_id); //Bindea el tipo con un integer
-
-        $stmt->execute();
-
-        //Almacenamos el resultado de la consulta
-        $result = $stmt->get_result();
-
-        //Consulta para recoger el nombre de la categoria_id que le paso por parametro
-        $consultaCat = $con->prepare("SELECT nombre FROM categorias WHERE categoria_id = ?");
-        $consultaCat->bind_param("i", $categoria_id); //Bindea la categoria_id con un integer
-
-        $consultaCat->execute();
-        $categoria = $consultaCat->get_result()->fetch_object()->nombre;
-
-        $con->close();
-
-        $res = $result->fetch_object($categoria);
-        
-        return $res;
-    }
 }

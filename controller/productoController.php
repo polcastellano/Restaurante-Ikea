@@ -22,13 +22,18 @@ class productoController{
                 $categoria_id = $_POST['categoria_id'];
     
                 $pedido = new Pedido(ProductoDAO::getProductoById($producto_id, $categoria_id));
-                
-                array_push($_SESSION['selecciones'], $pedido);
-            }else{
-                header("Location:".url."?controller=producto");
+                array_push($_SESSION['selecciones'], $pedido);  
+
             }
+            // Esto es un bucle infinito si vuelvo de una pagina cualquiera
+            // else{
+            //     header("Location:".url."?controller=producto");
+            // }
             
         }
+            
+           
+        
         //cabecera
         include_once 'view/cabecera.php';
 
@@ -71,10 +76,10 @@ class productoController{
     
     public function modificar(){
 
-        if (isset($_POST['producto_id']) & isset($_POST['categoria_id'])){
+        if (isset($_POST['producto_id']) && isset($_POST['categoria_id'])){
             $producto_id = $_POST['producto_id'];
             $categoria_id = $_POST['categoria_id'];
-            $producto = ProductoDAO::getCategoriaByProductoId($producto_id, $categoria_id);
+            $producto = ProductoDAO::getProductoById($producto_id, $categoria_id);
             include_once 'view/modificarProducto.php';
         }else{
             header("Location:".url."?controller=producto");
@@ -86,8 +91,8 @@ class productoController{
 
     public function actualizar(){
 
-        if (isset($_POST['producto_id'])&
-            isset($_POST['nombre'])&
+        if (isset($_POST['producto_id'])&&
+            isset($_POST['nombre'])&&
             isset($_POST['precio'])
             ){
 
@@ -95,7 +100,7 @@ class productoController{
             $nombre = $_POST['nombre'];
             $precio = $_POST['precio'];
             
-            ProductoDAO::modificarProducto($producto_id, $nombre, $precio);
+            ProductoDAO::updateProducto($producto_id, $nombre, $precio);
             header("Location:".url."?controller=producto");
         }else{
             header("Location:".url."?controller=producto");
@@ -110,8 +115,8 @@ class productoController{
 
     public function insertar(){
 
-        if (isset($_POST['categoria'])&
-            isset($_POST['nombre'])&
+        if (isset($_POST['categoria'])&&
+            isset($_POST['nombre'])&&
             isset($_POST['precio'])
             ){
 
