@@ -30,10 +30,18 @@
                     <input name="categoria_id" value="<?= $plato->getCategoria_id()?>" hidden />
                     <button type="submit">Modificar</button>
                 </form>
+            </td>
             <td>
                 <form action=<?=url."?controller=producto&action=eliminar"?> method="post">
                     <input name="producto_id" value="<?= $plato->getProducto_id()?>" hidden />
                     <button type="submit">Eliminar</button>
+                </form>
+            </td>
+            <td>
+                <form action=<?=url."?controller=producto"?> method="post">
+                    <input name="producto_id" value="<?= $plato->getProducto_id()?>" hidden />
+                    <input name="categoria_id" value="<?= $plato->getCategoria_id()?>" hidden />
+                    <button type="submit">Seleccionar</button>
                 </form>
             </td>
             </tr>
@@ -60,11 +68,20 @@
                     <input name="categoria_id" value="<?= $desayuno->getCategoria_id()?>" hidden />
                     <button type="submit">Modificar</button>
                 </form>
+            </td>
             <td>
                 <form action=<?=url."?controller=producto&action=eliminar"?> method="post">
                     <input name="producto_id" value="<?= $desayuno->getProducto_id()?>" hidden />
                     <button type="submit">Eliminar</button>
                 </form>
+            </td>
+            <td>
+                <form action=<?=url."?controller=producto"?> method="post">
+                    <input name="producto_id" value="<?= $desayuno->getProducto_id()?>" hidden />
+                    <input name="categoria_id" value="<?= $desayuno->getCategoria_id()?>" hidden />
+                    <button type="submit">Seleccionar</button>
+                </form>
+            </td>
             </tr>
         <?php } ?>
         </table>
@@ -89,11 +106,20 @@
                     <input name="categoria_id" value="<?= $entrante->getCategoria_id()?>" hidden />
                     <button type="submit">Modificar</button>
                 </form>
+            </td>
             <td>
                 <form action=<?=url."?controller=producto&action=eliminar"?> method="post">
                     <input name="producto_id" value="<?= $entrante->getProducto_id()?>" hidden />
                     <button type="submit">Eliminar</button>
                 </form>
+            </td>
+            <td>
+                <form action=<?=url."?controller=producto"?> method="post">
+                    <input name="producto_id" value="<?= $entrante->getProducto_id()?>" hidden />
+                    <input name="categoria_id" value="<?= $entrante->getCategoria_id()?>" hidden />
+                    <button type="submit">Seleccionar</button>
+                </form>
+            </td>
             </tr>
         <?php } ?>
         </table>
@@ -118,11 +144,20 @@
                     <input name="categoria_id" value="<?= $pizza->getCategoria_id()?>" hidden />
                     <button type="submit">Modificar</button>
                 </form>
+            </td>
             <td>
                 <form action=<?=url."?controller=producto&action=eliminar"?> method="post">
                     <input name="producto_id" value="<?= $pizza->getProducto_id()?>" hidden />
                     <button type="submit">Eliminar</button>
                 </form>
+            </td>
+            <td>
+                <form action=<?=url."?controller=producto"?> method="post">
+                    <input name="producto_id" value="<?= $pizza->getProducto_id()?>" hidden />
+                    <input name="categoria_id" value="<?= $pizza->getCategoria_id()?>" hidden />
+                    <button type="submit">Seleccionar</button>
+                </form>
+            </td>
             </tr>
         <?php } ?>
         </table>

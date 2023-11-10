@@ -2,9 +2,6 @@
 
 abstract class Producto{
 
-    const PRECIOPLATO = 3;
-    const PRECIODESAYUNO = 2;
-
     protected $producto_id;
     protected $nombre;
     protected $categoria_id;

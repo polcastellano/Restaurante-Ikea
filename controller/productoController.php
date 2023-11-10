@@ -3,6 +3,7 @@ include_once 'model/Plato.php';
 include_once 'model/Desayuno.php';
 include_once 'model/Entrante.php';
 include_once 'model/Pizza.php';
+include_once 'model/Pedido.php';
 
 include_once 'model/ProductoDAO.php';
 
@@ -10,9 +11,28 @@ class productoController{
 
     public function index(){
         
-        
+        //Iniciamos y tratamos sesion
+        session_start();
+
+        if (!isset($_SESSION['selecciones'])){
+            $_SESSION['selecciones'] = array();
+        }else{
+            if (isset($_POST['producto_id']) && isset($_POST['categoria_id'])){
+                $producto_id = $_POST['producto_id'];
+                $categoria_id = $_POST['categoria_id'];
+    
+                $pedido = new Pedido(ProductoDAO::getProductoById($producto_id, $categoria_id));
+                
+                array_push($_SESSION['selecciones'], $pedido);
+            }else{
+                header("Location:".url."?controller=producto");
+            }
+            
+        }
         //cabecera
-        
+        include_once 'view/cabecera.php';
+
+
         // panel include
         $platos = ProductoDAO::getAllProductos(1);
 
@@ -28,8 +48,13 @@ class productoController{
 
     }
 
-    public function compra(){
-        echo 'Pagina de compra';
+    public function carrito(){
+        session_start();
+
+        include_once 'view/cabecera.php';
+
+        include_once 'view/panelCarrito.php';
+
     }
 
     public function eliminar(){
@@ -49,7 +74,7 @@ class productoController{
         if (isset($_POST['producto_id']) & isset($_POST['categoria_id'])){
             $producto_id = $_POST['producto_id'];
             $categoria_id = $_POST['categoria_id'];
-            $producto = ProductoDAO::getProductoById($producto_id, $categoria_id);
+            $producto = ProductoDAO::getCategoriaByProductoId($producto_id, $categoria_id);
             include_once 'view/modificarProducto.php';
         }else{
             header("Location:".url."?controller=producto");
