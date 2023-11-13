@@ -1,0 +1,160 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* FONTS */
+@font-face {
+    font-family: "Noto Sans";
+    src: url(../fonts/NotoSans-Regular.ttf);
+}
+@font-face {
+    font-family: "Noto Sans Bold";
+    src: url(../fonts/NotoSans-Bold.ttf);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Noto Sans";
+}
+/*Variables CSS*/
+:root {
+    --bg-color1: white;
+    --bg-color2: #111111;
+    --bg-color3: #F5F5F5;
+    --bg-color4: #DFDFDF;
+    --bg-color5: #484848;
+    --bg-color6: #000000;
+    --bg-color7: #ECDBCB;
+    --bg-color8: #E3D6CA;
+    --bg-color9: #D0D8D0; 
+    --bg-color10: #333333;
+}
+.header{
+    background-color: var(--bg-color2);
+}
+.contenido{
+    width: auto; /*1520px*/
+    padding-left: 40px;
+    padding-right: 40px;
+}
+.msg-header{
+    height: 40px;
+}
+.navbar{
+    height: 90px;
+}
+.headerIcons{
+    width: 18px;
+    height: 18px;
+}
+/* textos del header negro */
+div.header div div p{
+    color: var(--bg-color1);
+    font-size: 12px;
+}
+.fondoBuscador{
+    background-color: var(--bg-color3);
+}
+.fondoBuscador:hover {
+    background-color: var(--bg-color4);
+}
+.paddingsBusqueda{
+    padding-top: 13px;
+    padding-bottom: 13px;
+}
+.iconosBusqueda{
+    width: 40px;
+    height: 40px;
+}
+.iconosBusqueda:hover{
+    background-color: var(--bg-color4);
+}
+.textosP{
+    color: var(--bg-color5);
+    font-size: 14px;
+}
+.textosMenu{
+    color: var(--bg-color6);
+    font-size: 14px;
+    font-family: "Noto Sans Bold";
+}
+.textosMenu2{
+    color: var(--bg-color6);
+    font-size: 14px;
+}
+.textosTitulo{
+    font-family: "Noto Sans Bold";
+    color: var(--bg-color2);
+    font-size: 36px;
+}
+.altoCartas{
+    background-color: var(--bg-color7);
+    /* height: 719px; */
+}
+.alturaTxtSeccion2{
+    height: 200px;
+}
+.titulosCartas{
+    font-family: "Noto Sans Bold";
+    font-size: 25px;
+    color: var(--bg-color2);
+}
+.textosCartas{
+    font-size: 16px;
+    color: var(--bg-color2);
+}
+.section3marginTop{
+    margin-top: 4rem;
+}
+.titulosCartas2{
+    font-family: "Noto Sans Bold";
+    font-size: 40px;
+    color: var(--bg-color6);
+}
+.textosCartas2{
+    font-size: 16px;
+    color: var(--bg-color5);
+}
+.alturaTxtSeccion3{
+    height: 140px;
+}
+.paddingMarginCartasSeccion3{
+    padding: 4.5rem;
+    padding-bottom: 0;
+    margin-bottom: 9rem;
+}
+.colorBtnSeccion3{
+    background-color: var(--bg-color2);
+}
+:hover.colorBtnSeccion3{
+    background-color: var(--bg-color10);
+}
+.fondoComerIKEA{
+    background-color: var(--bg-color8);
+}
+.fondoComidaEcologica{
+    background-color: var(--bg-color9);
+}
+a.mejoresProductos{
+    text-decoration: none;
+}
+a:hover div.altoCartas div h5.titulosCartas{
+    text-decoration: underline;
+}
+.btn_flecha{
+    width: 56px;
+    height: 56px;
+    background-color: var(--bg-color2);
+}
+.btn_flecha:hover{
+    background-color: var(--bg-color10);
+}
+
+
+/*Media query*/
+/* para cambiar el estilo cuando la resolucion es menor al max-width */
+@media only screen and (max-width: 768px) {
+    .ocultos{
+        display:none !important;
+    }
+}

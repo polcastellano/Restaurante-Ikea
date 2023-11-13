@@ -12,7 +12,7 @@
     <th>Nombre</th>
     <th>Precio</th>
 
-    <!-- Hacer condicional por si no hay sesion iniciada -->
+    <!-- Hacer condicional por si no hay sesion iniciada  y de si hay algo en el carrito -->
 
     <?php foreach($_SESSION['selecciones'] as $pedido){ ?>
         

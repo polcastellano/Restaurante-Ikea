@@ -1,3 +1,9 @@
 entrar directamente al carrito por url - ProductoController
 
 eliminar o modificar producto no aplica en carrito
+
+problemas con el session lo tengo que tener en el carrito y en el index
+
+
+botones seccion 3 heigth en px afecta al responsive
+navbar problemas con el desplegable mas dudas si hace falta el dropdown

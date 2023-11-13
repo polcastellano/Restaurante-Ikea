@@ -12,6 +12,39 @@ class productoController{
     public function index(){
         
         //Iniciamos y tratamos sesion
+        session_start();           
+
+        if (!isset($_SESSION['selecciones'])){
+            $_SESSION['selecciones'] = array();
+        }else{
+            if (isset($_POST['producto_id']) && isset($_POST['categoria_id'])){
+                $producto_id = $_POST['producto_id'];
+                $categoria_id = $_POST['categoria_id'];
+    
+                $pedido = new Pedido(ProductoDAO::getProductoById($producto_id, $categoria_id));
+                array_push($_SESSION['selecciones'], $pedido);  
+
+            }
+            // Esto es un bucle infinito si vuelvo de una pagina cualquiera
+            // else{
+            //     header("Location:".url."?controller=producto");
+            // }
+            
+        }
+
+
+        //cabecera
+        include_once 'view/cabecera.php';
+
+
+        //home
+        include_once 'view/panelHome.php';
+
+        //footer
+
+    }
+
+    public function carta(){
         session_start();
 
         if (!isset($_SESSION['selecciones'])){
@@ -31,9 +64,7 @@ class productoController{
             // }
             
         }
-            
-           
-        
+
         //cabecera
         include_once 'view/cabecera.php';
 
@@ -47,10 +78,7 @@ class productoController{
 
         $pizzas = ProductoDAO::getAllProductos(4);
 
-        include_once 'view/panelPedido.php';
-
-        //footer
-
+        include_once 'view/panelCarta.php';
     }
 
     public function carrito(){
@@ -67,9 +95,9 @@ class productoController{
         if (isset($_POST['producto_id'])){
             $producto_id = $_POST['producto_id'];
             ProductoDAO::eliminarProducto($producto_id);
-            header("Location:".url."?controller=producto");
+            header("Location:".url."?controller=producto&action=carta");
         }else{
-            header("Location:".url."?controller=producto");
+            header("Location:".url."?controller=producto&action=carta");
         }
         
     }
@@ -82,7 +110,7 @@ class productoController{
             $producto = ProductoDAO::getProductoById($producto_id, $categoria_id);
             include_once 'view/modificarProducto.php';
         }else{
-            header("Location:".url."?controller=producto");
+            header("Location:".url."?controller=producto&action=carta");
         }
         
         
@@ -101,9 +129,9 @@ class productoController{
             $precio = $_POST['precio'];
             
             ProductoDAO::updateProducto($producto_id, $nombre, $precio);
-            header("Location:".url."?controller=producto");
+            header("Location:".url."?controller=producto&action=carta");
         }else{
-            header("Location:".url."?controller=producto");
+            header("Location:".url."?controller=producto&action=carta");
         }
     }
 
@@ -126,7 +154,7 @@ class productoController{
             
             ProductoDAO::insertarProducto($categoria, $nombre, $precio);
 
-            header("Location:".url."?controller=producto");
+            header("Location:".url."?controller=producto&action=carta");
         }else{
             header("Location:".url."?controller=producto&action=agregar");
         }
