@@ -16,34 +16,4 @@ class Desayuno extends Producto{
     }
 */
 
-
-    /**
-     * Get the value of cafe
-     */ 
-    public function getCafe()
-    {
-        return $this->cafe;
-    }
-
-    /**
-     * Set the value of cafe
-     *
-     * @return  self
-     */ 
-    public function setCafe($cafe)
-    {
-        $this->cafe = $cafe;
-
-        return $this;
-    }
-
-    public function calculaPrecioTotal($numDias){
-        $precioTotal = $numDias*self::PRECIODESAYUNO;
-        return $precioTotal;
-    }
-
-    public function devuelvePrecioDia(){
-        return self::PRECIODESAYUNO;
-    }
-
 }

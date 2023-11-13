@@ -14,13 +14,4 @@ class Plato extends Producto{
     }
 */
 
-
-    public function calculaPrecioTotal($numDias){
-        $precioTotal = $numDias*self::PRECIOPLATO;
-        return $precioTotal;
-    }
-
-    public function devuelvePrecioDia(){
-        return self::PRECIOPLATO;
-    }
 }
