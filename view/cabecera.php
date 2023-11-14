@@ -12,9 +12,9 @@
 <link href="assets/css/bootstrap.min.css" rel="stylesheet">
 <link href="assets/css/full_estil.css" rel="stylesheet" type="text/css" media="screen">
 </head>
-<body>
 
-<header>
+<body>
+  <header>
         <div class="container-fluid contenido header">
           <div class="row align-items-center msg-header">
               <div class="col-12 col-md-4 d-flex justify-content-center">
@@ -42,88 +42,78 @@
             </div>
         </div>
 
-        <!-- <nav class="navbar navbar-expand-lg contenido container-fluid">
+        <nav class="navbar navbar-expand-lg contenido container-fluid">
           <div class="container-fluid p-0">
-            <a href="#" class="me-3">
+            <a href="<?=url."?controller=producto"?>" class="navbar-brand me-3">
               <img src="https://www.ikea.com/es/es/static/ikea-logo.f7d9229f806b59ec64cb.svg" alt="">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                  </ul>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                </li>
-              </ul>
+            <div class="col-4 col-md-7 col-lg-8">
               <form class="d-flex" role="search">
-                <div class="d-flex justify-content-start align-items-center fondoBuscador rounded-5">
+                <div class="d-flex container-fluid justify-content-start align-items-center fondoBuscador rounded-5">
                   <svg class="ms-2" width="24" height="24" viewBox="0 0 24 24">
                     <path fill-rule="evenodd" d="M13.98 15.395a6.294 6.294 0 111.414-1.414l4.602 4.601-1.414 1.414-4.602-4.601zm.607-5.101a4.294 4.294 0 11-8.587 0 4.294 4.294 0 018.587 0z" fill="currentColor"></path>
-                  </svg>
-                  <input class="form-control me-2 border-0 bg-transparent" type="search" placeholder="¿Qué es lo que buscas?" aria-label="Search">
+                  </svg>  
+                  <input class="form-control me-2 border-0 bg-transparent py-2" type="search" placeholder="¿Qué es lo que buscas?" aria-label="Search">
                 </div>
-                <button class="btn btn-outline-success" type="submit">Search</button>
               </form>
             </div>
-          </div>
-        </nav> -->
-
-        <nav class="contenido container-fluid">
-            <div class="row navbar p-0">
-              <div class="col-3 col-md-1">
-                <a href=<?=url."?controller=producto"?>>
-                  <img src="https://www.ikea.com/es/es/static/ikea-logo.f7d9229f806b59ec64cb.svg" alt="">
-                </a>
+            <div class="d-flex justify-content-end">
+              <div class="rounded-circle iconosBusqueda d-flex justify-content-center align-items-center">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                  <path d="M19.205 5.599c.9541.954 1.4145 2.2788 1.4191 3.6137 0 3.0657-2.2028 5.7259-4.1367 7.5015-1.2156 1.1161-2.5544 2.1393-3.9813 2.9729L12 20.001l-.501-.3088c-.9745-.5626-1.8878-1.2273-2.7655-1.9296-1.1393-.9117-2.4592-2.1279-3.5017-3.5531-1.0375-1.4183-1.8594-3.1249-1.8597-4.9957-.0025-1.2512.3936-2.5894 1.419-3.6149 1.8976-1.8975 4.974-1.8975 6.8716 0l.3347.3347.336-.3347c1.8728-1.8722 4.9989-1.8727 6.8716 0zm-7.2069 12.0516c.6695-.43 1.9102-1.2835 3.1366-2.4096 1.8786-1.7247 3.4884-3.8702 3.4894-6.0264-.0037-.849-.2644-1.6326-.8333-2.2015-1.1036-1.1035-2.9413-1.0999-4.0445.0014l-1.7517 1.7448-1.7461-1.7462c-1.1165-1.1164-2.9267-1.1164-4.0431 0-1.6837 1.6837-.5313 4.4136.6406 6.0156.8996 1.2298 2.0728 2.3207 3.137 3.1722a24.3826 24.3826 0 0 0 2.0151 1.4497z"></path>
+                </svg>
               </div>
-            
-              <div class="col-4 col-lg-7">
-                <form class="fondoBuscador rounded-5 px-2 " role="search">
-                  <div class="ms-2 d-flex justify-content-start align-items-center">
-                    <svg width="24" height="24" viewBox="0 0 24 24">
-                      <path fill-rule="evenodd" d="M13.98 15.395a6.294 6.294 0 111.414-1.414l4.602 4.601-1.414 1.414-4.602-4.601zm.607-5.101a4.294 4.294 0 11-8.587 0 4.294 4.294 0 018.587 0z" fill="currentColor"></path>
-                    </svg>
-                    <input class="container-fluid border-0 bg-transparent paddingsBusqueda" type="search" placeholder="¿Qué es lo que buscas?">
-                </form>
-              </div>
-            </div>
-              <div class="justify-content-end d-flex col-4 ">
-                <div class="ms-4 rounded-circle iconosBusqueda d-flex justify-content-center align-items-center">
-                  <svg width="24" height="24" viewBox="0 0 24 24">
-                    <path d="M19.205 5.599c.9541.954 1.4145 2.2788 1.4191 3.6137 0 3.0657-2.2028 5.7259-4.1367 7.5015-1.2156 1.1161-2.5544 2.1393-3.9813 2.9729L12 20.001l-.501-.3088c-.9745-.5626-1.8878-1.2273-2.7655-1.9296-1.1393-.9117-2.4592-2.1279-3.5017-3.5531-1.0375-1.4183-1.8594-3.1249-1.8597-4.9957-.0025-1.2512.3936-2.5894 1.419-3.6149 1.8976-1.8975 4.974-1.8975 6.8716 0l.3347.3347.336-.3347c1.8728-1.8722 4.9989-1.8727 6.8716 0zm-7.2069 12.0516c.6695-.43 1.9102-1.2835 3.1366-2.4096 1.8786-1.7247 3.4884-3.8702 3.4894-6.0264-.0037-.849-.2644-1.6326-.8333-2.2015-1.1036-1.1035-2.9413-1.0999-4.0445.0014l-1.7517 1.7448-1.7461-1.7462c-1.1165-1.1164-2.9267-1.1164-4.0431 0-1.6837 1.6837-.5313 4.4136.6406 6.0156.8996 1.2298 2.0728 2.3207 3.137 3.1722a24.3826 24.3826 0 0 0 2.0151 1.4497z"></path>
+              <a href=<?=url."?controller=producto&action=carrito"?>>
+                <div class="rounded-circle iconosBusqueda d-flex justify-content-center align-items-center">
+                  <svg  width="24" height="24" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" d="M10.9994 4h-.5621l-.2922.4802-3.357 5.517h-5.069l.3107 1.2425 1.6212 6.4851c.334 1.3355 1.5339 2.2724 2.9105 2.2724h10.8769c1.3766 0 2.5765-.9369 2.9104-2.2724l1.6213-6.4851.3106-1.2425h-5.0695l-3.3574-5.517L13.5618 4h-2.5624zm3.8707 5.9972L12.4376 6h-.8761L9.1292 9.9972h5.7409zm-9.2787 7.2425-1.3106-5.2425h15.4384l-1.3106 5.2425a1 1 0 0 1-.9701.7575H6.5615a1 1 0 0 1-.97-.7575z"></path>
                   </svg>
                 </div>
-                <a href=<?=url."?controller=producto&action=carrito"?>>
-                    <div class="ms-4 rounded-circle iconosBusqueda d-flex justify-content-center align-items-center">
-                        <svg  width="24" height="24" viewBox="0 0 24 24">
-                        <path fill-rule="evenodd" d="M10.9994 4h-.5621l-.2922.4802-3.357 5.517h-5.069l.3107 1.2425 1.6212 6.4851c.334 1.3355 1.5339 2.2724 2.9105 2.2724h10.8769c1.3766 0 2.5765-.9369 2.9104-2.2724l1.6213-6.4851.3106-1.2425h-5.0695l-3.3574-5.517L13.5618 4h-2.5624zm3.8707 5.9972L12.4376 6h-.8761L9.1292 9.9972h5.7409zm-9.2787 7.2425-1.3106-5.2425h15.4384l-1.3106 5.2425a1 1 0 0 1-.9701.7575H6.5615a1 1 0 0 1-.97-.7575z"></path>
-                        </svg>
-                    </div>
-                </a> 
-                <?= count($_SESSION['selecciones'])?>   
+              </a>
 
-            </div>  
-          </nav>
+              <?= count($_SESSION['selecciones'])?>
+
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            </div>
+              
+
+          </div>
+        </nav>
+
+        <nav class="navbar navbar-expand-lg contenido container-fluid">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item me-sm-3">
+                <a href=<?=url."?controller=producto"?> class="link-dark link-underline-opacity-0 link-underline-opacity-100-hover"><p class="textosMenu my-0">Inicio</p></a>
+              </li>
+              <li class="nav-item me-sm-3">
+              <a href=<?=url."?controller=producto&action=carta"?> class="link-dark link-underline-opacity-0 link-underline-opacity-100-hover"><p class="textosMenu my-0">Carta</p></a>
+              </li>
+            </ul>
+            </div>
+        </nav>
+
+
+        <div class="contenido">
+          <section class="border-bottom pb-3 d-flex align-items-center ">
+            <div class="col-md-12 d-flex justify-content-end align-items-center">
+              <div class="d-flex align-items-center">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="black">
+                  <path d="M1 4h15v3h3.0246l3.9793 5.6848V18h-2.6567c-.4218 1.3056-1.6473 2.25-3.0933 2.25-1.446 0-2.6715-.9444-3.0932-2.25h-3.9044c-.4217 1.3056-1.6472 2.25-3.0932 2.25S4.4916 19.3056 4.0698 18H1V4zm3.0698 12c.4218-1.3056 1.6473-2.25 3.0933-2.25 1.446 0 2.6715.9444 3.0932 2.25H14V6H3v10h1.0698zM16 14.0007a3.24 3.24 0 0 1 1.2539-.2507c1.446 0 2.6715.9444 3.0933 2.25h.6567v-2.6848L17.9833 9H16v5.0007zM7.163 15.75c-.6903 0-1.25.5596-1.25 1.25s.5597 1.25 1.25 1.25c.6904 0 1.25-.5596 1.25-1.25s-.5596-1.25-1.25-1.25zm10.0909 0c-.6904 0-1.25.5596-1.25 1.25s.5596 1.25 1.25 1.25 1.25-.5596 1.25-1.25-.5596-1.25-1.25-1.25z"></path>
+                </svg>
+                <p class="textosMenu2 my-0 ms-2">08750</p>
+              </div>
+              <div class="ms-5 d-flex align-items-center"> 
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="black">
+                  <path fill-rule="evenodd" d="M22 20V4H2v16h20zM20 6H4v12h3v-8h10v8h3V6zm-9 6H9v6h2v-6zm2 6h2v-6h-2v6z"></path>
+                </svg>
+                <p class="textosMenu2 my-0 ms-2">Molins de Rei</p>
+              </div> 
+            </div>
+          </section>
+        </div>
     </header>
 
-
-
-</body>
-</html>
+<script src="./assets/js/bootstrap.bundle.min.js"></script>

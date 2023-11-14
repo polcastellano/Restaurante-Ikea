@@ -84,6 +84,10 @@ class productoController{
     public function carrito(){
         session_start();
 
+        if (!isset($_SESSION['selecciones'])){
+            $_SESSION['selecciones'] = array();
+        }
+
         include_once 'view/cabecera.php';
 
         include_once 'view/panelCarrito.php';

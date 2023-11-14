@@ -1,29 +1,28 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Panel Pedido</title>
-</head>
 <body>
-<h1>Pedido</h1>
-    <table border=1 style='text-align: center;'>
-    <th>Producto id</th>
-    <th>Categoria id</th>
-    <th>Nombre</th>
-    <th>Precio</th>
+    <main>
+        <div class="contenido">
 
-    <!-- Hacer condicional por si no hay sesion iniciada  y de si hay algo en el carrito -->
+            <h1>Carrito</h1>
+                <table border=1 style='text-align: center;'>
+                <th>Producto id</th>
+                <th>Categoria id</th>
+                <th>Nombre</th>
+                <th>Precio</th>
 
-    <?php foreach($_SESSION['selecciones'] as $pedido){ ?>
-        
-        <tr>
-        <td><?=$pedido->getProducto()->getProducto_id()?></td>
-        <td><?=$pedido->getProducto()->getCategoria_id()?></td>
-        <td><?=$pedido->getProducto()->getNombre()?></td>
-        <td><?=$pedido->getProducto()->getPrecio()?> €</td>
-        </tr>
-    <?php } ?>
-    </table>
+                <!-- Hacer condicional por si no hay sesion iniciada  y de si hay algo en el carrito -->
+
+                <?php foreach($_SESSION['selecciones'] as $pedido){ ?>
+                    
+                    <tr>
+                    <td><?=$pedido->getProducto()->getProducto_id()?></td>
+                    <td><?=$pedido->getProducto()->getCategoria_id()?></td>
+                    <td><?=$pedido->getProducto()->getNombre()?></td>
+                    <td><?=$pedido->getProducto()->getPrecio()?> €</td>
+                    </tr>
+                <?php } ?>
+                </table>
+        </div>
+    </main>
 </body>
 </html>
 
