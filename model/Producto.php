@@ -6,6 +6,8 @@ abstract class Producto{
     protected $nombre;
     protected $categoria_id;
     protected $precio;
+    protected $descripcion;
+    protected $img;
 
     public function __construct(){
     }
@@ -99,4 +101,69 @@ abstract class Producto{
         return $this;
     }
 
+
+    /**
+     * Get the value of descripcion
+     */ 
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
+
+    /**
+     * Set the value of descripcion
+     *
+     * @return  self
+     */ 
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of img
+     */ 
+    public function getImg()
+    {
+        return $this->img;
+    }
+
+    /**
+     * Set the value of img
+     *
+     * @return  self
+     */ 
+    public function setImg($img)
+    {
+        $this->img = $img;
+
+        return $this;
+    }
+
+    public function getPrecioEntera(){
+
+        $precio_formateado = number_format($this->getPrecio(), 2, ',', '.');
+        // Encontrar la posición de la coma decimal
+        $pos_coma = strpos($precio_formateado, ',');
+
+        // Obtener la parte entera (números antes de la coma)
+        $parte_entera = substr($precio_formateado, 0, $pos_coma);
+
+        return $parte_entera;
+    }
+    
+    public function getPrecioDecimal(){
+
+        $precio_formateado = number_format($this->getPrecio(), 2, ',', '.');
+        // Encontrar la posición de la coma decimal
+        $pos_coma = strpos($precio_formateado, ',');
+
+        // Obtener la parte entera (números antes de la coma)
+        $parte_decimal = substr($precio_formateado, $pos_coma + 1);
+
+        return $parte_decimal;
+    }
+    
 }

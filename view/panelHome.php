@@ -97,7 +97,9 @@
                   <h5 class="titulosCartas2">Comer en IKEA</h5>
                   <p class="textosCartas2 mt-3">¿Ya sabes lo que vas a comer? Echa un vistazo a nuestros platos en el restaurante de tu tienda IKEA.</p>
                 </div>
-                <button type="button" class="colorBtnSeccion3 container-fluid btn btn-dark rounded-5 py-3">Ver carta</button>
+                <a href="<?=url."?controller=producto&action=carta"?>">
+                  <button type="button" class="colorBtnSeccion3 container-fluid btn btn-dark rounded-5 py-3">Ver carta</button>
+                </a>
               </div>
                 <img class="card-img-bottom" src="./assets/images/homeImg/seccion31.jpg" alt="...">
             </div>
@@ -107,7 +109,9 @@
                   <h5 class="titulosCartas2">Comida ecológica</h5>
                   <p class="textosCartas2 mt-3">¿Ya sabes lo que vas a comer? Echa un vistazo a nuestros platos en el restaurante de tu tienda IKEA.</p>
                 </div>
-                <button type="button" class="colorBtnSeccion3 container-fluid btn btn-dark rounded-5 py-3 ">Ver carta</button>
+                <a href="<?=url."?controller=producto&action=carta"?>">
+                  <button type="button" class="colorBtnSeccion3 container-fluid btn btn-dark rounded-5 py-3 ">Ver carta</button>
+                </a>
               </div>
               <img class="card-img-bottom" src="./assets/images/homeImg/seccion32.jpg" alt="...">
             </div>

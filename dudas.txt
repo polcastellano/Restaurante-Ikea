@@ -1,3 +1,2 @@
 eliminar o modificar producto no aplica en carrito
 
-botones seccion 3 heigth en px afecta al responsive hacer un min-heigth

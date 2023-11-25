@@ -3,18 +3,19 @@
 
 /* FONTS */
 @font-face {
-    font-family: "Noto Sans";
-    src: url(../fonts/NotoSans-Regular.ttf);
+    font-family: "Noto IKEA";
+    src: url(../fonts/Noto-IKEA-Latin-Regular.ttf);
 }
+
 @font-face {
-    font-family: "Noto Sans Bold";
-    src: url(../fonts/NotoSans-Bold.ttf);
+    font-family: "Noto IKEA Bold";
+    src: url(../fonts/Noto-IKEA-Latin-Bold.ttf);
 }
 
 *{
     margin: 0;
     padding: 0;
-    font-family: "Noto Sans";
+    font-family: "Noto IKEA";
 }
 /*Variables CSS*/
 :root {
@@ -28,6 +29,9 @@
     --bg-color8: #E3D6CA;
     --bg-color9: #D0D8D0; 
     --bg-color10: #333333;
+    --bg-color11: #0058A3; 
+    --bg-color12: #004F93;
+
 }
 .header{
     background-color: var(--bg-color2);
@@ -49,10 +53,10 @@ div.header div div p{
     color: var(--bg-color1);
     font-size: 12px;
 }
-.fondoBuscador{
+.fondoBuscador, .categorias{
     background-color: var(--bg-color3);
 }
-.fondoBuscador:hover {
+.fondoBuscador:hover, .categorias:hover {
     background-color: var(--bg-color4);
 }
 .paddingsBusqueda{
@@ -73,14 +77,14 @@ div.header div div p{
 .textosMenu{
     color: var(--bg-color6);
     font-size: 14px;
-    font-family: "Noto Sans Bold";
+    font-family: "Noto IKEA Bold";
 }
 .textosMenu2{
     color: var(--bg-color6);
     font-size: 14px;
 }
 .textosTitulo{
-    font-family: "Noto Sans Bold";
+    font-family: "Noto IKEA Bold";
     color: var(--bg-color2);
     font-size: 36px;
 }
@@ -92,7 +96,7 @@ div.header div div p{
     height: 200px;
 }
 .titulosCartas{
-    font-family: "Noto Sans Bold";
+    font-family: "Noto IKEA Bold";
     font-size: 25px;
     color: var(--bg-color2);
 }
@@ -104,7 +108,7 @@ div.header div div p{
     margin-top: 4rem;
 }
 .titulosCartas2{
-    font-family: "Noto Sans Bold";
+    font-family: "Noto IKEA Bold";
     font-size: 40px;
     color: var(--bg-color6);
 }
@@ -145,6 +149,56 @@ a:hover div.altoCartas div h5.titulosCartas{
 }
 .btn_flecha:hover{
     background-color: var(--bg-color10);
+}
+.txtCategorias{
+    font-size: 12px;
+    color: var(--bg-color6);
+    font-family: "Noto IKEA Bold";
+}
+.textosTituloCat{
+    font-family: "Noto IKEA Bold";
+    color: var(--bg-color6);
+    font-size: 24px;
+}
+.tituloProducto{
+    font-family: "Noto IKEA Bold";
+    color: var(--bg-color2);
+    font-size: 14px;
+}
+.medidaProductos{
+    width: 250px;
+    height: 250px;
+}
+.descProd{
+    min-height: 50px;
+    font-size: 14px;
+    color: var(--bg-color5);
+}
+.precioEntProd{
+    font-family: "Noto IKEA Bold";
+    font-size: 24px;
+    color: var(--bg-color2);
+}
+.precioDecProd{
+    font-family: "Noto IKEA Bold";
+    font-size: 12px;
+    color: var(--bg-color2);
+}
+.btnProdCarrito, .btnProdFav{
+    width: 40px;
+    height: 40px;
+}
+.btnProdCarrito{
+    background-color: var(--bg-color11);
+}
+:hover.btnProdCarrito{
+    background-color: var(--bg-color12);
+}
+.btnProdFav{
+    background-color: transparent;
+}
+.btnProdFav:hover{
+    background-color: var(--bg-color4);
 }
 
 

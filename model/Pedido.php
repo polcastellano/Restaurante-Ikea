@@ -49,4 +49,11 @@ class Pedido{
 
         return $this;
     }
+
+    /**
+     * Funcion para devolver el precio del producto segun la cantidad que haya
+     */
+    public function calculaPrecioCantidad(){
+        return $this->producto->getPrecio() * $this->cantidad;
+    }
 }
