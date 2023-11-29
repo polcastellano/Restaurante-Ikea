@@ -124,5 +124,4 @@ class ProductoDAO{
 
         return $categorias;
     }
-
 }

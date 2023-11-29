@@ -108,8 +108,7 @@ class productoController{
                 header("Location:".url."?controller=producto&action=carta");
             }else{
                 header("Location:".url."?controller=producto&action=carta");
-            }
-            
+            } 
         }
 
     }
@@ -246,9 +245,36 @@ class productoController{
             }else{
                 $pedido->setCantidad($pedido->getCantidad()-1);
             }
+        }else{
+            header("Location:".url."?controller=producto&action=carta");
         }
         include_once 'view/cabecera.php';
         include_once 'view/panelCarrito.php';
+    }
+
+    public function eliminarProdCar(){
+        session_start();
+        if(!isset($_SESSION['selecciones'])){
+            $_SESSION['selecciones'] = array();
+        }else{
+            if (isset($_POST['posicionSelecciones'])){
+                $posicionSelecciones = $_POST['posicionSelecciones'];
+                // Encuentra el índice del elemento que quieres eliminar
+                $indice = array_search($posicionSelecciones, $_SESSION['selecciones']);
+
+                // Verifica si se encontró el elemento y lo elimina del array de sesión
+                    unset($_SESSION['selecciones'][$posicionSelecciones]);
+
+                // Opcional: reinicia los índices del array si deseas mantener una secuencia numérica continua
+                $_SESSION['selecciones'] = array_values($_SESSION['selecciones']);
+                
+                include_once 'view/cabecera.php';
+                include_once 'view/panelCarrito.php';
+            }else{
+                header("Location:".url."?controller=producto&action=irCarrito");
+            }
+        }
+        
     }
 
 }

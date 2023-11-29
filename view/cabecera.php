@@ -11,8 +11,8 @@
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <link href="assets/css/bootstrap.min.css" rel="stylesheet">
 <link href="assets/css/full_estil.css" rel="stylesheet" type="text/css" media="screen">
+<link rel="icon" href="assets/images/logo.svg" type="image/svg">
 
-<link href="https://db.onlinewebfonts.com/c/b269e509d0e2d442240b8df6035c9999?family=Noto+IKEA+Latin+Bold" rel="stylesheet">
 </head>
 
 <body>
@@ -47,7 +47,7 @@
         <nav class="navbar navbar-expand-lg contenido container-fluid">
           <div class="container-fluid p-0">
             <a href="<?=url."?controller=producto"?>" class="navbar-brand me-3">
-              <img src="assets/images/logo.svg" alt="">
+              <img src="assets/images/logo.svg" alt="Logo IKEA">
             </a>
             <div class="col-4 col-md-7 col-lg-8">
               <form class="d-flex" role="search">
@@ -69,7 +69,7 @@
               </a>  
               <?= count($_SESSION['favoritos'])?>
 
-              <a href=<?=url."?controller=producto&action=irCarrito"?>>
+              <a href=<?=url."?controller=producto&action=irCarrito"?>>   
                 <div class="rounded-circle iconosBusqueda d-flex justify-content-center align-items-center">
                   <svg  width="24" height="24" viewBox="0 0 24 24">
                     <path fill-rule="evenodd" d="M10.9994 4h-.5621l-.2922.4802-3.357 5.517h-5.069l.3107 1.2425 1.6212 6.4851c.334 1.3355 1.5339 2.2724 2.9105 2.2724h10.8769c1.3766 0 2.5765-.9369 2.9104-2.2724l1.6213-6.4851.3106-1.2425h-5.0695l-3.3574-5.517L13.5618 4h-2.5624zm3.8707 5.9972L12.4376 6h-.8761L9.1292 9.9972h5.7409zm-9.2787 7.2425-1.3106-5.2425h15.4384l-1.3106 5.2425a1 1 0 0 1-.9701.7575H6.5615a1 1 0 0 1-.97-.7575z"></path>
