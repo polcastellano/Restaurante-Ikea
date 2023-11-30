@@ -12,11 +12,19 @@
     src: url(../fonts/Noto-IKEA-Latin-Bold.ttf);
 }
 
+
+/* Body por defecto */
+.contenido{
+    width: auto; /*1520px*/
+    padding-left: 40px;
+    padding-right: 40px;
+}
 *{
     margin: 0;
     padding: 0;
     font-family: "Noto IKEA";
 }
+
 /*Variables CSS*/
 :root {
     --bg-color1: white;
@@ -33,13 +41,12 @@
     --bg-color12: #004F93;
 
 }
+
+
+
+/* Cabecera */
 .header{
     background-color: var(--bg-color2);
-}
-.contenido{
-    width: auto; /*1520px*/
-    padding-left: 40px;
-    padding-right: 40px;
 }
 .msg-header{
     height: 40px;
@@ -47,6 +54,9 @@
 .headerIcons{
     width: 18px;
     height: 18px;
+}
+.iconoCarritoFavoritos{
+    background-color: var(--bg-color11);
 }
 /* textos del header negro */
 div.header div div p{
@@ -83,6 +93,8 @@ div.header div div p{
     color: var(--bg-color6);
     font-size: 14px;
 }
+
+/* Pagina Home */
 .textosTitulo{
     font-family: "Noto IKEA Bold";
     color: var(--bg-color2);
@@ -150,6 +162,8 @@ a:hover div.altoCartas div h5.titulosCartas{
 .btn_flecha:hover{
     background-color: var(--bg-color10);
 }
+
+/* Panel Carta */
 .txtCategorias{
     font-size: 12px;
     color: var(--bg-color6);
@@ -170,6 +184,22 @@ a:hover div.altoCartas div h5.titulosCartas{
     font-size: 14px;
     color: var(--bg-color5);
 }
+
+
+/* Pagina Favoritos */
+.descProdFav{
+    min-height: 70px;
+    max-height: 70px;
+    font-size: 14px;
+    color: var(--bg-color5);
+}
+.tituloProdFav{
+    min-height: 40px;
+    max-height: 40px;
+    font-family: "Noto IKEA Bold";
+    color: var(--bg-color2);
+    font-size: 14px;
+}
 .precioEntProd{
     font-family: "Noto IKEA Bold";
     font-size: 24px;
@@ -180,6 +210,8 @@ a:hover div.altoCartas div h5.titulosCartas{
     font-size: 12px;
     color: var(--bg-color2);
 }
+
+/* Pagina Carrito */
 .btnProdCarrito, .btnProdFav{
     width: 40px;
     height: 40px;
@@ -220,6 +252,11 @@ a:hover div.altoCartas div h5.titulosCartas{
     font-size: 14px;
     color: var(--bg-color2);
     text-decoration: none;
+}
+.resumenPedido{
+    font-family: "Noto IKEA Bold";
+    font-size: 16px;
+    color: var(--bg-color5);
 }
 
 

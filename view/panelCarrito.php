@@ -5,88 +5,93 @@
             <h2 class="textosTitulo mt-5 mb-5">Carrito de la compra</h2>
             <!-- Si el carrito esta vacío muestra el mensaje -->
             <?php
-                if(count($_SESSION['selecciones']) == 0){
-                    ?><h3 class="d-flex justify-content-center textosTitulo mt-5 mb-5">El carrito esta vacio</h3>
+                if(count($_SESSION['selecciones']) == 0){?>
+                    <h3 class="textosTitulo mt-5 mb-5">El carrito esta vacio</h3>
                 <?php }else{ ?>
-                    
-                    <?php 
-                        $pos = 0;
-                        foreach($_SESSION['selecciones'] as $pedido){ ?>
-                            <div class="card rounded-0 border-0 border-bottom mb-3 col-8 col-md-9 col-lg-7">
-                                <div class="row g-0 mb-5 mt-5">
-                                    <div class="col-7 col-sm-5 col-md-3 col-lg-2">
-                                    <img style="width: 100%;" src="assets/images/foto_productos/<?=$pedido->getProducto()->getImg()?>" alt="<?=$pedido->getProducto()->getImg() ?>"> 
-                                    </div>
-                                    <div class="col-11 col-sm-9 col-md-7 col-lg-8">
-                                        <div class="card-body">
-                                            <h5 class="card-title tituloProductoCar"><?=mb_strtoupper($pedido->getProducto()->getNombre())?></h5>
-                                            <p class="card-text descProd"><?=$pedido->getProducto()->getDescripcion()?></p>
-                                            <div class="row col-lg-12">
-                                                <form class="d-flex align-items-center justify-content-between border rounded-5 p-1 col-6 col-md-5 col-lg-3" action="<?=url."?controller=producto&action=compra"?>" method="POST">
-                                                    <td><button class="p-1 border-0 rounded-circle sumaResta" type="submit" name="resta" value="<?=$pos?>">
-                                                            <svg width="24" viewBox="0 0 24 24">
-                                                                <path d="M17 13H7v-2h10v2z"></path>
-                                                            </svg>
-                                                        </button>
-                                                    </td>
-                                                    <td><span class="cantidadPedido mx-2"><?= $pedido->getCantidad()?></span></td>
-                                                    <td><button class="p-1 border-0 rounded-circle sumaResta" type="submit" name="suma" value="<?=$pos?>">
-                                                            <svg width="24" viewBox="0 0 24 24">
-                                                                <path d="M10.998 13v4h2v-4h4v-2h-4V7h-2v4h-4v2h4z"></path>
-                                                            </svg>
-                                                        </button>
-                                                    </td>
-                                                </form>
-                                                <div class="col-lg-4 p-0 d-flex align-items-center justify-content-end">
-                                                    <form action="<?=url."?controller=producto&action=eliminarProdCar"?>" class="p-0 m-0" method="post">
-                                                        <input name="posicionSelecciones" value="<?= $pos?>" hidden />
-                                                        <button type="submit" class="border-0 bg-transparent">
-                                                            <a class="enlacesCarrito">Eliminar Producto</a>
-                                                        </button>
-                                                    </form>
+                    <div class="row p-0 m-0">
+                        <section class="col-12 col-sm-10 col-md-9 col-lg-7">
+                            <?php 
+                                $pos = 0;
+                                foreach($_SESSION['selecciones'] as $pedido){ ?>
+                                    <div class="card rounded-0 border-0 border-bottom mb-3">
+                                        <div class="row g-0 mb-5 mt-5">
+                                            <div class="col-7 col-sm-5 col-md-3 col-lg-2">
+                                            <img style="width: 100%;" src="assets/images/foto_productos/<?=$pedido->getProducto()->getImg()?>" alt="<?=$pedido->getProducto()->getImg() ?>"> 
+                                            </div>
+                                            <div class="col-11 col-sm-9 col-md-7 col-lg-8">
+                                                <div class="card-body">
+                                                    <h5 class="card-title tituloProductoCar"><?=mb_strtoupper($pedido->getProducto()->getNombre())?></h5>
+                                                    <p class="card-text descProd"><?=$pedido->getProducto()->getDescripcion()?></p>
+                                                    <div class="row col-lg-12">
+                                                        <form class="d-flex align-items-center justify-content-between border rounded-5 p-1 col-6 col-md-5 col-lg-3" action="<?=url."?controller=producto&action=compra"?>" method="POST">
+                                                            <td><button class="p-1 border-0 rounded-circle sumaResta" type="submit" name="resta" value="<?=$pos?>">
+                                                                    <svg width="24" viewBox="0 0 24 24">
+                                                                        <path d="M17 13H7v-2h10v2z"></path>
+                                                                    </svg>
+                                                                </button>
+                                                            </td>
+                                                            <td><span class="cantidadPedido mx-2"><?= $pedido->getCantidad()?></span></td>
+                                                            <td><button class="p-1 border-0 rounded-circle sumaResta" type="submit" name="suma" value="<?=$pos?>">
+                                                                    <svg width="24" viewBox="0 0 24 24">
+                                                                        <path d="M10.998 13v4h2v-4h4v-2h-4V7h-2v4h-4v2h4z"></path>
+                                                                    </svg>
+                                                                </button>
+                                                            </td>
+                                                        </form>
+                                                        <div class="col-lg-4 p-0 d-flex align-items-center justify-content-end">
+                                                            <form action="<?=url."?controller=producto&action=eliminarProdCar"?>" class="p-0 m-0" method="post">
+                                                                <input name="posicionSelecciones" value="<?= $pos?>" hidden />
+                                                                <button type="submit" class="border-0 bg-transparent">
+                                                                    <a class="enlacesCarrito">Eliminar Producto</a>
+                                                                </button>
+                                                            </form>
+                                                        </div>
+                                                        <div class="col-lg-5 p-0 d-flex align-items-center justify-content-end">
+                                                            <form action="<?=url."?controller=producto&action=favorito"?>" class="p-0 m-0" method="post">
+                                                                <input name="producto_id" value="<?= $pedido->getProducto()->getProducto_id()?>" hidden />
+                                                                <input name="categoria_id" value="<?= $pedido->getProducto()->getCategoria_id()?>" hidden />
+                                                                <button type="submit" class="border-0 bg-transparent">
+                                                                    <a class="enlacesCarrito">Guardar para más tarde</a>
+                                                                </button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="col-lg-5 p-0 d-flex align-items-center justify-content-end">
-                                                    <form action="<?=url."?controller=producto&action=favorito"?>" class="p-0 m-0" method="post">
-                                                        <input name="producto_id" value="<?= $pedido->getProducto()->getProducto_id()?>" hidden />
-                                                        <input name="categoria_id" value="<?= $pedido->getProducto()->getCategoria_id()?>" hidden />
-                                                        <button type="submit" class="border-0 bg-transparent">
-                                                            <a class="enlacesCarrito">Guardar para más tarde</a>
-                                                        </button>
-                                                    </form>
-                                                </div>
+                                            </div>
+                                            <div class="col-md-2 col-lg-2 d-flex justify-content-end">
+                                                <span class="d-flex">
+                                                    <p class="card-text precioProductoCar"><?=$pedido->formatPrecio()?>€</p>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-2 col-lg-2 d-flex justify-content-end">
-                                        <span class="d-flex">
-                                            <p class="card-text precioProductoCar"><?=$pedido->getProducto()->getPrecioEntera()?></p>
-                                            <p class="card-text precioProductoCar">,<?=$pedido->getProducto()->getPrecioDecimal()?> €</p>
-                                        </span>
-                                    </div>
-                                </div>
+                                <?php 
+                                $pos++;
+                                
+                                    }?>
+                        </section>
+                        <section class="col-12 col-lg-5 d-flex">
+                            <div class="ms-5 justify-content-center">
+                                <h5 class="resumenPedido">Resumen del pedido</h5>
+                                <p class="mt-5">Precio de los productos <?=CalculadoraPrecios::calcularPrecioPedido($_SESSION['selecciones'])?></p>
+                                <form action="<?=url."?controller=producto&action=confirmar"?>" method="POST">
+                                    <td><button type="submit"> CONFIRMAR </button></td>
+                                </form>
                             </div>
-                        <?php 
-                        $pos++;
-                        
-                            }?>
-                    <div class="">
-                        <?=CalculadoraPrecios::calcularPrecioPedido($_SESSION['selecciones'])?>
-                        <form action="<?=url."?controller=producto&action=confirmar"?>" method="POST">
-                            <td><button type="submit"> CONFIRMAR </button></td>
-                        </form>
+                        </section>
                     </div>
                     <?php
                     }?>
 
 
-                <table border=1 style='text-align: center;'>
+                <!-- <table border=1 style='text-align: center;'>
                     <th>Producto id</th>
                     <th>Categoria id</th>
                     <th>Nombre</th>
                     <th>Precio</th>
                     <th>Cantidad</th>
 
-                    <!-- Hacer condicional por si no hay sesion iniciada  y de si hay algo en el carrito -->
+                    Hacer condicional por si no hay sesion iniciada  y de si hay algo en el carrito
 
                     <?php 
                     $pos = 0;
@@ -121,7 +126,7 @@
                         </form>
 
                     </tr>
-                </table>
+                </table> -->
         </div>
     </main>
 </body>

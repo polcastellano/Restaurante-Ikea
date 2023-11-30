@@ -101,9 +101,22 @@ class productoController{
             if (isset($_POST['producto_id']) && isset($_POST['categoria_id'])){
                 $producto_id = $_POST['producto_id'];
                 $categoria_id = $_POST['categoria_id'];
-    
-                $pedido = new Pedido(ProductoDAO::getProductoById($producto_id, $categoria_id));
-                array_push($_SESSION['selecciones'], $pedido); 
+
+                $pedido_existe = false;
+
+                foreach ($_SESSION['selecciones'] as $pedido) {
+                    if($pedido->getProducto()->getProducto_id() == $producto_id && $pedido->getProducto()->getCategoria_id() == $categoria_id){
+                        $pedido->setCantidad($pedido->getCantidad() + 1);
+                        $pedido_existe = true;
+                        break;
+                    }
+                }
+                
+                if($pedido_existe == false){
+                    $pedido = new Pedido(ProductoDAO::getProductoById($producto_id, $categoria_id));
+                
+                    array_push($_SESSION['selecciones'], $pedido);
+                }
 
                 header("Location:".url."?controller=producto&action=carta");
             }else{
@@ -209,7 +222,8 @@ class productoController{
                 $favorito = new Favorito(ProductoDAO::getProductoById($producto_id, $categoria_id));
                 array_push($_SESSION['favoritos'], $favorito);  
 
-                header("Location:".url."?controller=producto&action=carta");
+                include_once 'view/cabecera.php';
+                include_once 'view/panelFavorito.php';
             }else{
                 header("Location:".url."?controller=producto&action=carta");
             }
@@ -272,6 +286,31 @@ class productoController{
                 include_once 'view/panelCarrito.php';
             }else{
                 header("Location:".url."?controller=producto&action=irCarrito");
+            }
+        }
+        
+    }
+
+    public function eliminarProdFav(){
+        session_start();
+        if(!isset($_SESSION['favoritos'])){
+            $_SESSION['favoritos'] = array();
+        }else{
+            if (isset($_POST['posicionSelecciones'])){
+                $posicionSelecciones = $_POST['posicionSelecciones'];
+                // Encuentra el índice del elemento que quieres eliminar
+                $indice = array_search($posicionSelecciones, $_SESSION['favoritos']);
+
+                // Verifica si se encontró el elemento y lo elimina del array de sesión
+                    unset($_SESSION['favoritos'][$posicionSelecciones]);
+
+                // Opcional: reinicia los índices del array si deseas mantener una secuencia numérica continua
+                $_SESSION['favoritos'] = array_values($_SESSION['favoritos']);
+                
+                include_once 'view/cabecera.php';
+                include_once 'view/panelFavorito.php';
+            }else{
+                header("Location:".url."?controller=producto&action=irFavorito");
             }
         }
         

@@ -6,17 +6,17 @@
         <h2 class="textosTitulo mt-5 mb-5">Restaurante en Molins de Rei</h2>
 
 
-        <div class="pt-3 pb-4 border-bottom">
+        <section class="pt-3 pb-4 border-bottom">
             <?php foreach (ProductoDAO::getAllCategorias() as $categoria){ ?>
                 <a class="text-decoration-none" href="#<?=$categoria[0]?>">
                     <button class="py-2 px-4 me-3 rounded-5 border-0 categorias txtCategorias"><?=$categoria[0]?></button>
                 </a>
             <?php } ?>
-        </div>
+        </section>
 
         <h2 id="Plato" class="mt-5 textosTituloCat">Platos Principales</h2>
         
-        <div class="contenido row p-0 m-0 mt-5">
+        <section class="contenido row p-0 m-0 mt-5">
             <?php foreach($platos as $plato){ ?>
                 <div class="card border-0 rounded-0 border-bottom col-12 col-sm-6 col-md-4 col-lg-3 mb-5 justify-content-center">
                     <div class="mx-auto">
@@ -58,12 +58,12 @@
                     </div>
                 </div>
             <?php } ?>
-        </div>
+        </section>
 
 
         <h2 id="Desayuno" class="textosTituloCat">Desayunos</h2>
         
-        <div class="contenido row p-0 m-0 mt-5">
+        <section class="contenido row p-0 m-0 mt-5">
             <?php foreach($desayunos as $desayuno){ ?>
                 <div class="card border-0 rounded-0 border-bottom col-sm-5 col-md-3 mb-5 justify-content-center">
                     <div class="medidaProductos mx-auto">
@@ -105,12 +105,12 @@
                     </div>
                 </div>
             <?php } ?>
-        </div>
+        </section>
 
 
         <h2 id="Entrante" class="textosTituloCat">Entrantes</h2>
         
-        <div class="contenido row p-0 m-0 mt-5">
+        <section class="contenido row p-0 m-0 mt-5">
             <?php foreach($entrantes as $entrante){ ?>
                 <div class="card border-0 rounded-0 border-bottom col-sm-5 col-md-3 mb-5 justify-content-center">
                     <div class="medidaProductos mx-auto">
@@ -152,12 +152,12 @@
                     </div>
                 </div>
             <?php } ?>
-        </div>
+        </section>
 
 
         <h2 id="Pizza" class="textosTituloCat">Pizzas</h2>
         
-        <div class="contenido row p-0 m-0 mt-5">
+        <section class="contenido row p-0 m-0 mt-5">
             <?php foreach($pizzas as $pizza){ ?>
                 <div class="card border-0 rounded-0 border-bottom col-sm-5 col-md-3 mb-5 justify-content-center">
                     <div class="medidaProductos mx-auto">
@@ -199,10 +199,10 @@
                     </div>
                 </div>
             <?php } ?>
-        </div>
+        </section>
 
 
-        <form action=<?=url."?controller=producto&action=agregar"?> method="post">
+        <!--<form action=<?=url."?controller=producto&action=agregar"?> method="post">
             <button type="submit">Agregar</button>
         </form>
 
@@ -341,7 +341,7 @@
             <?php } ?>
             </table>
 
-        <h2 id="Pizza" class="textosTituloCat">Pizzas</h2>
+        <h2 id="Pizza" class="textosTituloCat">Pizzas</h2> 
             <table border=1 style='text-align: center;'>
             <th>Producto id</th>
             <th>Categoria id</th>
@@ -384,7 +384,7 @@
                 </td>
                 </tr>
             <?php } ?>
-            </table>
+            </table>-->
     </div>
     </main>
 
