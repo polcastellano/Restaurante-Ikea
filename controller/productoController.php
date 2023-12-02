@@ -61,6 +61,7 @@ class productoController{
         include_once 'view/panelHome.php';
 
         //footer
+        include_once 'view/footer.php';
 
     }
 
@@ -90,6 +91,7 @@ class productoController{
         $pizzas = ProductoDAO::getAllProductos(4);
 
         include_once 'view/panelCarta.php';
+        include_once 'view/footer.php';
     }
 
     public function carrito(){
@@ -136,6 +138,7 @@ class productoController{
         include_once 'view/cabecera.php';
 
         include_once 'view/panelCarrito.php';
+        include_once 'view/footer.php';
 
     }
 
@@ -157,7 +160,10 @@ class productoController{
             $producto_id = $_POST['producto_id'];
             $categoria_id = $_POST['categoria_id'];
             $producto = ProductoDAO::getProductoById($producto_id, $categoria_id);
+            
+            include_once 'view/cabecera.php';
             include_once 'view/modificarProducto.php';
+            include_once 'view/footer.php';
         }else{
             header("Location:".url."?controller=producto&action=carta");
         }
@@ -187,7 +193,10 @@ class productoController{
     public function agregar(){
 
         $categorias = ProductoDAO::getAllCategorias();
+
+        include_once 'view/cabecera.php';
         include_once 'view/agregarProducto.php';
+        include_once 'view/footer.php';
     }
 
     public function insertar(){
@@ -224,6 +233,7 @@ class productoController{
 
                 include_once 'view/cabecera.php';
                 include_once 'view/panelFavorito.php';
+                include_once 'view/footer.php';
             }else{
                 header("Location:".url."?controller=producto&action=carta");
             }
@@ -239,8 +249,8 @@ class productoController{
         }
 
         include_once 'view/cabecera.php';
-
         include_once 'view/panelFavorito.php';
+        include_once 'view/footer.php';
 
     }
 
@@ -262,8 +272,7 @@ class productoController{
         }else{
             header("Location:".url."?controller=producto&action=carta");
         }
-        include_once 'view/cabecera.php';
-        include_once 'view/panelCarrito.php';
+        header("Location:".url."?controller=producto&action=irCarrito");
     }
 
     public function eliminarProdCar(){
@@ -284,6 +293,7 @@ class productoController{
                 
                 include_once 'view/cabecera.php';
                 include_once 'view/panelCarrito.php';
+                include_once 'view/footer.php';
             }else{
                 header("Location:".url."?controller=producto&action=irCarrito");
             }
@@ -309,6 +319,7 @@ class productoController{
                 
                 include_once 'view/cabecera.php';
                 include_once 'view/panelFavorito.php';
+                include_once 'view/footer.php';
             }else{
                 header("Location:".url."?controller=producto&action=irFavorito");
             }

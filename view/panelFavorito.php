@@ -59,6 +59,4 @@
                 }?>
         </div>
     </main>
-</body>
-</html>
 

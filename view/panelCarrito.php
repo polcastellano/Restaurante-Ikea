@@ -70,15 +70,51 @@
                                 
                                     }?>
                         </section>
-                        <section class="col-12 col-lg-5 d-flex">
-                            <div class="ms-5 justify-content-center">
+                        <section class="p-0 col-lg-5">
+                            <div class="ps-5 col-lg-12">
                                 <h5 class="resumenPedido">Resumen del pedido</h5>
-                                <p class="mt-5">Precio de los productos <?=CalculadoraPrecios::calcularPrecioPedido($_SESSION['selecciones'])?></p>
-                                <form action="<?=url."?controller=producto&action=confirmar"?>" method="POST">
-                                    <td><button type="submit"> CONFIRMAR </button></td>
-                                </form>
+                                <div class="mt-5 pb-4 border-3 border-bottom bordeResumenPed d-flex justify-content-between">
+                                    <p class="textoPedidos">Precio de los productos</p>
+                                    <p class="textoPedidosBold">
+                                        <?= CalculadoraPrecios::formatPrecios(CalculadoraPrecios::calcularPrecioPedido($_SESSION['selecciones'])) ?>€
+                                    </p>
+                                </div>
+                                <div class="mt-4 pb-4 border-bottom">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="textoPedidosBold">Subtotal</p>
+                                        <p class="precioSubtotal">
+                                            <?= CalculadoraPrecios::formatPrecios(CalculadoraPrecios::calcularPrecioPedido($_SESSION['selecciones'])) ?>€
+                                        </p>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <p class="textoPedidos">Subtotal sin IVA</p>
+                                        <p class="textoPedidosBold">
+                                            <?= CalculadoraPrecios::formatPrecios(CalculadoraPrecios::subtotalSinIVA($_SESSION['selecciones'])) ?>€
+                                        </p>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <p class="textoPedidos">IVA</p>
+                                        <p class="textoPedidosBold">
+                                            <?= CalculadoraPrecios::formatPrecios(CalculadoraPrecios::IVA($_SESSION['selecciones'])) ?>€
+                                        </p>
+                                    </div>
+                                </div>
+                                <a href="<?= url . "?controller=producto&action=confirmar" ?>" class="link-underline link-underline-opacity-0">
+                                    <div class="px-4 py-5 rounded-1 mt-5 d-flex justify-content-between btnContinuar">
+                                        <div class="d-flex align-items-center">
+                                            <p class="m-0 continuarPedido">Continuar</p>
+                                        </div>
+                                        <div class="rounded-circle d-flex justify-content-center btn_flechaPed">
+                                            <svg fill="black" width="24px" heigth="24px" viewBox="0 0 24 24">
+                                            <path d="m20.0008 12.0001-8-8.001-1.4143 1.414L16.1727 11H4v2h12.1723l-5.5868 5.5866 1.4141 1.4142 8.0012-8.0007z">
+                                            </path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
                         </section>
+
                     </div>
                     <?php
                     }?>
@@ -129,7 +165,3 @@
                 </table> -->
         </div>
     </main>
-</body>
-</html>
-
-

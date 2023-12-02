@@ -119,8 +119,3 @@
         </section>
       </div>
     </main>
-
-    <footer>
-
-    </footer>
-</body>
