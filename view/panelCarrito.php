@@ -99,19 +99,20 @@
                                         </p>
                                     </div>
                                 </div>
-                                <a href="<?= url . "?controller=producto&action=confirmar" ?>" class="link-underline link-underline-opacity-0">
-                                    <div class="px-4 py-5 rounded-1 mt-5 d-flex justify-content-between btnContinuar">
-                                        <div class="d-flex align-items-center">
-                                            <p class="m-0 continuarPedido">Continuar</p>
-                                        </div>
-                                        <div class="rounded-circle d-flex justify-content-center btn_flechaPed">
-                                            <svg fill="black" width="24px" heigth="24px" viewBox="0 0 24 24">
-                                            <path d="m20.0008 12.0001-8-8.001-1.4143 1.414L16.1727 11H4v2h12.1723l-5.5868 5.5866 1.4141 1.4142 8.0012-8.0007z">
-                                            </path>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </a>
+                                <form class="mt-5" action="<?= url . "?controller=producto&action=confirmar"?>" method="POST">
+                                    <input name="precioFinal" value="<?= CalculadoraPrecios::calcularPrecioPedido($_SESSION['selecciones']) ?>" type="hidden" />
+                                        <button class="border-0 col-12" type="submit">
+                                                <div class="px-4 py-5 rounded-1 btnContinuar d-flex justify-content-between align-items-center">
+                                                    <p class="m-0 continuarPedido">Continuar</p> 
+                                                    <div class="rounded-circle d-flex justify-content-center btn_flechaPed">
+                                                        <svg fill="black" width="24px" heigth="24px" viewBox="0 0 24 24">
+                                                            <path d="m20.0008 12.0001-8-8.001-1.4143 1.414L16.1727 11H4v2h12.1723l-5.5868 5.5866 1.4141 1.4142 8.0012-8.0007z">
+                                                            </path>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                        </button>
+                                </form>
                             </div>
                         </section>
 

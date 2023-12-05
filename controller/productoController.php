@@ -16,46 +16,22 @@ class productoController{
         //Iniciamos y tratamos sesion
         session_start();           
 
+        
+
         if (!isset($_SESSION['selecciones'])){
             $_SESSION['selecciones'] = array();
-        }else{
-            if (isset($_POST['producto_id']) && isset($_POST['categoria_id'])){
-                $producto_id = $_POST['producto_id'];
-                $categoria_id = $_POST['categoria_id'];
-    
-                $pedido = new Pedido(ProductoDAO::getProductoById($producto_id, $categoria_id));
-                array_push($_SESSION['selecciones'], $pedido);  
-
-            }
-            // Esto es un bucle infinito si vuelvo de una pagina cualquiera
-            // else{
-            //     header("Location:".url."?controller=producto");
-            // }
-            
         }
 
         if (!isset($_SESSION['favoritos'])){
             $_SESSION['favoritos'] = array();
-        }else{
-            if (isset($_POST['producto_id']) && isset($_POST['categoria_id'])){
-                $producto_id = $_POST['producto_id'];
-                $categoria_id = $_POST['categoria_id'];
-    
-                $favorito = new Favorito(ProductoDAO::getProductoById($producto_id, $categoria_id));
-                array_push($_SESSION['favoritos'], $favorito);  
-
-            }
-            // Esto es un bucle infinito si vuelvo de una pagina cualquiera
-            // else{
-            //     header("Location:".url."?controller=producto");
-            // }
-            
         }
 
-
+        if(isset($_COOKIE['UltimoPedido'])){
+                    echo 'Tu ultimo pedido fue de '. $_COOKIE['UltimoPedido'];
+                    setcookie('UltimoPedido','',time()-3600);
+        }
         //cabecera
         include_once 'view/cabecera.php';
-
 
         //home
         include_once 'view/panelHome.php';
@@ -326,6 +302,19 @@ class productoController{
         }
         
     }
+
+    public function confirmar(){
+        //Te almacena el pedido en la base de datos PedidoDAO que guarda el pedido en la BBDD
+
+        // Borramos sesion de pedido
+        session_start();
+        unset($_SESSION['selecciones']);
+        //Guardo la cookie
+        setcookie('UltimoPedido',$_POST['precioFinal'],time()+3600);
+        header("Location:".url."?controller=producto");
+        
+    }
+
 
 }
 

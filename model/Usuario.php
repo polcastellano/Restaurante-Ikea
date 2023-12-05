@@ -1,0 +1,92 @@
+<?php
+
+class Usuario{
+
+    private $usuario_id;
+    private $email;
+    private $permisos = 1;
+    private $password;
+
+    public function __construct(){
+    }
+
+    /**
+     * Get the value of usuario_id
+     */ 
+    public function getUsuario_id()
+    {
+        return $this->usuario_id;
+    }
+
+    /**
+     * Set the value of usuario_id
+     *
+     * @return  self
+     */ 
+    public function setUsuario_id($usuario_id)
+    {
+        $this->usuario_id = $usuario_id;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of email
+     */ 
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set the value of email
+     *
+     * @return  self
+     */ 
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of permisos
+     */ 
+    public function getPermisos()
+    {
+        return $this->permisos;
+    }
+
+    /**
+     * Set the value of permisos
+     *
+     * @return  self
+     */ 
+    public function setPermisos($permisos)
+    {
+        $this->permisos = $permisos;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of password
+     */ 
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * Set the value of password
+     *
+     * @return  self
+     */ 
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+}
