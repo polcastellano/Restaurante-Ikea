@@ -99,7 +99,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <form class="mt-5" action="<?= url . "?controller=producto&action=confirmar"?>" method="POST">
+                                <form class="mt-5" action="<?= url . "?controller=pedido&action=confirmar"?>" method="POST">
                                     <input name="precioFinal" value="<?= CalculadoraPrecios::calcularPrecioPedido($_SESSION['selecciones']) ?>" type="hidden" />
                                         <button class="border-0 col-12" type="submit">
                                                 <div class="px-4 py-5 rounded-1 btnContinuar d-flex justify-content-between align-items-center">

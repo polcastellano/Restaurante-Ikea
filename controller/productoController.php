@@ -16,8 +16,6 @@ class productoController{
         //Iniciamos y tratamos sesion
         session_start();           
 
-        
-
         if (!isset($_SESSION['selecciones'])){
             $_SESSION['selecciones'] = array();
         }
@@ -27,8 +25,8 @@ class productoController{
         }
 
         if(isset($_COOKIE['UltimoPedido'])){
-                    echo 'Tu ultimo pedido fue de '. $_COOKIE['UltimoPedido'];
-                    setcookie('UltimoPedido','',time()-3600);
+            echo 'Tu ultimo pedido fue de '. $_COOKIE['UltimoPedido'];
+            setcookie('UltimoPedido','',time()-3600);
         }
         //cabecera
         include_once 'view/cabecera.php';
@@ -72,44 +70,52 @@ class productoController{
 
     public function carrito(){
         session_start();
-
-        if (!isset($_SESSION['selecciones'])){
-            $_SESSION['selecciones'] = array();
+        if (!isset($_SESSION['usuario'])){
+            header("Location:".url."?controller=usuario&action=logUsuarios");
         }else{
-            if (isset($_POST['producto_id']) && isset($_POST['categoria_id'])){
-                $producto_id = $_POST['producto_id'];
-                $categoria_id = $_POST['categoria_id'];
-
-                $pedido_existe = false;
-
-                foreach ($_SESSION['selecciones'] as $pedido) {
-                    if($pedido->getProducto()->getProducto_id() == $producto_id && $pedido->getProducto()->getCategoria_id() == $categoria_id){
-                        $pedido->setCantidad($pedido->getCantidad() + 1);
-                        $pedido_existe = true;
-                        break;
-                    }
-                }
-                
-                if($pedido_existe == false){
-                    $pedido = new Pedido(ProductoDAO::getProductoById($producto_id, $categoria_id));
-                
-                    array_push($_SESSION['selecciones'], $pedido);
-                }
-
-                header("Location:".url."?controller=producto&action=carta");
+            if (!isset($_SESSION['selecciones'])){
+                $_SESSION['selecciones'] = array();
             }else{
-                header("Location:".url."?controller=producto&action=carta");
-            } 
+                if (isset($_POST['producto_id']) && isset($_POST['categoria_id'])){
+                    $producto_id = $_POST['producto_id'];
+                    $categoria_id = $_POST['categoria_id'];
+
+                    $pedido_existe = false;
+
+                    foreach ($_SESSION['selecciones'] as $pedido) {
+                        if($pedido->getProducto()->getProducto_id() == $producto_id && $pedido->getProducto()->getCategoria_id() == $categoria_id){
+                            $pedido->setCantidad($pedido->getCantidad() + 1);
+                            $pedido_existe = true;
+                            break;
+                        }
+                    }
+                    
+                    if($pedido_existe == false){
+                        $pedido = new Pedido(ProductoDAO::getProductoById($producto_id, $categoria_id));
+                    
+                        array_push($_SESSION['selecciones'], $pedido);
+                    }
+
+                    header("Location:".url."?controller=producto&action=carta");
+                }else{
+                    header("Location:".url."?controller=producto&action=carta");
+                } 
+            }
         }
+        
 
     }
 
     public function irCarrito(){
         session_start();
-
-        if (!isset($_SESSION['selecciones'])){
-            $_SESSION['selecciones'] = array();
+        if (!isset($_SESSION['usuario'])){
+            header("Location:".url."?controller=usuario&action=logUsuarios");
+        }else{
+            if (!isset($_SESSION['selecciones'])){
+                $_SESSION['selecciones'] = array();
+            } 
         }
+        
 
         include_once 'view/cabecera.php';
 
@@ -196,22 +202,25 @@ class productoController{
 
     public function favorito(){
         session_start();
-
-        if (!isset($_SESSION['favoritos'])){
-            $_SESSION['favoritos'] = array();
+        if (!isset($_SESSION['usuario'])){
+            header("Location:".url."?controller=usuario&action=logUsuarios");
         }else{
-            if (isset($_POST['producto_id']) && isset($_POST['categoria_id'])){
-                $producto_id = $_POST['producto_id'];
-                $categoria_id = $_POST['categoria_id'];
-    
-                $favorito = new Favorito(ProductoDAO::getProductoById($producto_id, $categoria_id));
-                array_push($_SESSION['favoritos'], $favorito);  
-
-                include_once 'view/cabecera.php';
-                include_once 'view/panelFavorito.php';
-                include_once 'view/footer.php';
+            if (!isset($_SESSION['favoritos'])){
+                $_SESSION['favoritos'] = array();
             }else{
-                header("Location:".url."?controller=producto&action=carta");
+                if (isset($_POST['producto_id']) && isset($_POST['categoria_id'])){
+                    $producto_id = $_POST['producto_id'];
+                    $categoria_id = $_POST['categoria_id'];
+        
+                    $favorito = new Favorito(ProductoDAO::getProductoById($producto_id, $categoria_id));
+                    array_push($_SESSION['favoritos'], $favorito);  
+
+                    include_once 'view/cabecera.php';
+                    include_once 'view/panelFavorito.php';
+                    include_once 'view/footer.php';
+                }else{
+                    header("Location:".url."?controller=producto&action=carta");
+                }
             }
         }
 
@@ -220,8 +229,12 @@ class productoController{
     public function irFavorito(){
         session_start();
 
-        if (!isset($_SESSION['favoritos'])){
-            $_SESSION['favoritos'] = array();
+        if (!isset($_SESSION['usuario'])){
+            header("Location:".url."?controller=usuario&action=logUsuarios");
+        }else{
+            if (!isset($_SESSION['favoritos'])){
+                $_SESSION['favoritos'] = array();
+            }
         }
 
         include_once 'view/cabecera.php';
@@ -300,18 +313,6 @@ class productoController{
                 header("Location:".url."?controller=producto&action=irFavorito");
             }
         }
-        
-    }
-
-    public function confirmar(){
-        //Te almacena el pedido en la base de datos PedidoDAO que guarda el pedido en la BBDD
-
-        // Borramos sesion de pedido
-        session_start();
-        unset($_SESSION['selecciones']);
-        //Guardo la cookie
-        setcookie('UltimoPedido',$_POST['precioFinal'],time()+3600);
-        header("Location:".url."?controller=producto");
         
     }
 

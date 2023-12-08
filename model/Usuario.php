@@ -2,10 +2,10 @@
 
 class Usuario{
 
-    private $usuario_id;
-    private $email;
-    private $permisos = 1;
-    private $password;
+    protected $usuario_id;
+    protected $email;
+    protected $permisos;
+    protected $password;
 
     public function __construct(){
     }
