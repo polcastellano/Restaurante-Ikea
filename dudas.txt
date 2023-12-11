@@ -2,3 +2,5 @@ falta arreglar responsive carrito
 falta arrelgar espaciados home
 cuando hay carrito que se muestre mas dentro y encima del carrito
 responsive footer
+
+falta fecha al almacenar pedido bbdd

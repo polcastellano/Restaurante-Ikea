@@ -275,9 +275,9 @@ class productoController{
                 $indice = array_search($posicionSelecciones, $_SESSION['selecciones']);
 
                 // Verifica si se encontró el elemento y lo elimina del array de sesión
-                    unset($_SESSION['selecciones'][$posicionSelecciones]);
+                unset($_SESSION['selecciones'][$posicionSelecciones]);
 
-                // Opcional: reinicia los índices del array si deseas mantener una secuencia numérica continua
+                //Reinicia los índices del array si deseas mantener una secuencia numérica continua
                 $_SESSION['selecciones'] = array_values($_SESSION['selecciones']);
                 
                 include_once 'view/cabecera.php';
