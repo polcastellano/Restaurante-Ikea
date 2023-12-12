@@ -70,7 +70,7 @@
                   </div>
                 </div>
               </a> 
-              <a href="<?= url . "?controller=producto&action=irFavorito" ?>">
+              <a href="<?= url . "?controller=producto&action=irFavorito" ?>" class="ms-2">
                 <div class="position-relative d-flex align-items-center">
                   <div class="rounded-circle iconosBusqueda d-flex justify-content-center align-items-center">
                     <svg width="24" height="24" viewBox="0 0 24 24">
@@ -84,7 +84,7 @@
                   <?php }?>
                 </div>
               </a> 
-              <a href="<?= url."?controller=producto&action=irCarrito" ?>">
+              <a href="<?= url."?controller=producto&action=irCarrito" ?>" class="ms-2">
                 <div class="position-relative d-flex align-items-center">
                   <div class="rounded-circle iconosBusqueda d-flex justify-content-center align-items-center">
                     <svg width="24" height="24" viewBox="0 0 24 24">
@@ -104,7 +104,7 @@
                 </div>
               </a>
 
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <button class="navbar-toggler ms-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
             </div>

@@ -16,22 +16,19 @@ class pedidoController{
             foreach ($_SESSION['usuario'] as $usuario){
                 $usuario_id = $usuario->getUsuario_id();
             }
-
+            
             $precioTotal = $_POST['precioFinal'];
-            // echo PedidoDAO::ultimoPedido($usuario_id);
+
             PedidoDAO::almacenaPedido($usuario_id, $precioTotal);
 
             $pedido = PedidoDAO::ultimoPedido($usuario_id);
-            
-            foreach ($pedido as $ultPedido){
-                $pedido_id = $ultPedido->getPedido_id();
-            }
+
             // Borramos sesion de pedido
             unset($_SESSION['selecciones']);
+            // $_SESSION['selecciones']=array();
             //Guardo la cookie
-            setcookie('UltimoPedido',$pedido_id,time()+3600); 
-
-            header("Location:".url."?controller=usuario");
+            setcookie('UltimoPedido',serialize($pedido),time()+3600); 
+            header("Location:".url."?controller=producto");
         }else{
             header("Location:".url."?controller=producto&action=irCarrito");
         }

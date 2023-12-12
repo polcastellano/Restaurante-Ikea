@@ -1,6 +1,6 @@
 <?php
 
-abstract class PedidoDetalle extends Pedido{
+class PedidoDetalle extends Pedido{
 
     private $pedido_id;
     private $fecha;

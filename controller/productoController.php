@@ -25,7 +25,8 @@ class productoController{
         }
 
         if(isset($_COOKIE['UltimoPedido'])){
-            echo 'Tu ultimo pedido fue de '. $_COOKIE['UltimoPedido'];
+            echo 'Tu ultimo pedido fue de ';
+            var_dump(unserialize($_COOKIE['UltimoPedido']));
             setcookie('UltimoPedido','',time()-3600);
         }
         //cabecera
