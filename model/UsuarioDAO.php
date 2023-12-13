@@ -22,4 +22,42 @@ class UsuarioDAO{
 
         return $result;
     }
+
+    public static function pedidosUsuario($usuario_id){
+        $con = DataBase::connect();
+
+        $stmt = $con->prepare("SELECT * FROM pedidos WHERE usuario_id = ?");
+        $stmt->bind_param("i", $usuario_id);
+
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        $con->close();
+
+        $res =[];
+        $obj = "PedidoDetalle";
+        while($pedido = $result->fetch_object($obj)){
+            $res[] = $pedido;
+        }
+
+        return $res;
+    }
+
+    public static function ultimoPedido($pedido_id){
+        $con = DataBase::connect();
+
+        $stmt = $con->prepare("SELECT * FROM pedidos WHERE pedido_id = ? LIMIT 1");
+        $stmt->bind_param("i", $pedido_id);
+
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        $con->close();
+
+        $pedido_id = $result->fetch_object("PedidoDetalle");
+
+        return $pedido_id;
+    }
 }

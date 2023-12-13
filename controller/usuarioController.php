@@ -6,13 +6,24 @@ class usuarioController{
 
     public function index(){
         session_start();
-        include_once 'view/cabecera.php';
+
+        if (!isset($_SESSION['selecciones'])){
+            $_SESSION['selecciones'] = array();
+        }
+
+        if (!isset($_SESSION['favoritos'])){
+            $_SESSION['favoritos'] = array();
+        }
+
+        if(isset($_COOKIE['UltimoPedido'])){
+            // setcookie('UltimoPedido','',time()-3600);
+        }
+
         if (!isset($_SESSION['usuario'])){
             include_once 'view/login.php';
         }else{
-            include_once 'view/panelUsuario.php';
+            header("Location:".url."?controller=usuario&action=logUsuarios");
         }
-        include_once 'view/footer.php';
     }
 
     public function logUsuarios(){
@@ -21,6 +32,9 @@ class usuarioController{
         if (!isset($_SESSION['usuario'])){
             include_once 'view/login.php';
         }else{
+            var_dump($_COOKIE['UltimoPedido']);
+            self::ultimoPedido();
+            self::mostrarPedidos();
             include_once 'view/panelUsuario.php';
         }
         include_once 'view/footer.php';
@@ -36,13 +50,9 @@ class usuarioController{
                 $_SESSION['usuario'] = array();
 
                 if (UsuarioDAO::getUsuario($usuario,$password) != null){
-                    $user = UsuarioDAO::getUsuario($usuario,$password);
-                    
-                    array_push($_SESSION['usuario'], $user); 
-                    
-                    include_once 'view/cabecera.php';
-                    include_once 'view/panelUsuario.php';
-                    include_once 'view/footer.php';
+                    $_SESSION['usuario'] = UsuarioDAO::getUsuario($usuario,$password);
+                                        
+                    header("Location:".url."?controller=usuario&action=logUsuarios");
                 }else{
                     header("Location:".url."?controller=usuario&action=logUsuarios");
                 }
@@ -59,4 +69,32 @@ class usuarioController{
             header("Location:".url."?controller=usuario&action=logUsuarios");
         }
     }
+
+    public function mostrarPedidos(){
+        if (!isset($_SESSION['usuario'])){
+            include_once 'view/login.php';
+        }else{
+            
+            $usuario_id = $_SESSION['usuario']->getUsuario_id();
+            
+            $pedidos = UsuarioDAO::pedidosUsuario($usuario_id);
+
+            include_once 'view/panelUsuario.php';
+
+        }
+
+    }
+
+    public function ultimoPedido(){
+        if (!isset($_SESSION['usuario'])){
+            include_once 'view/login.php';
+        }else{            
+            
+            $ultimoPedido = UsuarioDAO::ultimoPedido($_COOKIE['UltimoPedido']);
+
+            include_once 'view/panelUsuario.php';
+
+        }
+    }
+
 }

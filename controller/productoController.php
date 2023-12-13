@@ -23,12 +23,6 @@ class productoController{
         if (!isset($_SESSION['favoritos'])){
             $_SESSION['favoritos'] = array();
         }
-
-        if(isset($_COOKIE['UltimoPedido'])){
-            echo 'Tu ultimo pedido fue de ';
-            var_dump(unserialize($_COOKIE['UltimoPedido']));
-            setcookie('UltimoPedido','',time()-3600);
-        }
         //cabecera
         include_once 'view/cabecera.php';
 
