@@ -28,13 +28,20 @@ class usuarioController{
 
     public function logUsuarios(){
         session_start();
+
         include_once 'view/cabecera.php';
+        
         if (!isset($_SESSION['usuario'])){
             include_once 'view/login.php';
         }else{
-            var_dump($_COOKIE['UltimoPedido']);
-            self::ultimoPedido();
-            self::mostrarPedidos();
+
+            if(isset($_COOKIE['UltimoPedido'])){
+                $ultimoPedido = UsuarioDAO::ultimoPedido($_COOKIE['UltimoPedido']); 
+            }
+            
+            $usuario_id = $_SESSION['usuario']->getUsuario_id();
+            
+            $pedidos = UsuarioDAO::pedidosUsuario($usuario_id);
             include_once 'view/panelUsuario.php';
         }
         include_once 'view/footer.php';
@@ -70,31 +77,18 @@ class usuarioController{
         }
     }
 
-    public function mostrarPedidos(){
+    public function verPedido(){
+        session_start();
+        include_once 'view/cabecera.php';
+        
         if (!isset($_SESSION['usuario'])){
             include_once 'view/login.php';
         }else{
-            
-            $usuario_id = $_SESSION['usuario']->getUsuario_id();
-            
-            $pedidos = UsuarioDAO::pedidosUsuario($usuario_id);
 
-            include_once 'view/panelUsuario.php';
+            
 
         }
-
-    }
-
-    public function ultimoPedido(){
-        if (!isset($_SESSION['usuario'])){
-            include_once 'view/login.php';
-        }else{            
-            
-            $ultimoPedido = UsuarioDAO::ultimoPedido($_COOKIE['UltimoPedido']);
-
-            include_once 'view/panelUsuario.php';
-
-        }
+        include_once 'view/footer.php';
     }
 
 }

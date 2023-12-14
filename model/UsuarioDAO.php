@@ -2,7 +2,6 @@
 
 include_once 'config/dataBase.php';
 
-
 class UsuarioDAO{
 
     public static function getUsuario($email, $password){
@@ -45,6 +44,23 @@ class UsuarioDAO{
     }
 
     public static function ultimoPedido($pedido_id){
+        $con = DataBase::connect();
+
+        $stmt = $con->prepare("SELECT * FROM pedidos WHERE pedido_id = ? LIMIT 1");
+        $stmt->bind_param("i", $pedido_id);
+
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        $con->close();
+
+        $pedido_id = $result->fetch_object("PedidoDetalle");
+
+        return $pedido_id;
+    }
+
+    public static function verPedido(){
         $con = DataBase::connect();
 
         $stmt = $con->prepare("SELECT * FROM pedidos WHERE pedido_id = ? LIMIT 1");
