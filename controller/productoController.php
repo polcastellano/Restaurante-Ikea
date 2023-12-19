@@ -132,43 +132,43 @@ class productoController{
     }
     
     public function modificar(){
+        session_start();
+        
+        $platos = ProductoDAO::getAllProductos(1);
 
-        if (isset($_POST['producto_id']) && isset($_POST['categoria_id'])){
-            $producto_id = $_POST['producto_id'];
-            $categoria_id = $_POST['categoria_id'];
-            $producto = ProductoDAO::getProductoById($producto_id, $categoria_id);
+        $desayunos = ProductoDAO::getAllProductos(2);
+
+        $entrantes = ProductoDAO::getAllProductos(3);
+
+        $pizzas = ProductoDAO::getAllProductos(4);
             
-            include_once 'view/cabecera.php';
-            include_once 'view/modificarProducto.php';
-            include_once 'view/footer.php';
-        }else{
-            header("Location:".url."?controller=producto&action=carta");
-        }
-        
-        
-
+        include_once 'view/cabecera.php';
+        include_once 'view/modificarProducto.php';
+        include_once 'view/footer.php';
     }
 
     public function actualizar(){
 
         if (isset($_POST['producto_id'])&&
             isset($_POST['nombre'])&&
-            isset($_POST['precio'])
+            isset($_POST['precio'])&&
+            isset($_POST['img'])
             ){
 
             $producto_id = $_POST['producto_id'];
             $nombre = $_POST['nombre'];
             $precio = $_POST['precio'];
+            $imagen = $_POST['img'];
             
-            ProductoDAO::updateProducto($producto_id, $nombre, $precio);
-            header("Location:".url."?controller=producto&action=carta");
+            ProductoDAO::updateProducto($producto_id, $nombre, $precio, $imagen); //No actualiza !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            header("Location:".url."?controller=usuario&action=carta");
         }else{
             header("Location:".url."?controller=producto&action=carta");
         }
     }
 
     public function agregar(){
-
+        session_start();
         $categorias = ProductoDAO::getAllCategorias();
 
         include_once 'view/cabecera.php';
@@ -180,14 +180,16 @@ class productoController{
 
         if (isset($_POST['categoria'])&&
             isset($_POST['nombre'])&&
-            isset($_POST['precio'])
+            isset($_POST['precio'])&&
+            isset($_POST['img'])
             ){
 
             $categoria = $_POST['categoria'];
             $nombre = $_POST['nombre'];
             $precio = $_POST['precio'];
+            $imagen = $_POST['img'];
             
-            ProductoDAO::insertarProducto($categoria, $nombre, $precio);
+            ProductoDAO::insertarProducto($categoria, $nombre, $precio, $imagen);
 
             header("Location:".url."?controller=producto&action=carta");
         }else{

@@ -3,7 +3,7 @@
         <div class="contenido">
         <section class="mt-5 mb-5">
           <h2 class="textosTitulo mt-5 mb-5">Restaurante IKEA</h2>
-          <div class="m-0 p-0 row">
+          <article class="m-0 p-0 row">
             <div class="p-0 col-12 col-xl-6 pe-3">
               <p class="textosP">Comer no es solo alimentarse. 
               Es una excusa perfecta para reunir a familiares y amigos alrededor de una mesa. 
@@ -16,11 +16,11 @@
             <div class="d-none d-xl-block col-xl-6 d-flex justify-content-end p-0 ps-3">
               <img width="100%" height="auto" src="./assets/images/homeImg/plato_mesa.jpg" alt="Imagen de una mesa vista desde arriba con un plato de comida encima">
             </div>
-          </div>
+          </article>
         </section>
         <section class="mt-5 mb-5">
           <h2 class="textosTitulo mt-5 mb-5">Mejores productos del restaurante IKEA</h2>
-          <div class="m-0 p-0 row">
+          <article class="m-0 p-0 row">
             <div class="p-0 col-12 col-xl-7">
               <p class="textosP">Los menús están disponibles de lunes a vie rnes excepto festivos 
                 (salvo el menú merienda/cena, disponible todos los días a partir de las 17:00) 
@@ -87,10 +87,10 @@
                 </a>
               </div>
             </div>
-          </div>
+          </article>
         </section>
         <section class="mb-5 section3marginTop">
-          <div class="row m-0 p-0 justify-content-center">
+          <article class="row m-0 p-0 justify-content-center">
             <div class="col-12 col-md-8 col-lg-5 border-0 rounded-3 card m-4 fondoComerIKEA p-0">
               <div class="card-body paddingMarginCartasSeccion3">
                 <div class="alturaTxtSeccion3">
@@ -115,7 +115,7 @@
               </div>
               <img class="card-img-bottom" src="./assets/images/homeImg/seccion32.jpg" alt="...">
             </div>
-          </div>
+          </article>
         </section>
       </div>
     </main>

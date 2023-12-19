@@ -1,4 +1,4 @@
 falta arreglar responsive carrito
 falta arrelgar espaciados home
 cuando hay carrito que se muestre mas dentro y encima del carrito
-responsive footer
+responsive footer y espaciados

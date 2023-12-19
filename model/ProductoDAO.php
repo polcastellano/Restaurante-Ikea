@@ -46,11 +46,11 @@ class ProductoDAO{
         return $result;
     }
 
-    public static function updateProducto($producto_id, $nombre, $precio){
+    public static function updateProducto($producto_id, $nombre, $precio, $imagen){
         $con = DataBase::connect();
 
-        $stmt = $con->prepare("UPDATE productos SET nombre = ?, precio = ? WHERE producto_id = ?");
-        $stmt->bind_param("sdi", $nombre, $precio, $producto_id);
+        $stmt = $con->prepare("UPDATE productos SET nombre = ?, precio = ?, img = ? WHERE producto_id = ?");
+        $stmt->bind_param("sdsi", $nombre, $precio, $imagen, $producto_id);
 
         $stmt->execute();
         $result = $stmt->get_result();
@@ -88,7 +88,7 @@ class ProductoDAO{
         return $result;
     }
 
-    public static function insertarProducto($categoria, $nombre, $precio){
+    public static function insertarProducto($categoria, $nombre, $precio, $imagen){
         $con = DataBase::connect();
 
         //Consulta para extraer el id del nombre de la categoria que recibimos
@@ -100,9 +100,9 @@ class ProductoDAO{
 
         $categoria_id = $stmt->get_result()->fetch_object()->categoria_id;//Guardamos el resultado de la consulta con la variable $categoria_id
 
-        $insProd = $con->prepare("INSERT INTO productos (producto_id, categoria_id, nombre, precio) VALUES (NULL, ?, ?, ?)");
+        $insProd = $con->prepare("INSERT INTO productos (producto_id, categoria_id, nombre, precio, img) VALUES (NULL, ?, ?, ?, ?)");
 
-        $insProd->bind_param("isd", $categoria_id, $nombre, $precio);
+        $insProd->bind_param("isds", $categoria_id, $nombre, $precio, $imagen);
 
         $insProd->execute();
 

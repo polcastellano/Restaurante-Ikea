@@ -3,6 +3,7 @@
 class Usuario{
 
     protected $usuario_id;
+    protected $nombre;
     protected $email;
     protected $permisos;
     protected $password;
@@ -88,5 +89,34 @@ class Usuario{
         $this->password = $password;
 
         return $this;
+    }
+
+    /**
+     * Get the value of nombre
+     */ 
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set the value of nombre
+     *
+     * @return  self
+     */ 
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Funcion para mostrar la contraseña cifrada
+     */
+    public function ocultarPassword(){
+        $longitud = strlen($this->password);
+        $resultado = str_repeat('*', $longitud);
+        return $resultado;
     }
 }
