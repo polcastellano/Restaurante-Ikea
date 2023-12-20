@@ -373,6 +373,17 @@ a:hover div.altoCartas div h5.titulosCartas{
     background-color: var(--bg-color4);
 }
 
+/* Estilos Modificar/Actualizar/Eliminar Producto */
+.btnActualizar{
+    background-color: var(--bg-color11) !important;
+    color: var(--bg-color1);
+    font-family: "Noto IKEA Bold";
+    font-size: 14px;
+}
+.btnActualizar:hover{
+    background-color: var(--bg-color12) !important;
+}
+
 
 
 /*Media query*/

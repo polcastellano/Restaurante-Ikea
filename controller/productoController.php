@@ -133,18 +133,22 @@ class productoController{
     
     public function modificar(){
         session_start();
+        if($_SESSION['usuario']->getPermisos() == 1){
+            $platos = ProductoDAO::getAllProductos(1);
+
+            $desayunos = ProductoDAO::getAllProductos(2);
+
+            $entrantes = ProductoDAO::getAllProductos(3);
+
+            $pizzas = ProductoDAO::getAllProductos(4);
+                
+            include_once 'view/cabecera.php';
+            include_once 'view/modificarProducto.php';
+            include_once 'view/footer.php';
+        }else{
+            header("Location:".url."?controller=usuario");
+        }
         
-        $platos = ProductoDAO::getAllProductos(1);
-
-        $desayunos = ProductoDAO::getAllProductos(2);
-
-        $entrantes = ProductoDAO::getAllProductos(3);
-
-        $pizzas = ProductoDAO::getAllProductos(4);
-            
-        include_once 'view/cabecera.php';
-        include_once 'view/modificarProducto.php';
-        include_once 'view/footer.php';
     }
 
     public function actualizar(){
@@ -160,20 +164,24 @@ class productoController{
             $precio = $_POST['precio'];
             $imagen = $_POST['img'];
             
-            ProductoDAO::updateProducto($producto_id, $nombre, $precio, $imagen); //No actualiza !!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            header("Location:".url."?controller=usuario&action=carta");
+            ProductoDAO::updateProducto($producto_id, $nombre, $precio, $imagen);
+            header("Location:".url."?controller=usuario");
         }else{
-            header("Location:".url."?controller=producto&action=carta");
+            header("Location:".url."?controller=producto&action=modificar");
         }
     }
 
     public function agregar(){
         session_start();
-        $categorias = ProductoDAO::getAllCategorias();
+        if($_SESSION['usuario']->getPermisos() == 1){
+            $categorias = ProductoDAO::getAllCategorias();
 
-        include_once 'view/cabecera.php';
-        include_once 'view/agregarProducto.php';
-        include_once 'view/footer.php';
+            include_once 'view/cabecera.php';
+            include_once 'view/agregarProducto.php';
+            include_once 'view/footer.php';
+        }else{
+            header("Location:".url."?controller=usuario");
+        }
     }
 
     public function insertar(){
