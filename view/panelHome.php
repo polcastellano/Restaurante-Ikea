@@ -13,7 +13,7 @@
                 La elección de alimentos saludables y equilibrados puede ser una experiencia que mejore nuestra calidad de vida. 
                 Toda experiencia mejora con el estómago lleno.</p>
             </div>
-            <div class="d-none d-xl-block col-xl-6 d-flex justify-content-end p-0 ps-3">
+            <div class="d-none d-xl-block col-xl-6 d-flex justify-content-end p-0 ps-3 mb-5">
               <img width="100%" height="auto" src="./assets/images/homeImg/plato_mesa.jpg" alt="Imagen de una mesa vista desde arriba con un plato de comida encima">
             </div>
           </article>

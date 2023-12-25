@@ -374,13 +374,13 @@ a:hover div.altoCartas div h5.titulosCartas{
 }
 
 /* Estilos Modificar/Actualizar/Eliminar Producto */
-.btnActualizar{
+.btnActualizar, .btnEliminar, .btnAgregar, .btnVerPedido, .btnEliminarPedido{
     background-color: var(--bg-color11) !important;
     color: var(--bg-color1);
     font-family: "Noto IKEA Bold";
     font-size: 14px;
 }
-.btnActualizar:hover{
+.btnActualizar:hover, .btnEliminar:hover, .btnAgregar:hover, .btnVerPedido:hover, .btnEliminarPedido:hover{
     background-color: var(--bg-color12) !important;
 }
 

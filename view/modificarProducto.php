@@ -5,26 +5,27 @@
                 <div class="table-responsive">
                     <table class="table text-center">
                         <thead>
-                            <tr>
-                                <th>Producto Id</th>
-                                <th>Categoria Id</th>
+                            <tr class="align-middle">
+                                <th class="ocultos">Producto Id</th>
+                                <th class="ocultos">Categoria Id</th>
                                 <th class="ocultos">Foto Producto</th>
                                 <th>Nombre</th>
                                 <th>Precio</th>
                                 <th>Nombre Imagen</th>
                                 <th></th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach($platos as $plato) { ?>
-                                <form action="<?= url."?controller=producto&action=actualizar" ?>" method="post">
-                                    <tr class="align-middle">
-                                        <td class="align-middle">
+                                <tr class="align-middle">
+                                    <form action="<?= url."?controller=producto&action=actualizar" ?>" method="post">
+                                        <td class="ocultos align-middle">
                                             <input name="producto_id" value="<?= $plato->getProducto_id() ?>" hidden />
                                             <input name="producto_id2" value="<?= $plato->getProducto_id() ?>" disabled class="form-control text-center mx-1" />
                                         </td>
-                                        <td class="align-middle">
-                                            <input name="categoria_id" value="<?= $plato->getCategoria_id()?>" hidden />
+                                        <td class="ocultos align-middle">
+                                            <input name="categoria_id" value="<?= $plato->getCategoria_id() ?>" hidden />
                                             <input name="categoria_id2" value="<?= $plato->getCategoria_id()?>" disabled  class="form-control text-center mx-1"/>
                                         </td>
                                         <td class="align-middle ocultos">
@@ -42,18 +43,24 @@
                                         <td class="align-middle">
                                             <button type="submit" class="btn btn-primary btnActualizar">Actualizar</button>
                                         </td>
-                                    </tr>
-                                </form>
+                                    </form>
+                                    <td>
+                                        <form action=<?=url."?controller=producto&action=eliminar"?> method="post">
+                                            <input name="producto_id" value="<?= $plato->getProducto_id()?>" hidden />
+                                            <button type="submit" class="btn btn-primary btnEliminar">Eliminar</button>
+                                        </form>
+                                    </td>
+                                </tr>
                             <?php } ?>
                             <?php foreach($desayunos as $desayuno) { ?>
-                                <form action="<?= url."?controller=producto&action=actualizar" ?>" method="post">
-                                    <tr class="align-middle">
-                                        <td class="align-middle">
+                                <tr class="align-middle">
+                                    <form action="<?= url."?controller=producto&action=actualizar" ?>" method="post">
+                                        <td class="ocultos align-middle">
                                             <input name="producto_id" value="<?= $desayuno->getProducto_id() ?>" hidden />
                                             <input name="producto_id2" value="<?= $desayuno->getProducto_id() ?>" disabled class="form-control text-center mx-1" />
                                         </td>
-                                        <td class="align-middle">
-                                            <input name="categoria_id" value="<?= $desayuno->getCategoria_id()?>" hidden />
+                                        <td class="ocultos align-middle">
+                                            <input name="categoria_id" value="<?= $desayuno->getCategoria_id() ?>" hidden />
                                             <input name="categoria_id2" value="<?= $desayuno->getCategoria_id()?>" disabled  class="form-control text-center mx-1"/>
                                         </td>
                                         <td class="align-middle ocultos">
@@ -71,18 +78,24 @@
                                         <td class="align-middle">
                                             <button type="submit" class="btn btn-primary btnActualizar">Actualizar</button>
                                         </td>
-                                    </tr>
-                                </form>
+                                    </form>
+                                    <td>
+                                        <form action=<?=url."?controller=producto&action=eliminar"?> method="post">
+                                            <input name="producto_id" value="<?= $desayuno->getProducto_id()?>" hidden />
+                                            <button type="submit" class="btn btn-primary btnEliminar">Eliminar</button>
+                                        </form>
+                                    </td>
+                                </tr>
                             <?php } ?>
                             <?php foreach($entrantes as $entrante) { ?>
-                                <form action="<?= url."?controller=producto&action=actualizar" ?>" method="post">
-                                    <tr class="align-middle">
-                                        <td class="align-middle">
+                                <tr class="align-middle">
+                                    <form action="<?= url."?controller=producto&action=actualizar" ?>" method="post">
+                                        <td class="ocultos align-middle">
                                             <input name="producto_id" value="<?= $entrante->getProducto_id() ?>" hidden />
                                             <input name="producto_id2" value="<?= $entrante->getProducto_id() ?>" disabled class="form-control text-center mx-1" />
                                         </td>
-                                        <td class="align-middle">
-                                            <input name="categoria_id" value="<?= $entrante->getCategoria_id()?>" hidden />
+                                        <td class="ocultos align-middle">
+                                            <input name="categoria_id" value="<?= $entrante->getCategoria_id() ?>" hidden />
                                             <input name="categoria_id2" value="<?= $entrante->getCategoria_id()?>" disabled  class="form-control text-center mx-1"/>
                                         </td>
                                         <td class="align-middle ocultos">
@@ -100,18 +113,24 @@
                                         <td class="align-middle">
                                             <button type="submit" class="btn btn-primary btnActualizar">Actualizar</button>
                                         </td>
-                                    </tr>
-                                </form>
+                                    </form>
+                                    <td>
+                                        <form action=<?=url."?controller=producto&action=eliminar"?> method="post">
+                                            <input name="producto_id" value="<?= $entrante->getProducto_id()?>" hidden />
+                                            <button type="submit" class="btn btn-primary btnEliminar">Eliminar</button>
+                                        </form>
+                                    </td>
+                                </tr>
                             <?php } ?>
                             <?php foreach($pizzas as $pizza) { ?>
-                                <form action="<?= url."?controller=producto&action=actualizar" ?>" method="post">
-                                    <tr class="align-middle">
-                                        <td class="align-middle">
+                                <tr class="align-middle">
+                                    <form action="<?= url."?controller=producto&action=actualizar" ?>" method="post">
+                                        <td class="ocultos align-middle">
                                             <input name="producto_id" value="<?= $pizza->getProducto_id() ?>" hidden />
                                             <input name="producto_id2" value="<?= $pizza->getProducto_id() ?>" disabled class="form-control text-center mx-1" />
                                         </td>
-                                        <td class="align-middle">
-                                            <input name="categoria_id" value="<?= $pizza->getCategoria_id()?>" hidden />
+                                        <td class="ocultos align-middle">
+                                            <input name="categoria_id" value="<?= $pizza->getCategoria_id() ?>" hidden />
                                             <input name="categoria_id2" value="<?= $pizza->getCategoria_id()?>" disabled  class="form-control text-center mx-1"/>
                                         </td>
                                         <td class="align-middle ocultos">
@@ -129,8 +148,14 @@
                                         <td class="align-middle">
                                             <button type="submit" class="btn btn-primary btnActualizar">Actualizar</button>
                                         </td>
-                                    </tr>
-                                </form>
+                                    </form>
+                                    <td>
+                                        <form action=<?=url."?controller=producto&action=eliminar"?> method="post">
+                                            <input name="producto_id" value="<?= $pizza->getProducto_id()?>" hidden />
+                                            <button type="submit" class="btn btn-primary btnEliminar">Eliminar</button>
+                                        </form>
+                                    </td>
+                                </tr>
                             <?php } ?>
                         </tbody>
                     </table>
