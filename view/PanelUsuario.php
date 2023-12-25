@@ -56,27 +56,38 @@
                         <h4 class="h4infoPersonal mt-2 mb-4">Información personal</h4>
                         <div class="mb-4">
                             <p class="m-0 titulosInfoPers">Nombre</p>
-                            <p><?=$_SESSION['usuario']->getNombre()?></p>
+                            <p>
+                                <span id="nombre"><?=$_SESSION['usuario']->getNombre()?></span>
+                                <input type="text" id="inputNombre" class="form-control" style="display:none;">
+                            </p>
                         </div>
                         <div class="mb-4">
                             <p class="m-0 titulosInfoPers">Dirección de correo</p>
-                            <p><?=$_SESSION['usuario']->getEmail()?></p>
+                            <p>
+                                <span id="email"><?=$_SESSION['usuario']->getEmail()?></span>
+                                <input type="email" id="inputEmail" class="form-control" style="display:none;">
+                            </p>
                         </div>
                         <div class="mb-4">
                             <p class="m-0 titulosInfoPers">Contraseña</p>
-                            <p><?=$_SESSION['usuario']->ocultarPassword()?></p>
+                            <p>
+                                <span id="password"><?=$_SESSION['usuario']->ocultarPassword()?></span>
+                                <input type="password" id="inputPassword" class="form-control" style="display:none;">
+                            </p>
+                        </div>
+                        <div id="botones" style="display:none;">
+                            <button onclick="guardarCambios()" class="btn btn-primary">Guardar cambios</button>
+                            <button onclick="cancelarEdicion()" class="btn btn-secondary">Cancelar</button>
                         </div>
                     </div>
                     <div class="mt-2 me-5">
-                        <form action="">
-                            <button class="editarUsuario rounded-5 border-0 px-4 py-2">
-                                <svg width="18px" heigth="18px" viewBox="0 0 24 24">
-                                    <path d="M13.0009 2.586 4 11.5868v5.4144h5.4142l8.9944-8.9944-5.4077-5.421zM6 15.0012v-2.5859l6.9991-6.9993 2.5828 2.589-6.9961 6.9962H6z"></path>
-                                    <path d="M4 21.0009h16v-2H4v2z"></path>
-                                </svg>    
-                                Editar
-                            </button>
-                        </form>
+                        <button onclick="editarInformacion()" class="editarUsuario rounded-5 border-0 px-4 py-2">
+                            <svg width="18px" heigth="18px" viewBox="0 0 24 24">
+                                <path d="M13.0009 2.586 4 11.5868v5.4144h5.4142l8.9944-8.9944-5.4077-5.421zM6 15.0012v-2.5859l6.9991-6.9993 2.5828 2.589-6.9961 6.9962H6z"></path>
+                                <path d="M4 21.0009h16v-2H4v2z"></path>
+                            </svg>    
+                            Editar
+                        </button>
                     </div>
                 </div>
             </div>
