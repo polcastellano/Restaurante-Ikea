@@ -148,5 +148,15 @@ class UsuarioDAO{
         $con->close();
     }
 
+    public static function editarUsuario($nombre, $email, $password, $usuario_id){
+        $con = DataBase::connect();
+
+        $stmt = $con->prepare("UPDATE usuarios SET nombre = ?, email = ?, password = ? WHERE usuario_id = ?");
+        $stmt->bind_param("sssi", $nombre, $email, $password, $usuario_id);
+
+        $stmt->execute();
+
+        $con->close();
+    }
 
 }

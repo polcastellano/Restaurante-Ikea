@@ -152,4 +152,19 @@ class usuarioController{
         include_once 'view/footer.php';
     }
 
+    public function acutalizaUsuario(){
+        session_start();
+        if(isset($_POST['nombre']) || isset($_POST['email']) || isset($_POST['password'])){
+
+            $nombre = $_POST['nombre'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $usuario_id = $_SESSION['usuario']->getUsuario_id();
+
+            UsuarioDAO::editarUsuario($nombre, $email, $password, $usuario_id);
+
+            header("Location:".url."?controller=usuario&action=logUsuarios");
+        }
+    }
+
 }

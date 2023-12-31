@@ -1,3 +1,5 @@
+<script src="./assets/js/editarUsuario.js"></script>
+
 <body>
     <main>
         <div class="contenido">
@@ -58,27 +60,32 @@
                             <p class="m-0 titulosInfoPers">Nombre</p>
                             <p>
                                 <span id="nombre"><?=$_SESSION['usuario']->getNombre()?></span>
-                                <input type="text" id="inputNombre" class="form-control" style="display:none;">
+                                <input type="text" id="inputNombre" class="form-control inputsUsuario" style="display:none;">
                             </p>
                         </div>
                         <div class="mb-4">
                             <p class="m-0 titulosInfoPers">Dirección de correo</p>
                             <p>
                                 <span id="email"><?=$_SESSION['usuario']->getEmail()?></span>
-                                <input type="email" id="inputEmail" class="form-control" style="display:none;">
+                                <input type="text" id="inputEmail" class="form-control inputsUsuario" style="display:none;">
                             </p>
                         </div>
                         <div class="mb-4">
                             <p class="m-0 titulosInfoPers">Contraseña</p>
                             <p>
                                 <span id="password"><?=$_SESSION['usuario']->ocultarPassword()?></span>
-                                <input type="password" id="inputPassword" class="form-control" style="display:none;">
+                                <input type="text" id="inputPassword" class="form-control inputsUsuario" style="display:none;">
                             </p>
                         </div>
-                        <div id="botones" style="display:none;">
-                            <button onclick="guardarCambios()" class="btn btn-primary">Guardar cambios</button>
-                            <button onclick="cancelarEdicion()" class="btn btn-secondary">Cancelar</button>
-                        </div>
+                        <form id="formularioActualizacion" method="post" action="<?=url."?controller=usuario&action=acutalizaUsuario"?>">
+                            <input type="text" name="nombre" class="form-control inputsUsuario" hidden>
+                            <input type="text" name="email" class="form-control inputsUsuario" hidden>
+                            <input type="text" name="password" class="form-control inputsUsuario" hidden>
+                            <div id="botones" style="display:none;">
+                                <button onclick="guardarCambios()" class="btn btn-primary btnGuardarCambios">Guardar cambios</button>
+                                <button onclick="cancelarEdicion()" class="btn btn-secondary btnCancelarCambios">Cancelar</button>
+                            </div>
+                        </form>
                     </div>
                     <div class="mt-2 me-5">
                         <button onclick="editarInformacion()" class="editarUsuario rounded-5 border-0 px-4 py-2">
@@ -121,7 +128,7 @@
                                     <td class="align-middle">
                                         <form action="<?=url."?controller=usuario&action=borrarPedido"?>" method="POST">
                                             <input type="text" name="pedido_id" value="<?=$ultimoPedido->getPedido_id()?>" hidden>
-                                            <button type="submit" class="btn btn-primary btnVerPedido">Borrar pedido</button>
+                                            <button type="submit" class="btn btn-primary btnEliminarPedido">Borrar pedido</button>
                                         </form>
                                     </td> 
                                 </tr>
@@ -170,3 +177,4 @@
             
         </div>
     </main>
+</body>
