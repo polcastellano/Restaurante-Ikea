@@ -102,7 +102,7 @@ class usuarioController{
 
             if (!isset($_SESSION['usuario'])){
                 $_SESSION['usuario'] = array();
-
+                
                 if (UsuarioDAO::getUsuario($usuario,$password) != null){
                     $_SESSION['usuario'] = UsuarioDAO::getUsuario($usuario,$password);
                                         
@@ -162,6 +162,10 @@ class usuarioController{
             $usuario_id = $_SESSION['usuario']->getUsuario_id();
 
             UsuarioDAO::editarUsuario($nombre, $email, $password, $usuario_id);
+
+            $_SESSION['usuario']->setNombre($nombre);
+            $_SESSION['usuario']->setEmail($email);
+            $_SESSION['usuario']->setPassword($password);
 
             header("Location:".url."?controller=usuario&action=logUsuarios");
         }

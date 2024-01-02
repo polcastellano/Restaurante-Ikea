@@ -9,7 +9,7 @@ class UsuarioDAO{
 
         //Consulta para extraer el id del nombre de la categoria que recibimos
         $stmt = $con->prepare("SELECT * FROM usuarios WHERE email = ? AND password = ?");
-        $stmt->bind_param("si", $email, $password);
+        $stmt->bind_param("ss", $email, $password);
 
         $stmt->execute();
 

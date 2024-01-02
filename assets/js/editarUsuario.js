@@ -1,4 +1,10 @@
+let nombreOriginal, emailOriginal, passwordOriginal;
 function editarInformacion() {
+    // Obtener la información actual del usuario desde los elementos <span>
+    nombreOriginal = document.getElementById('nombre').textContent;
+    emailOriginal = document.getElementById('email').textContent;
+    passwordOriginal = document.getElementById('password').textContent;
+
     // Obtener la información actual del usuario desde los elementos <span>
     let nombreActual = document.getElementById('nombre').textContent;
     let emailActual = document.getElementById('email').textContent;
@@ -16,10 +22,17 @@ function editarInformacion() {
 }
 
 
-function cancelarEdicion() {
+function cancelarEdicion(event) {
+    event.preventDefault(); // Esto detiene el comportamiento predeterminado del formulario
+
     document.querySelectorAll('span').forEach(span => span.style.display = 'inline');
     document.querySelectorAll('.inputsUsuario').forEach(input => input.style.display = 'none');
     document.getElementById('botones').style.display = 'none';
+
+    // Autorellenar los campos de edición con la información original
+    document.getElementById('nombre').innerHTML = nombreOriginal;
+    document.getElementById('email').innerHTML = emailOriginal;
+    document.getElementById('password').innerHTML = passwordOriginal;
 }
 
 function guardarCambios() {

@@ -56,34 +56,31 @@
                 <div class="col border rounded-3 mb-5 ms-5 mt-0 p-3 d-flex justify-content-between">
                     <div>
                         <h4 class="h4infoPersonal mt-2 mb-4">Información personal</h4>
-                        <div class="mb-4">
-                            <p class="m-0 titulosInfoPers">Nombre</p>
-                            <p>
-                                <span id="nombre"><?=$_SESSION['usuario']->getNombre()?></span>
-                                <input type="text" id="inputNombre" class="form-control inputsUsuario" style="display:none;">
-                            </p>
-                        </div>
-                        <div class="mb-4">
-                            <p class="m-0 titulosInfoPers">Dirección de correo</p>
-                            <p>
-                                <span id="email"><?=$_SESSION['usuario']->getEmail()?></span>
-                                <input type="text" id="inputEmail" class="form-control inputsUsuario" style="display:none;">
-                            </p>
-                        </div>
-                        <div class="mb-4">
-                            <p class="m-0 titulosInfoPers">Contraseña</p>
-                            <p>
-                                <span id="password"><?=$_SESSION['usuario']->ocultarPassword()?></span>
-                                <input type="text" id="inputPassword" class="form-control inputsUsuario" style="display:none;">
-                            </p>
-                        </div>
-                        <form id="formularioActualizacion" method="post" action="<?=url."?controller=usuario&action=acutalizaUsuario"?>">
-                            <input type="text" name="nombre" class="form-control inputsUsuario" hidden>
-                            <input type="text" name="email" class="form-control inputsUsuario" hidden>
-                            <input type="text" name="password" class="form-control inputsUsuario" hidden>
+                        <form method="post" action="<?=url."?controller=usuario&action=acutalizaUsuario"?>">
+                            <div class="mb-4">
+                                <p class="m-0 titulosInfoPers">Nombre</p>
+                                <p>
+                                    <span id="nombre"><?=$_SESSION['usuario']->getNombre()?></span>
+                                    <input type="text" id="inputNombre" name="nombre" class="form-control inputsUsuario" style="display:none;">
+                                </p>
+                            </div>
+                            <div class="mb-4">
+                                <p class="m-0 titulosInfoPers">Dirección de correo</p>
+                                <p>
+                                    <span id="email"><?=$_SESSION['usuario']->getEmail()?></span>
+                                    <input type="text" id="inputEmail" name="email" class="form-control inputsUsuario" style="display:none;">
+                                </p>
+                            </div>
+                            <div class="mb-4">
+                                <p class="m-0 titulosInfoPers">Contraseña</p>
+                                <p>
+                                    <span id="password"><?=$_SESSION['usuario']->getPassword()?></span>
+                                    <input type="text" id="inputPassword" name="password" class="form-control inputsUsuario" style="display:none;">
+                                </p>
+                            </div>
                             <div id="botones" style="display:none;">
                                 <button onclick="guardarCambios()" class="btn btn-primary btnGuardarCambios">Guardar cambios</button>
-                                <button onclick="cancelarEdicion()" class="btn btn-secondary btnCancelarCambios">Cancelar</button>
+                                <button onclick="cancelarEdicion(event)" class="btn btn-secondary btnCancelarCambios">Cancelar</button>
                             </div>
                         </form>
                     </div>
