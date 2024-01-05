@@ -2,30 +2,32 @@
 /* CSS Document */
 
 /* FONTS */
+/* Importación de fuentes personalizadas */
 @font-face {
-    font-family: "Noto IKEA";
+    font-family: "Noto IKEA"; /* Fuente predeterminada */
     src: url(../fonts/Noto-IKEA-Latin-Regular.ttf);
 }
 
 @font-face {
-    font-family: "Noto IKEA Bold";
+    font-family: "Noto IKEA Bold"; /* Fuente negrita predeterminada */
     src: url(../fonts/Noto-IKEA-Latin-Bold.ttf);
 }
 
 
-/* Body por defecto */
+/* Estilos para el body por defecto */
 .contenido{
-    width: auto; /*1520px*/
+    width: auto;
     padding-left: 40px;
     padding-right: 40px;
 }
+/* Estilos globales para todos los elementos */
 *{
     margin: 0;
     padding: 0;
-    font-family: "Noto IKEA";
+    font-family: "Noto IKEA"; /* Fuente predeterminada */
 }
 
-/*Variables CSS*/
+/* Variables CSS: Definición de colores */
 :root {
     --bg-color1: white;
     --bg-color2: #111111;
@@ -45,7 +47,7 @@
 
 
 
-/* Cabecera */
+/* Estilos para la Cabecera */
 .header{
     background-color: var(--bg-color2);
 }
@@ -59,7 +61,7 @@
 .iconoCarritoFavoritos{
     background-color: var(--bg-color11);
 }
-/* textos del header negro */
+/* Estilos específicos para elementos dentro de la cabecera */
 div.header div div p{
     color: var(--bg-color1);
     font-size: 12px;
@@ -95,7 +97,7 @@ div.header div div p{
     font-size: 14px;
 }
 
-/* Pagina Home */
+/* Estilos para la Página de Inicio */
 .textosTitulo{
     font-family: "Noto IKEA Bold";
     color: var(--bg-color2);
@@ -103,7 +105,6 @@ div.header div div p{
 }
 .altoCartas{
     background-color: var(--bg-color7);
-    /* height: 719px; */
 }
 .alturaTxtSeccion2{
     height: 200px;
@@ -164,7 +165,7 @@ a:hover div.altoCartas div h5.titulosCartas{
     background-color: var(--bg-color10);
 }
 
-/* Panel Carta */
+/* Estilos para el Panel de Categorías/Productos */
 .txtCategorias{
     font-size: 12px;
     color: var(--bg-color6);
@@ -187,7 +188,7 @@ a:hover div.altoCartas div h5.titulosCartas{
 }
 
 
-/* Pagina Favoritos */
+/* Estilos para la Página de Favoritos */
 .descProdFav{
     min-height: 70px;
     max-height: 70px;
@@ -212,7 +213,7 @@ a:hover div.altoCartas div h5.titulosCartas{
     color: var(--bg-color2);
 }
 
-/* Pagina Carrito */
+/* Estilos para la Página de Carrito */
 .btnProdCarrito, .btnProdFav{
     width: 40px;
     height: 40px;
@@ -288,7 +289,7 @@ a:hover div.altoCartas div h5.titulosCartas{
     background-color: var(--bg-color1);
 }
 
-/* Footer */
+/* Estilos para el Footer */
 .bg-footer{
     background-color: var(--bg-color3);
 }
@@ -333,7 +334,7 @@ a:hover div.altoCartas div h5.titulosCartas{
     border-color: var(--bg-color5)   !important;
 }
 
-/* Estilos Login */
+/* Estilos para la sección de Login */
 .btnIniciar{
     font-size: 14px;
     font-family: "Noto IKEA Bold";
@@ -373,7 +374,7 @@ a:hover div.altoCartas div h5.titulosCartas{
     background-color: var(--bg-color4);
 }
 
-/* Estilos Modificar/Actualizar/Eliminar Producto */
+/* Estilos para Modificar/Actualizar/Eliminar Producto */
 .btnActualizar, .btnEliminar, .btnAgregar, .btnVerPedido, .btnEliminarPedido, .btnGuardarCambios, .btnCancelarCambios{
     background-color: var(--bg-color11) !important;
     color: var(--bg-color1);
@@ -392,8 +393,8 @@ a:hover div.altoCartas div h5.titulosCartas{
 
 
 
-/*Media query*/
-/* para cambiar el estilo cuando la resolucion es menor al max-width */
+/* Media Queries: Estilos basados en el tamaño de la pantalla */
+/* para cambiar el estilo cuando la resolución es menor a max-width */
 @media only screen and (max-width: 768px) {
     .ocultos{
         display:none !important;
@@ -402,5 +403,23 @@ a:hover div.altoCartas div h5.titulosCartas{
 @media only screen and (max-width: 1024px) {
     .ocultos-footer{
         display:none !important;
+    }
+}
+@media only screen and (max-width: 992px) {
+    .alinear-inicio{
+        justify-content: start !important;
+        margin-top: 3px;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .alinear-inicioPrecio{
+        justify-content: start !important;
+        margin-top: 3px;
+        margin-left: 4px;
+    }
+}
+@media only screen and (max-width: 992px) {
+    .quitarPadding{
+        padding-left: 0px !important;
     }
 }

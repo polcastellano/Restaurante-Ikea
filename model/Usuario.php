@@ -110,13 +110,4 @@ class Usuario{
 
         return $this;
     }
-
-    /**
-     * Funcion para mostrar la contraseña cifrada
-     */
-    // public function ocultarPassword(){
-    //     $longitud = strlen($this->password);
-    //     $resultado = str_repeat('*', $longitud);
-    //     return $resultado;
-    // }
 }

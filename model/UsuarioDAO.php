@@ -159,4 +159,22 @@ class UsuarioDAO{
         $con->close();
     }
 
+    public static function getContraseña($email){
+        $con = DataBase::connect();
+
+        $stmt = $con->prepare("SELECT password FROM usuarios WHERE email = ?");
+        $stmt->bind_param("s", $email);
+
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        $row = $result->fetch_assoc();
+        $contraseña_encriptada_bd = $row['password'];
+
+        $con->close();
+
+        return $contraseña_encriptada_bd;
+    }
+
 }

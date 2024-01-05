@@ -72,12 +72,15 @@ class usuarioController{
             $usuario = $_POST['usuario'];
             $email = $_POST['email'];
             $password = $_POST['password'];
+            // Encriptar la contraseña
+            $contraseña_encriptada = password_hash($password, PASSWORD_DEFAULT);
+
             
-            if(UsuarioDAO::getUsuario($email, $password) != null){
+            if(UsuarioDAO::getUsuario($email, $contraseña_encriptada) != null){
                 header("Location:".url."?controller=usuario&action=logUsuarios");
             }else{
-                UsuarioDAO::crearUsuario($usuario, $email, $password);
-                $_SESSION['usuario'] = UsuarioDAO::getUsuario($email, $password);
+                UsuarioDAO::crearUsuario($usuario, $email, $contraseña_encriptada);
+                $_SESSION['usuario'] = UsuarioDAO::getUsuario($email, $contraseña_encriptada);
                 header("Location:".url."?controller=usuario&action=logUsuarios");
             }
 
@@ -96,15 +99,18 @@ class usuarioController{
 
     public function validarUsuario(){
         session_start();
-        if(isset($_POST['usuario']) && isset($_POST['password'])){
-            $usuario = $_POST['usuario'];
+        if(isset($_POST['email']) && isset($_POST['password'])){
+            $email = $_POST['email'];
             $password = $_POST['password'];
+            //Encriptar contraseña
+            $contraseña_encriptada = UsuarioDAO::getContraseña($email);
 
+            
             if (!isset($_SESSION['usuario'])){
-                $_SESSION['usuario'] = array();
                 
-                if (UsuarioDAO::getUsuario($usuario,$password) != null){
-                    $_SESSION['usuario'] = UsuarioDAO::getUsuario($usuario,$password);
+                // Verificar si la contraseña ingresada coincide con la almacenada en la base de datos>
+                if (password_verify($password, UsuarioDAO::getContraseña($email))){
+                    $_SESSION['usuario'] = UsuarioDAO::getUsuario($email, $contraseña_encriptada);
                                         
                     header("Location:".url."?controller=usuario&action=logUsuarios");
                 }else{
@@ -160,12 +166,15 @@ class usuarioController{
             $email = $_POST['email'];
             $password = $_POST['password'];
             $usuario_id = $_SESSION['usuario']->getUsuario_id();
+            // Encriptar la contraseña
+            $contraseña_encriptada = password_hash($password, PASSWORD_DEFAULT);
+            
 
-            UsuarioDAO::editarUsuario($nombre, $email, $password, $usuario_id);
+            UsuarioDAO::editarUsuario($nombre, $email, $contraseña_encriptada, $usuario_id);
 
             $_SESSION['usuario']->setNombre($nombre);
             $_SESSION['usuario']->setEmail($email);
-            $_SESSION['usuario']->setPassword($password);
+            $_SESSION['usuario']->setPassword($contraseña_encriptada);
 
             header("Location:".url."?controller=usuario&action=logUsuarios");
         }

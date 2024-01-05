@@ -6,12 +6,12 @@
 
             <h2 class="textosTitulo mt-5 mb-5">Detalles de la cuenta</h2>
             <div class="d-flex">
-                <div class="col-3">
+                <div class="col-4 col-md-3">
                     <ul class="list-group">
                         <a href="" class="link-dark link-underline-opacity-0 link-underline-opacity-100-hover">
                             <div class="elementoLista p-3">
                                 <h3 class="listaPanelUsuario m-0 align-items-center d-flex">
-                                    <svg width="22px" heigth="22px" viewBox="0 0 24 24" class="me-2">
+                                    <svg width="22px" heigth="22px" viewBox="0 0 24 24" class="ocultos me-2">
                                         <path d="M16.8907 8.5235A5.966 5.966 0 0 1 17.917 11H20v2h-2.083a5.9674 5.9674 0 0 1-1.0263 2.4766l1.4731 1.4732-1.4142 1.4142-1.4731-1.4732A5.9679 5.9679 0 0 1 13 17.917V20h-2v-2.083a5.966 5.966 0 0 1-2.4765-1.0263l-1.4731 1.4731-1.4142-1.4142 1.473-1.4731A5.9675 5.9675 0 0 1 6.083 13H4v-2h2.083a5.9679 5.9679 0 0 1 1.0263-2.4766L5.6362 7.0502 7.0504 5.636l1.4731 1.4732A5.968 5.968 0 0 1 11 6.083V4h2v2.083a5.9675 5.9675 0 0 1 2.4765 1.0263l1.4731-1.4731 1.4142 1.4142-1.4731 1.473zM12 16c2.2091 0 4-1.7909 4-4 0-2.2091-1.7909-4-4-4-2.2091 0-4 1.7909-4 4 0 2.2091 1.7909 4 4 4z"></path>
                                     </svg>
                                     Configuración de la cuenta
@@ -22,7 +22,7 @@
                             <a href="<?=url."?controller=producto&action=agregar"?>" class="link-dark link-underline-opacity-0 link-underline-opacity-100-hover">
                                 <div class="elementoLista p-3">
                                     <h3 class="listaPanelUsuario2 m-0 align-items-center d-flex">
-                                        <svg width="22px" heigth="22px" viewBox="0 0 24 24" class="me-2">
+                                        <svg width="22px" heigth="22px" viewBox="0 0 24 24" class="ocultos me-2">
                                             <path d="M16.8907 8.5235A5.966 5.966 0 0 1 17.917 11H20v2h-2.083a5.9674 5.9674 0 0 1-1.0263 2.4766l1.4731 1.4732-1.4142 1.4142-1.4731-1.4732A5.9679 5.9679 0 0 1 13 17.917V20h-2v-2.083a5.966 5.966 0 0 1-2.4765-1.0263l-1.4731 1.4731-1.4142-1.4142 1.473-1.4731A5.9675 5.9675 0 0 1 6.083 13H4v-2h2.083a5.9679 5.9679 0 0 1 1.0263-2.4766L5.6362 7.0502 7.0504 5.636l1.4731 1.4732A5.968 5.968 0 0 1 11 6.083V4h2v2.083a5.9675 5.9675 0 0 1 2.4765 1.0263l1.4731-1.4731 1.4142 1.4142-1.4731 1.473zM12 16c2.2091 0 4-1.7909 4-4 0-2.2091-1.7909-4-4-4-2.2091 0-4 1.7909-4 4 0 2.2091 1.7909 4 4 4z"></path>
                                         </svg>
                                         Añadir Producto
@@ -32,7 +32,7 @@
                             <a href="<?=url."?controller=producto&action=modificar"?>" class="link-dark link-underline-opacity-0 link-underline-opacity-100-hover">
                                 <div class="elementoLista p-3">
                                     <h3 class="listaPanelUsuario2 m-0 align-items-center d-flex">
-                                        <svg width="22px" heigth="22px" viewBox="0 0 24 24" class="me-2">
+                                        <svg width="22px" heigth="22px" viewBox="0 0 24 24" class="ocultos me-2">
                                             <path d="M16.8907 8.5235A5.966 5.966 0 0 1 17.917 11H20v2h-2.083a5.9674 5.9674 0 0 1-1.0263 2.4766l1.4731 1.4732-1.4142 1.4142-1.4731-1.4732A5.9679 5.9679 0 0 1 13 17.917V20h-2v-2.083a5.966 5.966 0 0 1-2.4765-1.0263l-1.4731 1.4731-1.4142-1.4142 1.473-1.4731A5.9675 5.9675 0 0 1 6.083 13H4v-2h2.083a5.9679 5.9679 0 0 1 1.0263-2.4766L5.6362 7.0502 7.0504 5.636l1.4731 1.4732A5.968 5.968 0 0 1 11 6.083V4h2v2.083a5.9675 5.9675 0 0 1 2.4765 1.0263l1.4731-1.4731 1.4142 1.4142-1.4731 1.473zM12 16c2.2091 0 4-1.7909 4-4 0-2.2091-1.7909-4-4-4-2.2091 0-4 1.7909-4 4 0 2.2091 1.7909 4 4 4z"></path>
                                         </svg>
                                         Modificar Producto
@@ -43,7 +43,7 @@
                         <a href="<?=url."?controller=usuario&action=cerrarSesion"?>" class="link-dark link-underline-opacity-0 link-underline-opacity-100-hover">
                             <div class="elementoLista p-3">
                                 <h3 class="listaPanelUsuario2 m-0 align-items-center d-flex">
-                                    <svg width="22px" heigth="22px" viewBox="0 0 24 24" class="me-2">
+                                    <svg width="22px" heigth="22px" viewBox="0 0 24 24" class="ocultos me-2">
                                         <path d="M12 22H3V2h9v2H5v16h7v2z"></path>
                                         <path d="m16.1715 11-3.2429-3.243 1.4142-1.4142 5.6568 5.6568-5.6568 5.6569-1.4142-1.4142L16.1708 13H7.9999v-2h8.1716z"></path>
                                     </svg>
@@ -53,7 +53,7 @@
                         </a>
                     </ul>
                 </div>
-                <div class="col border rounded-3 mb-5 ms-5 mt-0 p-3 d-flex justify-content-between">
+                <div class="col border rounded-3 mb-5 ms-4 mt-0 p-3 d-flex justify-content-between">
                     <div>
                         <h4 class="h4infoPersonal mt-2 mb-4">Información personal</h4>
                         <form method="post" action="<?=url."?controller=usuario&action=acutalizaUsuario"?>">
@@ -74,7 +74,7 @@
                             <div class="mb-4">
                                 <p class="m-0 titulosInfoPers">Contraseña</p>
                                 <p>
-                                    <span id="password"><?=$_SESSION['usuario']->getPassword()?></span>
+                                    <span id="password"><?= str_repeat('*', strlen(substr($_SESSION['usuario']->getPassword(), 0, 4))) ?></span>
                                     <input type="text" id="inputPassword" name="password" class="form-control inputsUsuario" style="display:none;">
                                 </p>
                             </div>

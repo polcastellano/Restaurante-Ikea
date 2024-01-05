@@ -1,4 +1,3 @@
-falta arreglar responsive carrito
-falta arrelgar espaciados home
-cuando hay carrito que se muestre mas dentro y encima del carrito
-responsive footer y espaciados
+encriptar password
+comentar codigo entero
+separar css en diferentes hojas

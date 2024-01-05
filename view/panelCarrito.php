@@ -24,21 +24,21 @@
                                                     <p class="card-text descProd"><?=$pedido->getProducto()->getDescripcion()?></p>
                                                     <div class="row col-lg-12">
                                                         <form class="d-flex align-items-center justify-content-between border rounded-5 p-1 col-6 col-md-5 col-lg-3" action="<?=url."?controller=producto&action=compra"?>" method="POST">
-                                                            <td><button class="p-1 border-0 rounded-circle sumaResta" type="submit" name="resta" value="<?=$pos?>">
+                                                            <td>
+                                                                <button class="p-1 border-0 rounded-circle sumaResta" type="submit" name="resta" value="<?=$pos?>">
                                                                     <svg width="24" viewBox="0 0 24 24">
                                                                         <path d="M17 13H7v-2h10v2z"></path>
                                                                     </svg>
                                                                 </button>
-                                                            </td>
-                                                            <td><span class="cantidadPedido mx-2"><?= $pedido->getCantidad()?></span></td>
-                                                            <td><button class="p-1 border-0 rounded-circle sumaResta" type="submit" name="suma" value="<?=$pos?>">
+                                                                <span class="cantidadPedido"><?= $pedido->getCantidad()?></span>
+                                                                <button class="p-1 border-0 rounded-circle sumaResta" type="submit" name="suma" value="<?=$pos?>">
                                                                     <svg width="24" viewBox="0 0 24 24">
                                                                         <path d="M10.998 13v4h2v-4h4v-2h-4V7h-2v4h-4v2h4z"></path>
                                                                     </svg>
                                                                 </button>
                                                             </td>
                                                         </form>
-                                                        <div class="col-lg-4 p-0 d-flex align-items-center justify-content-end">
+                                                        <div class="col-lg-4 p-0 d-flex align-items-center justify-content-end alinear-inicio">
                                                             <form action="<?=url."?controller=producto&action=eliminarProdCar"?>" class="p-0 m-0" method="post">
                                                                 <input name="posicionSelecciones" value="<?= $pos?>" hidden />
                                                                 <button type="submit" class="border-0 bg-transparent">
@@ -46,7 +46,7 @@
                                                                 </button>
                                                             </form>
                                                         </div>
-                                                        <div class="col-lg-5 p-0 d-flex align-items-center justify-content-end">
+                                                        <div class="col-lg-5 p-0 d-flex align-items-center justify-content-end alinear-inicio">
                                                             <form action="<?=url."?controller=producto&action=favorito"?>" class="p-0 m-0" method="post">
                                                                 <input name="producto_id" value="<?= $pedido->getProducto()->getProducto_id()?>" hidden />
                                                                 <input name="categoria_id" value="<?= $pedido->getProducto()->getCategoria_id()?>" hidden />
@@ -58,7 +58,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-2 col-lg-2 d-flex justify-content-end">
+                                            <div class="col-md-2 col-lg-2 d-flex justify-content-end alinear-inicioPrecio">
                                                 <span class="d-flex">
                                                     <p class="card-text precioProductoCar"><?=$pedido->formatPrecio()?>€</p>
                                                 </span>
@@ -71,7 +71,7 @@
                                     }?>
                         </section>
                         <section class="p-0 col-lg-5">
-                            <div class="ps-5 col-lg-12">
+                            <div class="ps-5 col-lg-12 quitarPadding">
                                 <h5 class="resumenPedido">Resumen del pedido</h5>
                                 <div class="mt-5 pb-4 border-3 border-bottom bordeResumenPed d-flex justify-content-between">
                                     <p class="textoPedidos">Precio de los productos</p>
