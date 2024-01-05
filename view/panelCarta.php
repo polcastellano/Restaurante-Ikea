@@ -65,8 +65,8 @@
         
         <section class="contenido row p-0 m-0 mt-5">
             <?php foreach($desayunos as $desayuno){ ?>
-                <div class="card border-0 rounded-0 border-bottom col-sm-5 col-md-3 mb-5 justify-content-center">
-                    <div class="medidaProductos mx-auto">
+                <div class="card border-0 rounded-0 border-bottom col-12 col-sm-6 col-md-4 col-lg-3 mb-5 justify-content-center">
+                    <div class="mx-auto">
                         <img style="width: 100%;" src="assets/images/foto_productos/<?=$desayuno->getImg()?>" alt="<?=$desayuno->getDescripcion() ?>"> 
                     </div>                   
                     <div class="card-body">
@@ -112,8 +112,8 @@
         
         <section class="contenido row p-0 m-0 mt-5">
             <?php foreach($entrantes as $entrante){ ?>
-                <div class="card border-0 rounded-0 border-bottom col-sm-5 col-md-3 mb-5 justify-content-center">
-                    <div class="medidaProductos mx-auto">
+                <div class="card border-0 rounded-0 border-bottom col-12 col-sm-6 col-md-4 col-lg-3 mb-5 justify-content-center">
+                    <div class="mx-auto">
                         <img style="width: 100%;" src="assets/images/foto_productos/<?=$entrante->getImg()?>" alt="<?=$entrante->getDescripcion() ?>"> 
                     </div>                   
                     <div class="card-body">
@@ -159,8 +159,8 @@
         
         <section class="contenido row p-0 m-0 mt-5">
             <?php foreach($pizzas as $pizza){ ?>
-                <div class="card border-0 rounded-0 border-bottom col-sm-5 col-md-3 mb-5 justify-content-center">
-                    <div class="medidaProductos mx-auto">
+                <div class="card border-0 rounded-0 border-bottom col-12 col-sm-6 col-md-4 col-lg-3 mb-5 justify-content-center">
+                    <div class="mx-auto">
                         <img style="width: 100%;" src="assets/images/foto_productos/<?=$pizza->getImg()?>" alt="<?=$pizza->getDescripcion() ?>"> 
                     </div>                   
                     <div class="card-body">

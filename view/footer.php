@@ -1,7 +1,7 @@
 <footer class="mt-5 bg-footer">
     <div class="contenido py-5 pb-0 col">
         <div class="d-flex justify-content-between mt-4">
-            <div class="col-12 col-sm-4 col-md-5 col-lg-4">
+            <div class="col-12 col-sm-12 col-md-5 col-lg-4">
                 
                 <div>
                     <h4 class="tituloUneteIkea">Únete a IKEA Family</h4>
@@ -26,7 +26,7 @@
 
 
             </div>
-            <div class="d-flex justify-content-between col-12 col-sm-8 col-md-7 col-lg-8">
+            <div class="ocultos d-flex justify-content-between col-12 col-sm-8 col-md-7 col-lg-8">
                 <div class="d-none d-md-block col-2 me-3">
                     <h4 class="titulosFooter">Planifica tu compra</h4>
                     <p class="mt-3 mb-0"><a href="" class="textFooterList">Todos los productos IKEA</a></p>

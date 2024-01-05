@@ -84,7 +84,7 @@
                             </div>
                         </form>
                     </div>
-                    <div class="mt-2 me-5">
+                    <div class="mt-2">
                         <button onclick="editarInformacion()" class="editarUsuario rounded-5 border-0 px-4 py-2">
                             <svg width="18px" heigth="18px" viewBox="0 0 24 24">
                                 <path d="M13.0009 2.586 4 11.5868v5.4144h5.4142l8.9944-8.9944-5.4077-5.421zM6 15.0012v-2.5859l6.9991-6.9993 2.5828 2.589-6.9961 6.9962H6z"></path>
@@ -104,7 +104,7 @@
                     <table class="table text-center mb-5">
                         <thead>
                             <tr class="align-middle">
-                                <th>Identificador pedido</th>
+                                <th class="ocultos">Identificador pedido</th>
                                 <th>Fecha</th>
                                 <th>Precio total</th>
                                 <th></th>
@@ -113,7 +113,7 @@
                         </thead>
                         <tbody>
                                 <tr class="align-middle">
-                                    <td class="align-middle"><?=$ultimoPedido->getPedido_id()?></td>
+                                    <td class="ocultos align-middle"><?=$ultimoPedido->getPedido_id()?></td>
                                     <td class="align-middle"><?=$ultimoPedido->getFecha()?></td>
                                     <td class="align-middle"><?=CalculadoraPrecios::formatPrecios($ultimoPedido->getPrecio_total())?> €</td>
                                     <td class="align-middle">
@@ -139,7 +139,7 @@
                 <table class="table text-center mb-5">
                     <thead>
                         <tr class="align-middleS">
-                            <th>Identificador pedido</th>
+                            <th class="osultos">Identificador pedido</th>
                             <th>Fecha</th>
                             <th>Precio total</th>
                             <th></th>
@@ -149,7 +149,7 @@
                     <tbody class="justify-content-center align-items-center">
                         <?php foreach ($pedidos as $pedido) { ?>
                             <tr class="align-middle">
-                                <td class="align-middle"><?=$pedido->getPedido_id()?></td>
+                                <td class="ocultos align-middle"><?=$pedido->getPedido_id()?></td>
                                 <td class="align-middle"><?=$pedido->getFecha()?></td>
                                 <td class="align-middle"><?=CalculadoraPrecios::formatPrecios($pedido->getPrecio_total())?> €</td>
                                 <td class="align-middle">
