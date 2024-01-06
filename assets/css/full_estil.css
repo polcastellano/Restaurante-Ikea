@@ -352,7 +352,7 @@ a:hover div.altoCartas div h5.titulosCartas{
 .elementoLista1{
     background-color: var(--bg-color3) !important;
 }
-.listaPanelUsuario,.listaPanelUsuario2{
+.listaPanelUsuario{
     color: var(--bg-color2);
     font-family: "Noto IKEA Bold";
     font-size: 16px;
