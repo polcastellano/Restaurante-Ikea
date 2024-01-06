@@ -76,7 +76,7 @@ class usuarioController{
             $contraseña_encriptada = password_hash($password, PASSWORD_DEFAULT);
 
             
-            if(UsuarioDAO::getUsuario($email, $contraseña_encriptada) != null){
+            if(UsuarioDAO::getEmail($email) != null){
                 header("Location:".url."?controller=usuario&action=logUsuarios");
             }else{
                 UsuarioDAO::crearUsuario($usuario, $email, $contraseña_encriptada);

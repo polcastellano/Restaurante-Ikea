@@ -177,4 +177,21 @@ class UsuarioDAO{
         return $contraseña_encriptada_bd;
     }
 
+    public static function getEmail($email){
+        $con = DataBase::connect();
+
+        $stmt = $con->prepare("SELECT * FROM usuarios WHERE email = ?");
+        $stmt->bind_param("s", $email);
+
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        $result = $result->fetch_object("Usuario");
+
+        $con->close();
+
+        return $result;
+    }
+
 }
