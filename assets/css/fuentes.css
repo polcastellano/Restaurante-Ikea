@@ -1,0 +1,11 @@
+/* FONTS */
+/* Importación de fuentes personalizadas */
+@font-face {
+    font-family: "Noto IKEA"; /* Fuente predeterminada */
+    src: url(../fonts/Noto-IKEA-Latin-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Noto IKEA Bold"; /* Fuente negrita predeterminada */
+    src: url(../fonts/Noto-IKEA-Latin-Bold.ttf);
+}

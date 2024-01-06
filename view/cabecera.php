@@ -10,7 +10,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-<link href="assets/css/full_estil.css" rel="stylesheet" type="text/css" media="screen">
+<link href="assets/css/cabecera.css" rel="stylesheet" type="text/css" media="screen">
+<link href="assets/css/carrito.css" rel="stylesheet" type="text/css" media="screen">
+<link href="assets/css/colores.css" rel="stylesheet" type="text/css" media="screen">
+<link href="assets/css/favoritos.css" rel="stylesheet" type="text/css" media="screen">
+<link href="assets/css/footer.css" rel="stylesheet" type="text/css" media="screen">
+<link href="assets/css/fuentes.css" rel="stylesheet" type="text/css" media="screen">
+<link href="assets/css/general.css" rel="stylesheet" type="text/css" media="screen">
+<link href="assets/css/home.css" rel="stylesheet" type="text/css" media="screen">
+<link href="assets/css/login.css" rel="stylesheet" type="text/css" media="screen">
+<link href="assets/css/modificarProductos.css" rel="stylesheet" type="text/css" media="screen">
+<link href="assets/css/productos.css" rel="stylesheet" type="text/css" media="screen">
+<link href="assets/css/query.css" rel="stylesheet" type="text/css" media="screen">
 <link rel="icon" href="assets/images/logo.svg" type="image/svg">
 
 </head>
@@ -77,6 +88,7 @@
                       <path d="M19.205 5.599c.9541.954 1.4145 2.2788 1.4191 3.6137 0 3.0657-2.2028 5.7259-4.1367 7.5015-1.2156 1.1161-2.5544 2.1393-3.9813 2.9729L12 20.001l-.501-.3088c-.9745-.5626-1.8878-1.2273-2.7655-1.9296-1.1393-.9117-2.4592-2.1279-3.5017-3.5531-1.0375-1.4183-1.8594-3.1249-1.8597-4.9957-.0025-1.2512.3936-2.5894 1.419-3.6149 1.8976-1.8975 4.974-1.8975 6.8716 0l.3347.3347.336-.3347c1.8728-1.8722 4.9989-1.8727 6.8716 0zm-7.2069 12.0516c.6695-.43 1.9102-1.2835 3.1366-2.4096 1.8786-1.7247 3.4884-3.8702 3.4894-6.0264-.0037-.849-.2644-1.6326-.8333-2.2015-1.1036-1.1035-2.9413-1.0999-4.0445.0014l-1.7517 1.7448-1.7461-1.7462c-1.1165-1.1164-2.9267-1.1164-4.0431 0-1.6837 1.6837-.5313 4.4136.6406 6.0156.8996 1.2298 2.0728 2.3207 3.137 3.1722a24.3826 24.3826 0 0 0 2.0151 1.4497z"></path>
                     </svg>
                   </div>
+                  <!-- Verifica si hay elementos en favoritos para mostrar el contador -->
                   <?php if(count($_SESSION['favoritos']) >= 1){?>
                   <span class="position-absolute top-10 start-100 translate-middle badge rounded-pill iconoCarritoFavoritos">
                     <?= count($_SESSION['favoritos'])?>
@@ -91,9 +103,12 @@
                       <path fill-rule="evenodd" d="M10.9994 4h-.5621l-.2922.4802-3.357 5.517h-5.069l.3107 1.2425 1.6212 6.4851c.334 1.3355 1.5339 2.2724 2.9105 2.2724h10.8769c1.3766 0 2.5765-.9369 2.9104-2.2724l1.6213-6.4851.3106-1.2425h-5.0695l-3.3574-5.517L13.5618 4h-2.5624zm3.8707 5.9972L12.4376 6h-.8761L9.1292 9.9972h5.7409zm-9.2787 7.2425-1.3106-5.2425h15.4384l-1.3106 5.2425a1 1 0 0 1-.9701.7575H6.5615a1 1 0 0 1-.97-.7575z"></path>
                     </svg>
                   </div>
+                  <!-- Verifica si hay elementos en el carrito para mostrar el contador -->
                   <?php if(count($_SESSION['selecciones']) >= 1){?>
+                  <!-- Contador de elementos en el carrito -->
                   <span class="position-absolute top-10 start-100 translate-middle badge rounded-pill iconoCarritoFavoritos">
                     <?php
+                    // Calcula la cantidad total de elementos en el carrito
                     $cantidadTotal = 0;
                       foreach ($_SESSION['selecciones'] as $pedido){
                         $cantidadTotal += $pedido->getCantidad();

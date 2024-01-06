@@ -4,8 +4,6 @@ class Favorito{
 
     private $producto;
 
-    
-
     public function __construct($producto){
         $this->producto = $producto;
     }

@@ -1,3 +1,4 @@
+<!-- Carga el script del formulario de edicion del usuario -->
 <script src="./assets/js/editarUsuario.js"></script>
 
 <body>
@@ -18,6 +19,7 @@
                                 </h3>
                             </div>
                         </a>
+                        <!-- Mira si el usuario tiene permisos de administrador para poder añadir o modificar productos -->
                         <?php if($_SESSION['usuario']->getPermisos() == 1){ ?>
                             <a href="<?=url."?controller=producto&action=agregar"?>" class="link-dark link-underline-opacity-0 link-underline-opacity-100-hover">
                                 <div class="elementoLista p-3">
@@ -75,7 +77,7 @@
                                 <p class="m-0 titulosInfoPers">Contraseña</p>
                                 <p>
                                     <span id="password"><?= str_repeat('*', strlen(substr($_SESSION['usuario']->getPassword(), 0, 4))) ?></span>
-                                    <input type="text" id="inputPassword" name="password" class="form-control inputsUsuario" style="display:none;">
+                                    <input type="text" id="inputPassword" name="password" class="form-control inputsUsuario" style="display:none;" required>
                                 </p>
                             </div>
                             <div id="botones" style="display:none;">
@@ -97,6 +99,7 @@
             </div>
 
             <h2 class="textosTitulo mt-5 mb-5">Ultimo pedido</h2>
+            <!-- Si no hay ultimo pedido se muestra el mensaje -->
             <?php if(!isset($ultimoPedido)){ ?>
                 <p>No hay ultimo pedido</p>
             <?php }else{ ?>
@@ -115,6 +118,7 @@
                                 <tr class="align-middle">
                                     <td class="ocultos align-middle"><?=$ultimoPedido->getPedido_id()?></td>
                                     <td class="align-middle"><?=$ultimoPedido->getFecha()?></td>
+                                    <!-- Calcula el precio total del pedido -->
                                     <td class="align-middle"><?=CalculadoraPrecios::formatPrecios($ultimoPedido->getPrecio_total())?> €</td>
                                     <td class="align-middle">
                                         <form action="<?=url."?controller=usuario&action=verPedido"?>" method="POST">
@@ -135,6 +139,7 @@
             <?php } ?>
 
             <h2 class="textosTitulo mt-5 mb-5">Todos los pedidos</h2>
+            <!-- Si no hay pedidos en el usuario mostrara el mensaje -->
             <?php if(empty($pedidos)){ ?>
                 <p>Todavía no hay pedidos</p>
             <?php }else{ ?>
@@ -154,6 +159,7 @@
                                 <tr class="align-middle">
                                     <td class="ocultos align-middle"><?=$pedido->getPedido_id()?></td>
                                     <td class="align-middle"><?=$pedido->getFecha()?></td>
+                                    <!-- Calcula el precio total del pedido -->
                                     <td class="align-middle"><?=CalculadoraPrecios::formatPrecios($pedido->getPrecio_total())?> €</td>
                                     <td class="align-middle">
                                         <form action="<?=url."?controller=usuario&action=verPedido"?>" method="POST">

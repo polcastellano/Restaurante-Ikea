@@ -1,0 +1,16 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+/* Estilos para el body por defecto */
+.contenido{
+    width: auto;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+/* Estilos globales para todos los elementos */
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Noto IKEA"; /* Fuente predeterminada */
+}

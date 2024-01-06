@@ -1,0 +1,30 @@
+/* Media Queries: Estilos basados en el tamaño de la pantalla */
+/* para cambiar el estilo cuando la resolución es menor a max-width */
+@media only screen and (max-width: 768px) {
+    .ocultos{
+        display:none !important;
+    }
+}
+@media only screen and (max-width: 1024px) {
+    .ocultos-footer{
+        display:none !important;
+    }
+}
+@media only screen and (max-width: 992px) {
+    .alinear-inicio{
+        justify-content: start !important;
+        margin-top: 3px;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .alinear-inicioPrecio{
+        justify-content: start !important;
+        margin-top: 3px;
+        margin-left: 4px;
+    }
+}
+@media only screen and (max-width: 992px) {
+    .quitarPadding{
+        padding-left: 0px !important;
+    }
+}

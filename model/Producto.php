@@ -12,15 +12,6 @@ abstract class Producto{
     public function __construct(){
     }
 
-/*
-    public function __construct($producto_id, $nombre, $categoria_id , $precio){
-        $this->producto_id = $producto_id;
-        $this->nombre = $nombre;
-        $this->categoria_id = $categoria_id;
-        $this->precio = $precio;
-    }
-*/
-
     /**
      * Get the value of producto_id
      */ 
@@ -143,27 +134,30 @@ abstract class Producto{
     }
 
     public function getPrecioEntera(){
-
+        // Formatea el precio con dos decimales y separador de miles
         $precio_formateado = number_format($this->getPrecio(), 2, ',', '.');
-        // Encontrar la posición de la coma decimal
+    
+        // Encuentra la posición de la coma decimal
         $pos_coma = strpos($precio_formateado, ',');
-
-        // Obtener la parte entera (números antes de la coma)
+    
+        // Obtiene la parte entera (números antes de la coma)
         $parte_entera = substr($precio_formateado, 0, $pos_coma);
-
+    
         return $parte_entera;
     }
     
     public function getPrecioDecimal(){
-
+        // Formatea el precio con dos decimales y separador de miles
         $precio_formateado = number_format($this->getPrecio(), 2, ',', '.');
-        // Encontrar la posición de la coma decimal
+    
+        // Encuentra la posición de la coma decimal
         $pos_coma = strpos($precio_formateado, ',');
-
-        // Obtener la parte entera (números antes de la coma)
+    
+        // Obtiene la parte decimal (números después de la coma)
         $parte_decimal = substr($precio_formateado, $pos_coma + 1);
-
+    
         return $parte_decimal;
     }
+    
     
 }

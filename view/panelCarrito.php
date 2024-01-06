@@ -76,6 +76,7 @@
                                 <div class="mt-5 pb-4 border-3 border-bottom bordeResumenPed d-flex justify-content-between">
                                     <p class="textoPedidos">Precio de los productos</p>
                                     <p class="textoPedidosBold">
+                                        <!-- Formatea el precio -->
                                         <?= CalculadoraPrecios::formatPrecios(CalculadoraPrecios::calcularPrecioPedido($_SESSION['selecciones'])) ?>€
                                     </p>
                                 </div>
@@ -83,23 +84,27 @@
                                     <div class="d-flex justify-content-between">
                                         <p class="textoPedidosBold">Subtotal</p>
                                         <p class="precioSubtotal">
+                                            <!-- Formatea el precio -->
                                             <?= CalculadoraPrecios::formatPrecios(CalculadoraPrecios::calcularPrecioPedido($_SESSION['selecciones'])) ?>€
                                         </p>
                                     </div>
                                     <div class="d-flex justify-content-between">
                                         <p class="textoPedidos">Subtotal sin IVA</p>
                                         <p class="textoPedidosBold">
+                                            <!-- Formatea el precio -->
                                             <?= CalculadoraPrecios::formatPrecios(CalculadoraPrecios::subtotalSinIVA($_SESSION['selecciones'])) ?>€
                                         </p>
                                     </div>
                                     <div class="d-flex justify-content-between">
                                         <p class="textoPedidos">IVA</p>
                                         <p class="textoPedidosBold">
+                                            <!-- Formatea el precio -->
                                             <?= CalculadoraPrecios::formatPrecios(CalculadoraPrecios::IVA($_SESSION['selecciones'])) ?>€
                                         </p>
                                     </div>
                                 </div>
                                 <form class="mt-5" action="<?= url . "?controller=pedido&action=confirmar"?>" method="POST">
+                                    <!-- Calcula el precio final del pedido -->
                                     <input name="precioFinal" value="<?= CalculadoraPrecios::calcularPrecioPedido($_SESSION['selecciones']) ?>" type="hidden" />
                                         <button class="border-0 col-12" type="submit">
                                                 <div class="px-4 py-5 rounded-1 btnContinuar d-flex justify-content-between align-items-center">

@@ -1,0 +1,44 @@
+/* Estilos para el Footer */
+.bg-footer{
+    background-color: var(--bg-color3);
+}
+.textFooter{
+    font-size: 12px;
+    color: var(--bg-color2);
+}
+:hover.textFooter{
+    color: var(--bg-color5);
+    text-decoration: underline;
+}
+.textIkeaFooter{
+    font-size: 12px;
+    color: var(--bg-color5);
+}
+.titulosFooter{
+    font-size: 14px;
+    font-family: "Noto IKEA Bold";
+    color: var(--bg-color6);
+}
+.tituloUneteIkea{
+    font-size: 16px;
+    font-family: "Noto IKEA Bold";
+    color: var(--bg-color2);
+}
+.textFooterDescurbre{
+    text-decoration: underline !important;
+}
+.textFooterList{
+    font-size: 14px;
+    color: var(--bg-color5);
+    text-decoration: none;
+}
+:hover.textFooterList{
+    color: var(--bg-color2);
+    text-decoration: underline;
+}
+.redesSociales{
+    border-color: var(--bg-color13) !important;
+}   
+:hover.redesSociales{
+    border-color: var(--bg-color5)   !important;
+}

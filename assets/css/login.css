@@ -1,0 +1,42 @@
+/* Estilos para la sección de Login */
+.btnIniciar{
+    font-size: 14px;
+    font-family: "Noto IKEA Bold";
+    color: var(--bg-color1);
+}
+.registrate{
+    color: var(--bg-color5);
+    font-family: "Noto IKEA Bold";
+    font-size: 14px;
+    text-decoration: none !important;
+}
+.elementoLista:hover{
+    background-color: var(--bg-color3) !important;
+}
+.elementoLista1{
+    background-color: var(--bg-color3) !important;
+}
+.listaPanelUsuario{
+    color: var(--bg-color2);
+    font-family: "Noto IKEA Bold";
+    font-size: 16px;
+}
+.titulosInfoPers{
+    color: var(--bg-color14);
+    font-family: "Noto IKEA";
+    font-size: 13px;
+}
+.h4infoPersonal{
+    color: var(--bg-color2);
+    font-family: "Noto IKEA Bold";
+    font-size: 24px;
+}
+.editarUsuario{
+    color: var(--bg-color2);
+    font-family: "Noto IKEA Bold";
+    font-size: 12px;
+    background-color: transparent;
+}
+.editarUsuario:hover{
+    background-color: var(--bg-color4);
+}

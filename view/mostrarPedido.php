@@ -38,6 +38,7 @@
                                 <div class="mt-5 pb-4 border-3 border-bottom bordeResumenPed d-flex justify-content-between">
                                     <p class="textoPedidos">Precio de los productos</p>
                                     <p class="textoPedidosBold">
+                                        <!-- Formatea el precio -->
                                         <?= CalculadoraPrecios::formatPrecios(CalculadoraPrecios::calcularPrecioPedido($ultimoPedido)) ?>€
                                     </p>
                                 </div>
@@ -45,18 +46,21 @@
                                     <div class="d-flex justify-content-between">
                                         <p class="textoPedidosBold">Subtotal</p>
                                         <p class="precioSubtotal">
+                                            <!-- Formatea el precio -->
                                             <?= CalculadoraPrecios::formatPrecios(CalculadoraPrecios::calcularPrecioPedido($ultimoPedido)) ?>€
                                         </p>
                                     </div>
                                     <div class="d-flex justify-content-between">
                                         <p class="textoPedidos">Subtotal sin IVA</p>
                                         <p class="textoPedidosBold">
+                                            <!-- Formatea el precio -->
                                             <?= CalculadoraPrecios::formatPrecios(CalculadoraPrecios::subtotalSinIVA($ultimoPedido)) ?>€
                                         </p>
                                     </div>
                                     <div class="d-flex justify-content-between">
                                         <p class="textoPedidos">IVA</p>
                                         <p class="textoPedidosBold">
+                                            <!-- Formatea el precio -->
                                             <?= CalculadoraPrecios::formatPrecios(CalculadoraPrecios::IVA($ultimoPedido)) ?>€
                                         </p>
                                     </div>

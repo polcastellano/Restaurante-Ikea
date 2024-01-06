@@ -3,52 +3,45 @@
 Class CalculadoraPrecios{
 
     public static function calcularPrecioPedido($pedidos){
+        // Calcula el precio total de los pedidos sumando los precios individuales
         $precioTotal = 0;
-
         foreach ($pedidos as $pedido){
             $precioTotal += $pedido->calculaPrecioCantidad();
         }
-
         return $precioTotal;        
-
     }
-
+    
     public static function formatPrecios($precio){
-
+        // Formatea el precio con una coma y un punto como separadores
         $precio_formateado = number_format($precio, 2, ',', '.');
-        // Encontrar la posición de la coma decimal
+        
+        // Obtiene la parte entera y decimal del precio formateado
         $pos_coma = strpos($precio_formateado, ',');
-
-        // Obtener la parte entera (números antes de la coma)
         $parte_entera = substr($precio_formateado, 0, $pos_coma);
-
-        $precio_formateado = number_format($precio, 2, ',', '.');
-        // Encontrar la posición de la coma decimal
-        $pos_coma = strpos($precio_formateado, ',');
-
-        // Obtener la parte entera (números antes de la coma)
         $parte_decimal = substr($precio_formateado, $pos_coma + 1);
-
+        
+        // Retorna el precio formateado con un apóstrofe como separador entre la parte entera y la decimal
         return "$parte_entera'$parte_decimal";
-
     }
-
+    
     public static function subtotalSinIVA($pedidos){
+        // Calcula el precio total sin incluir el IVA
         $precio = self::calcularPrecioPedido($pedidos);
-        // Porcentaje de IVA (por ejemplo, 21%)
-        $porcentajeIVA = 21;
-
-        // Calcular el precio sin IVA
+        $porcentajeIVA = 21; // Porcentaje de IVA (ejemplo: 21%)
+        
+        // Calcula el precio sin IVA
         $precioSinIVA = $precio / (1 + ($porcentajeIVA / 100));
-
         return $precioSinIVA;
     }
-
+    
     public static function IVA($pedidos){
+        // Calcula el monto total del IVA aplicado a los pedidos
         $precioConIVA = self::calcularPrecioPedido($pedidos);
         $precioSinIVA = self::subtotalSinIVA($pedidos);
-        // Calcular solo el IVA
+        
+        // Calcula solo el monto del IVA
         $IVA = $precioConIVA - $precioSinIVA;
         return $IVA;
     }
+    
 }

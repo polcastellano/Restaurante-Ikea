@@ -1,0 +1,75 @@
+/* Estilos para la Página de Carrito */
+.btnProdCarrito, .btnProdFav{
+    width: 40px;
+    height: 40px;
+}
+.btnProdCarrito, .btnContinuar, .btnLogin{
+    background-color: var(--bg-color11);
+}
+:hover.btnProdCarrito, :hover.btnContinuar, :hover.btnLogin{
+    background-color: var(--bg-color12);
+}
+.btnProdFav, .sumaResta{
+    background-color: transparent;
+}
+.btnProdFav:hover, .sumaResta:hover{
+    background-color: var(--bg-color4);
+}
+.cantidadPedido{
+    font-family: "Noto IKEA Bold";
+    font-size: 14px;
+    color: var(--bg-color6);
+}
+.tituloProductoCar{
+    font-family: "Noto IKEA Bold";
+    color: var(--bg-color5);
+    font-size: 14px;
+}
+.precioProductoCar{
+    font-family: "Noto IKEA Bold";
+    font-size: 16px;
+    color: var(--bg-color5);
+}
+.enlacesCarrito{
+    font-size: 14px;
+    color: var(--bg-color5);
+    text-decoration: none;
+}
+.enlacesCarrito:hover{
+    font-size: 14px;
+    color: var(--bg-color2);
+    text-decoration: none;
+}
+.resumenPedido{
+    font-family: "Noto IKEA Bold";
+    font-size: 16px;
+    color: var(--bg-color5);
+}
+.textoPedidos, .textoUneteIkea{
+    font-size: 14px;
+    color: var(--bg-color5);
+}
+.textoPedidosBold{
+    font-family: "Noto IKEA Bold";
+    font-size: 14px;
+    color: var(--bg-color5);
+}
+.bordeResumenPed{
+    border-color: var(--bg-color2) !important;
+}
+.precioSubtotal{
+    font-family: "Noto IKEA Bold";
+    font-size: 24px;
+    color: var(--bg-color2);
+}
+.continuarPedido{
+    text-decoration: none;
+    font-family: "Noto IKEA Bold";
+    color: var(--bg-color1);
+    font-size: 16px;
+}
+.btn_flechaPed{
+    width: 40px;
+    height: 40px;
+    background-color: var(--bg-color1);
+}

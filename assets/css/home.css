@@ -1,0 +1,68 @@
+
+/* Estilos para la Página de Inicio */
+.textosTitulo{
+    font-family: "Noto IKEA Bold";
+    color: var(--bg-color2);
+    font-size: 36px;
+}
+.altoCartas{
+    background-color: var(--bg-color7);
+}
+.alturaTxtSeccion2{
+    height: 200px;
+}
+.titulosCartas{
+    font-family: "Noto IKEA Bold";
+    font-size: 25px;
+    color: var(--bg-color2);
+}
+.textosCartas{
+    font-size: 16px;
+    color: var(--bg-color2);
+}
+.section3marginTop{
+    margin-top: 4rem;
+}
+.titulosCartas2{
+    font-family: "Noto IKEA Bold";
+    font-size: 40px;
+    color: var(--bg-color6);
+}
+.textosCartas2{
+    font-size: 16px;
+    color: var(--bg-color5);
+}
+.alturaTxtSeccion3{
+    min-height: 140px;
+}
+.paddingMarginCartasSeccion3{
+    padding: 4.5rem;
+    padding-bottom: 0;
+    margin-bottom: 9rem;
+}
+.colorBtnSeccion3{
+    background-color: var(--bg-color2);
+}
+:hover.colorBtnSeccion3{
+    background-color: var(--bg-color10);
+}
+.fondoComerIKEA{
+    background-color: var(--bg-color8);
+}
+.fondoComidaEcologica{
+    background-color: var(--bg-color9);
+}
+a.mejoresProductos{
+    text-decoration: none;
+}
+a:hover div.altoCartas div h5.titulosCartas{
+    text-decoration: underline;
+}
+.btn_flecha{
+    width: 56px;
+    height: 56px;
+    background-color: var(--bg-color2);
+}
+.btn_flecha:hover{
+    background-color: var(--bg-color10);
+}

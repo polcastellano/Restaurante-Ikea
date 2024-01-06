@@ -5,27 +5,33 @@ include_once 'controller/usuarioController.php';
 include_once 'controller/pedidoController.php';
 
 
-    if (!isset($_GET['controller'])){
-            //Si no se pasa nada, se mostrara pagina principal de producto
-            header("Location:".url."?controller=producto");
-    }else{
-        $nombre_controller = $_GET['controller'].'Controller';
-        if(class_exists($nombre_controller)){
-            //Miramos si nos pasa una accion
-            // en caso contrario mostramos accion por defecto
+// Verifica si no se ha especificado un controlador en la URL
+if (!isset($_GET['controller'])){
+    // Redirige a la página principal de productos si no se especifica nada
+    header("Location:".url."?controller=producto");
+} else {
+    // Obtiene el nombre del controlador
+    $nombre_controller = $_GET['controller'].'Controller';
+    
+    // Verifica si la clase del controlador existe
+    if(class_exists($nombre_controller)){
+        // Verifica si se ha pasado una acción, de lo contrario, establece una acción predeterminada
+        $controller = new $nombre_controller;
 
-            $controller = new $nombre_controller;
-
-            if(isset($_GET['action']) && method_exists($controller, $_GET['action'])){
-                $action = $_GET['action'];
-            }else{
-                $action = action_default;
-            }
-
-            $controller->$action();
-
-        }else{
-            header("Location:".url."?controller=producto");
+        if(isset($_GET['action']) && method_exists($controller, $_GET['action'])){
+            // Si se especifica una acción y existe en el controlador, la asigna
+            $action = $_GET['action'];
+        } else {
+            // Si no se especifica una acción o no existe en el controlador, establece una acción por defecto
+            $action = action_default;
         }
+
+        // Llama a la acción correspondiente en el controlador
+        $controller->$action();
+
+    } else {
+        // Si la clase del controlador no existe, redirige a la página principal de productos
+        header("Location:".url."?controller=producto");
     }
+}
 ?>

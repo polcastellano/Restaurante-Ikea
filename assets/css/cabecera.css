@@ -1,0 +1,49 @@
+/* Estilos para la Cabecera */
+.header{
+    background-color: var(--bg-color2);
+}
+.msg-header{
+    height: 40px;
+}
+.headerIcons{
+    width: 18px;
+    height: 18px;
+}
+.iconoCarritoFavoritos{
+    background-color: var(--bg-color11);
+}
+/* Estilos específicos para elementos dentro de la cabecera */
+div.header div div p{
+    color: var(--bg-color1);
+    font-size: 12px;
+}
+.fondoBuscador, .categorias{
+    background-color: var(--bg-color3);
+}
+.fondoBuscador:hover, .categorias:hover {
+    background-color: var(--bg-color4);
+}
+.paddingsBusqueda{
+    padding-top: 13px;
+    padding-bottom: 13px;
+}
+.iconosBusqueda{
+    width: 40px;
+    height: 40px;
+}
+.iconosBusqueda:hover{
+    background-color: var(--bg-color4);
+}
+.textosP{
+    color: var(--bg-color5);
+    font-size: 14px;
+}
+.textosMenu{
+    color: var(--bg-color6);
+    font-size: 14px;
+    font-family: "Noto IKEA Bold";
+}
+.textosMenu2{
+    color: var(--bg-color6);
+    font-size: 14px;
+}

@@ -1,0 +1,21 @@
+/* Estilos para el Panel de Categorías/Productos */
+.txtCategorias{
+    font-size: 12px;
+    color: var(--bg-color6);
+    font-family: "Noto IKEA Bold";
+}
+.textosTituloCat{
+    font-family: "Noto IKEA Bold";
+    color: var(--bg-color6);
+    font-size: 24px;
+}
+.tituloProducto{
+    font-family: "Noto IKEA Bold";
+    color: var(--bg-color2);
+    font-size: 14px;
+}
+.descProd{
+    min-height: 50px;
+    font-size: 14px;
+    color: var(--bg-color5);
+}
