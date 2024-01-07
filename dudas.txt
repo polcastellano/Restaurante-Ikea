@@ -1,2 +1,0 @@
-comentar codigo entero
-separar css en diferentes hojas
