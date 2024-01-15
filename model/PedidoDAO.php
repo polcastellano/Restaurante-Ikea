@@ -16,7 +16,15 @@ class PedidoDAO{
         // Itera sobre los elementos en 'selecciones' y guarda cada producto en la tabla de pedidos_productos
         foreach ($_SESSION['selecciones'] as $pedido) {
             // Obtiene detalles del producto del pedido actual
-            // ...
+            $producto_id = $pedido->getProducto()->getProducto_id();
+            $cantidad = $pedido->getCantidad();
+            $precioProd = $pedido->calculaPrecioCantidad();
+            //Buscamos el utlimo pedido de la tabla pedidos y seleccionamos el pedido_id
+            $ultPedido = $con->query("SELECT pedido_id FROM pedidos ORDER BY fecha DESC LIMIT 1");
+            // Guardamos el resultado de la consulta
+            $fila = $ultPedido->fetch_assoc();
+            // almacenamos solo el pedido_id parseandolo a integer para poder hacer el insert correctamente a la bbdd
+            $pedido_id = intval($fila['pedido_id']);
     
             // Prepara y ejecuta la inserción de cada producto en la tabla de pedidos_productos
             $stmt = $con->prepare("INSERT INTO pedidos_productos (pedido_id, producto_id, cantidad, precio_total) VALUES (?, ?, ?, ?)");

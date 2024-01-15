@@ -1,6 +1,3 @@
-<!-- Carga el script del formulario de edicion del usuario -->
-<script src="./assets/js/editarUsuario.js"></script>
-
 <body>
     <main>
         <div class="contenido">
@@ -147,7 +144,7 @@
                     <table class="table text-center mb-5">
                         <thead>
                             <tr class="align-middleS">
-                                <th class="osultos">Identificador pedido</th>
+                                <th class="ocultos">Identificador pedido</th>
                                 <th>Fecha</th>
                                 <th>Precio total</th>
                                 <th></th>
@@ -182,3 +179,6 @@
         </div>
     </main>
 </body>
+
+<!-- Carga el script del formulario de edicion del usuario -->
+<script src="./assets/js/editarUsuario.js"></script>

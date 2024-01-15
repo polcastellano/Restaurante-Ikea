@@ -390,6 +390,15 @@ class productoController{
             }
         }
     }
+
+    public function reseñas(){
+        session_start();
+
+        include_once 'view/cabecera.php';
+        include_once 'view/panelResenas.php';
+        include_once 'view/footer.php';
+
+    }
     
 }
 ?>
