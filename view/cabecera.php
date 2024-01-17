@@ -138,7 +138,7 @@
               <a href=<?=url."?controller=producto&action=carta"?> class="link-dark link-underline-opacity-0 link-underline-opacity-100-hover"><p class="textosMenu my-0">Carta</p></a>
               </li>
               <li class="nav-item me-sm-3">
-              <a href=<?=url."?controller=producto&action=reseñas"?> class="link-dark link-underline-opacity-0 link-underline-opacity-100-hover"><p class="textosMenu my-0">Reseñas</p></a>
+              <a href=<?=url."?controller=resena"?> class="link-dark link-underline-opacity-0 link-underline-opacity-100-hover"><p class="textosMenu my-0">Reseñas</p></a>
               </li>
             </ul>
             </div>

@@ -2,6 +2,12 @@
     <main>
         <div class="contenido">
             <h2 class="textosTitulo mt-5 mb-5">Reseñas</h2>
+                <!-- <section>
+                    <form action="" method="POST">
+                        <input type="text"/>
+                        <input type="submit">
+                    </form>
+                </section> -->
                 <section id="resenas" class="d-flex">
 
                 </section>
@@ -9,4 +15,4 @@
     </main>
 </body>
         
-<script src="./assets/js/reseñas.js"></script>
+<script src="../assets/js/reseñas.js"></script>

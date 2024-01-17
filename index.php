@@ -3,6 +3,8 @@ include_once 'config/parameters.php';
 include_once 'controller/productoController.php';
 include_once 'controller/usuarioController.php';
 include_once 'controller/pedidoController.php';
+include_once 'controller/APIController.php';
+include_once 'controller/resenasController.php';
 
 
 // Verifica si no se ha especificado un controlador en la URL
