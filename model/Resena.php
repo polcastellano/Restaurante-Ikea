@@ -2,11 +2,11 @@
 
 class Resena{
 
-    private $reseña_id;
-    private $usuario_id;
-    private $comentario;
-    private $valoracion;
-    private $nombre_usuario;
+    protected $reseña_id;
+    protected $usuario_id;
+    protected $comentario;
+    protected $valoracion;
+    protected $nombre_usuario;
     
     public function __construct(){
     }
