@@ -27,7 +27,7 @@ class APIController{
                     'nombre_usuario' => $reseña->getNombre_usuario(),
                 ];
 
-            };
+            }
             echo json_encode($reseñasAsoc, JSON_UNESCAPED_UNICODE); 
             return; //return para salir de la funcion
 

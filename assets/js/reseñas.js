@@ -48,15 +48,54 @@ function mostrarReseñas(reseñas){
         pValoracion.classList.add("card-text");
         pValoracion.textContent = `Valoracion: ${reseña.valoracion}`;
 
+        let estrellasValoracion = generarValoracion(reseña.valoracion);
+
         contenedor.appendChild(article);
         article.appendChild(div2);
         div2.appendChild(div3);
         div3.appendChild(titulo);
+        div2.appendChild(estrellasValoracion);
         div2.appendChild(pComentario);
         div2.appendChild(pValoracion);
     });
 
-}
+};
+
+function generarValoracion(valoracion){
+    let div = document.createElement('div');
+    div.classList.add("d-flex");
+    let temp;
+    const estrella = `<div class="mb-3">
+                        <svg width="20" height="20">
+                            <path d="m11.9999 6 2.1245 3.6818 4.1255.9018-2.8125 3.1773L15.8626 18l-3.8627-1.7182L8.1372 18l.4252-4.2391-2.8125-3.1773 4.1255-.9018L11.9999 6z"></path>
+                        </svg>
+                    </div>`;
+    const estrellaEmpty = `<div class="mb-3">
+                            <svg width="20" height="20" fill="#929292">
+                                <path d="m11.9999 6 2.1245 3.6818 4.1255.9018-2.8125 3.1773L15.8626 18l-3.8627-1.7182L8.1372 18l.4252-4.2391-2.8125-3.1773 4.1255-.9018L11.9999 6z"></path>
+                            </svg>
+                        </div>`;
+    switch (valoracion) {
+        case 1:
+        div.innerHTML = estrella + estrellaEmpty + estrellaEmpty + estrellaEmpty + estrellaEmpty;
+        break;
+        case 2:
+        div.innerHTML = estrella + estrella + estrellaEmpty + estrellaEmpty + estrellaEmpty;
+        break;
+        case 3:
+        div.innerHTML = estrella + estrella + estrella + estrellaEmpty + estrellaEmpty;
+        break;
+        case 4:
+        div.innerHTML = estrella + estrella + estrella + estrella + estrellaEmpty;
+        break;
+        case 5:
+        div.innerHTML = estrella + estrella + estrella + estrella + estrella;
+        break;
+        default:
+        div.innerHTML = estrellaEmpty + estrellaEmpty + estrellaEmpty + estrellaEmpty + estrellaEmpty;
+    }
+    return div;
+};
 
 
 // contenedor.innerHTML = `

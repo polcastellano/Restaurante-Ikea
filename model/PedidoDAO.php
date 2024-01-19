@@ -9,7 +9,7 @@ class PedidoDAO{
         $con = DataBase::connect();
     
         // Prepara y ejecuta la inserción del pedido
-        $stmt = $con->prepare("INSERT INTO pedidos (usuario_id, precio_total) VALUES (?, ?)");
+        $stmt = $con->prepare("INSERT INTO pedidos (usuario_id, precio_total, reseña_id) VALUES (?, ?, null)");
         $stmt->bind_param("id", $usuario_id, $precioTotal);
         $stmt->execute();
     
