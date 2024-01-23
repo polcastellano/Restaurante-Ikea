@@ -14,7 +14,7 @@ class APIController{
        
         if($_POST["accion"] == 'consultaReseñas'){
 
-             $reseñas = ResenaDAO::getAllReseñas();
+            $reseñas = ResenaDAO::getAllReseñas();
             
             //Array asociativo para poder encodear el json
             $reseñasAsoc = [];
@@ -31,20 +31,30 @@ class APIController{
             echo json_encode($reseñasAsoc, JSON_UNESCAPED_UNICODE); 
             return; //return para salir de la funcion
 
-        }//else if($_POST["accion"] == 'add_review'){
-
-            // $id_pedido = json_decode($_POST["pedido"]); //se decodifican los datos JSON que se reciben desde JS
-            // $id_usuario = json_decode($_POST["id_usuario"]); //se decodifican los datos JSON que se reciben desde JS
+        }else if($_POST["accion"] == 'nuevaReseña'){
             
-            // /*
+            session_start();
+            $usuario_id = $_SESSION['usuario']->getUsuario_id();
+            $nombre_usuario = $_SESSION['usuario']->getNombre();
 
-            //     Otras operaciones
+            $json = file_get_contents('php//input');
+            $data = json_decode($json, true);
 
-            // */
+            //Comprobar los datos
+            if (isset($data['comentario']) && isset($data['valoracion']) && isset($data['pedido_id'] )) {
+                $comentario = $data['comentario'];
+                $valoracion = $data['valoracion'];
+                $pedido_id = $data['pedido_id'];
+
+                ResenaDAO::insertarReseña($usuario_id, $pedido_id, $comentario, $valoracion, $nombre_usuario);
+
+                echo "se ha insertado";
+            }else{
+                echo "faltan datos";
+            }
+
             
-            // //si solo quieres devolver un pequeño mensaje, simplemente puedes hacer un echo de texto
-            // echo "Bienvenido Pedrito";
-            // return;
-        //}
+            return;
+        }
     }
 }

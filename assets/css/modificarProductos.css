@@ -1,11 +1,11 @@
 /* Estilos para Modificar/Actualizar/Eliminar Producto */
-.btnActualizar, .btnEliminar, .btnAgregar, .btnVerPedido, .btnEliminarPedido, .btnGuardarCambios, .btnCancelarCambios{
+.btnActualizar, .btnEliminar, .btnAgregar, .btnVerPedido, .btnEliminarPedido, .btnGuardarCambios, .btnCancelarCambios, .btnDejarReseña{
     background-color: var(--bg-color11) !important;
     color: var(--bg-color1);
     font-family: "Noto IKEA Bold";
     font-size: 14px;
 }
-.btnActualizar:hover, .btnEliminar:hover, .btnAgregar:hover, .btnVerPedido:hover, .btnEliminarPedido:hover, .btnGuardarCambios:hover, .btnCancelarCambios:hover{
+.btnActualizar:hover, .btnEliminar:hover, .btnAgregar:hover, .btnVerPedido:hover, .btnEliminarPedido:hover, .btnGuardarCambios:hover, .btnCancelarCambios:hover, .btnDejarReseña:hover{
     background-color: var(--bg-color12) !important;
 }
 .btnCancelarCambios{

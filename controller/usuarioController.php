@@ -174,6 +174,7 @@ class usuarioController{
         if(isset($_POST['pedido_id'])){
             // Obtiene y muestra el último pedido del usuario
             $ultimoPedido = UsuarioDAO::verPedido($_POST['pedido_id']);
+            $pedido_id = $_POST['pedido_id'];
             include_once 'view/mostrarPedido.php';
         }else{
             // Si no se envió el ID del pedido, redirige a la página de productos

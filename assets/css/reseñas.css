@@ -1,0 +1,12 @@
+.star-icon {
+    fill: #929292; /* Color de relleno predeterminado */
+    transition: fill 0.3s ease; /* Agrega una transición suave al cambio de color */
+}
+
+.star-icon:hover {
+    fill: black; /* Cambia el color de relleno a negro cuando la estrella está activa */
+}
+
+.star-icon.active {
+    fill: black; /* Cambia el color de relleno a negro cuando la estrella está activa */
+}

@@ -95,10 +95,10 @@
                 </div>
             </div>
 
-            <h2 class="textosTitulo mt-5 mb-5">Ultimo pedido</h2>
+            <h2 class="textosTitulo mt-5 mb-5">Último pedido</h2>
             <!-- Si no hay ultimo pedido se muestra el mensaje -->
             <?php if(!isset($ultimoPedido)){ ?>
-                <p>No hay ultimo pedido</p>
+                <p>No hay último pedido</p>
             <?php }else{ ?>
                 <div class="table-responsive">
                     <table class="table text-center mb-5">
@@ -107,6 +107,7 @@
                                 <th class="ocultos">Identificador pedido</th>
                                 <th>Fecha</th>
                                 <th>Precio total</th>
+                                <th></th>
                                 <th></th>
                                 <th></th>
                             </tr>
@@ -128,7 +129,7 @@
                                             <input type="text" name="pedido_id" value="<?=$ultimoPedido->getPedido_id()?>" hidden>
                                             <button type="submit" class="btn btn-primary btnEliminarPedido">Borrar pedido</button>
                                         </form>
-                                    </td> 
+                                    </td>
                                 </tr>
                         </tbody>
                     </table>
@@ -147,6 +148,7 @@
                                 <th class="ocultos">Identificador pedido</th>
                                 <th>Fecha</th>
                                 <th>Precio total</th>
+                                <th></th>
                                 <th></th>
                                 <th></th>
                             </tr>
@@ -169,7 +171,7 @@
                                             <input type="text" name="pedido_id" value="<?=$pedido->getPedido_id()?>" hidden>
                                             <button type="submit" class="btn btn-primary btnEliminarPedido">Borrar pedido</button>
                                         </form>
-                                    </td> 
+                                    </td>
                                 </tr>
                             <?php } ?>
                         </tbody>
