@@ -70,6 +70,7 @@
                                     <h3 class="textosTitulo justify-content-center mt-5 mb-5">Nueva reseña</h3>
                                     <form id="formReseña" method="POST">
                                         <div class="row col">
+                                            <input id="usuario_id" value="<?= $usuario_id?>" hidden />
                                             <input id="pedido_id" value="<?= $pedido_id?>" hidden />
                                             <label class="p-0">Comentario</label>
                                                 <input class="py-3" type="text" id="comentario"/>
@@ -113,8 +114,10 @@
                                         </div>
                                     </form>
                                 </div>
-                                <?php }?>
+                                <?php }else{ ?>
+                                    <h3 class="textosTitulo justify-content-center mt-5 mb-5">Este pedido ya tiene reseña</h3>
 
+                                <?php }?>
                             </div>
                         </section>
 

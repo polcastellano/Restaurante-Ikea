@@ -26,6 +26,25 @@ class ResenaDAO{
         return $res;
     }
 
+    public static function getNombreUsuario($usuario_id){
+        $con = DataBase::connect();
+        
+        $stmt = $con->prepare("SELECT nombre FROM usuarios WHERE usuario_id = ?");
+        $stmt->bind_param("i", $usuario_id);
+
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        
+        // Obtener el nombre del resultado
+        if ($row = $result->fetch_assoc()) {
+            $nombre = $row['nombre'];
+            return $nombre;
+            $con->close();
+        }
+        $con->close();
+    }
+
     public static function getReseña($pedido_id){
         $con = DataBase::connect();
         
@@ -49,11 +68,11 @@ class ResenaDAO{
         
     }
 
-    public static function insertarReseña($usuario_id, $pedido_id, $comentario, $valoracion, $nombre_usuario){
+    public static function insertarReseña($usuario_id, $pedido_id, $comentario, $valoracion){
         $con = DataBase::connect();
         
-        $stmt = $con->prepare("INSERT INTO reseñas (usuario_id, pedido_id, comentario, valoracion, nombre_usuario) VALUES (?????);");
-        $stmt->bind_param("iisis", $usuario_id, $pedido_id, $comentario, $valoracion, $nombre_usuario);
+        $stmt = $con->prepare("INSERT INTO reseñas (usuario_id, pedido_id, comentario, valoracion) VALUES (?,?,?,?);");
+        $stmt->bind_param("iisi", $usuario_id, $pedido_id, $comentario, $valoracion);
 
         $stmt->execute();
 

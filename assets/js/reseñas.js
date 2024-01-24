@@ -1,13 +1,7 @@
 document.addEventListener('DOMContentLoaded', function(){
 
-    fetch("http://localhost/DAW/ikea/?controller=api&action=api", {
+    fetch("http://localhost/DAW/ikea/?controller=api&action=consultaReseñas", {
         method : 'POST',
-        headers: {
-            'Content-Type':'application/x-www-form-urlencoded',
-        },
-        body: new URLSearchParams({
-            accion: 'consultaReseñas',
-        }),
     })
     .then(response => {
         return response.json();

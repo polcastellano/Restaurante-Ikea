@@ -6,7 +6,6 @@ class Resena{
     protected $usuario_id;
     protected $comentario;
     protected $valoracion;
-    protected $nombre_usuario;
     
     public function __construct(){
     }
@@ -87,26 +86,6 @@ class Resena{
     public function setValoracion($valoracion)
     {
         $this->valoracion = $valoracion;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of nombre_usuario
-     */ 
-    public function getNombre_usuario()
-    {
-        return $this->nombre_usuario;
-    }
-
-    /**
-     * Set the value of nombre_usuario
-     *
-     * @return  self
-     */ 
-    public function setNombre_usuario($nombre_usuario)
-    {
-        $this->nombre_usuario = $nombre_usuario;
 
         return $this;
     }

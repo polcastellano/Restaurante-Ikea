@@ -37,27 +37,28 @@ document.addEventListener('DOMContentLoaded', function() {
         let comentario = document.getElementById('comentario').value;
         let valoracion = document.getElementById('valoracion').value;
         let pedido_id = document.getElementById('pedido_id').value;
+        let usuario_id = document.getElementById('usuario_id').value;
 
         // Crear un objeto con los datos
         let datos = {
-            accion: 'nuevaReseña',
-            comentario: "\'"+comentario+"\'",
+            comentario: comentario,
             valoracion: valoracion,
             pedido_id: pedido_id,
+            usuario_id: usuario_id,
         };
 
         // Convertir el objeto a una cadena JSON
         let datosJSON = JSON.stringify(datos);
 
         // Realiza la solicitud a la API utilizando los datos del formulario
-        fetch("http://localhost/DAW/ikea/?controller=api&action=api", {
+        fetch("http://localhost/DAW/ikea/?controller=api&action=addResena", {
             method: 'POST',
             headers: {
                 'Content-Type':'application/json',
             },
             body: datosJSON,
         })
-        .then(response => response.json())
+        .then(response => response.text())
         .then(data => {
             // Haz algo con la respuesta de la API si es necesario
             console.log(data);
