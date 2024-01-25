@@ -144,7 +144,12 @@ class UsuarioDAO{
 
     public static function borrarPedido($pedido_id){
         $con = DataBase::connect();
-    
+        
+        // Borrar las referencias del pedido en la tabla pedidos_productos
+        $borrarResPed = $con->prepare("DELETE FROM reseñas WHERE pedido_id = ?");
+        $borrarResPed->bind_param("i", $pedido_id);
+        $borrarResPed->execute();
+        
         // Borrar el pedido de la tabla pedidos
         $borrarPedido = $con->prepare("DELETE FROM pedidos WHERE pedido_id = ?");
         $borrarPedido->bind_param("i", $pedido_id);

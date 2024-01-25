@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 function mostrarReseñas(reseñas){
     const contenedor = document.getElementById('resenas');
+    contenedor.classList.add("col-8");
 
     reseñas.forEach ((reseña) => {
         let article = document.createElement('article');
@@ -23,9 +24,8 @@ function mostrarReseñas(reseñas){
         let div3 = document.createElement('div');
         let titulo = document.createElement('h5');
         let pComentario = document.createElement('p');
-        let pValoracion = document.createElement('p');
 
-        article.classList.add("card", "rounded-0", "border-0", "border-bottom", "col-7", "mb-3");
+        article.classList.add("card", "rounded-0", "border-0", "border-bottom", "mb-3");
         div2.classList.add("card-body", "ps-0");
 
         div3.classList.add("d-flex");
@@ -39,9 +39,6 @@ function mostrarReseñas(reseñas){
         pComentario.classList.add("card-text");
         pComentario.textContent = `Comentario: ${reseña.comentario}`;
 
-        pValoracion.classList.add("card-text");
-        pValoracion.textContent = `Valoracion: ${reseña.valoracion}`;
-
         let estrellasValoracion = generarValoracion(reseña.valoracion);
 
         contenedor.appendChild(article);
@@ -50,7 +47,6 @@ function mostrarReseñas(reseñas){
         div3.appendChild(titulo);
         div2.appendChild(estrellasValoracion);
         div2.appendChild(pComentario);
-        div2.appendChild(pValoracion);
     });
 
 };
