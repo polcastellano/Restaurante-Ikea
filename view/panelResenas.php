@@ -5,7 +5,7 @@
                 <section id="resenas">
 
                 </section>
-                <section class="col">
+                <section class="col-4">
                     <div>
                         <ul class="list-group">
                             <a href="" class="link-dark link-underline-opacity-0 link-underline-opacity-100-hover">
