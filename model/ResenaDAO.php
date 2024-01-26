@@ -80,4 +80,21 @@ class ResenaDAO{
         
     }
 
+    public static function getDatosReseña($pedido_id){
+        $con = DataBase::connect();
+        
+        $stmt = $con->prepare("SELECT * FROM reseñas WHERE pedido_id = ?");
+        $stmt->bind_param("i", $pedido_id);
+
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        $con->close();
+        
+        $reseña = $result->fetch_object("Resena");
+        
+        return $reseña;
+    }
+
 }

@@ -10,3 +10,8 @@
 .star-icon.active {
     fill: black; /* Cambia el color de relleno a negro cuando la estrella está activa */
 }
+.filtrarReseñaTitulo{
+    color: var(--bg-color2);
+    font-family: "Noto IKEA Bold";
+    font-size: 16px;
+}

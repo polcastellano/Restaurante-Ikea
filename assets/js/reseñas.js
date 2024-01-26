@@ -1,22 +1,23 @@
 document.addEventListener('DOMContentLoaded', function(){
 
-    fetch("http://localhost/DAW/ikea/?controller=api&action=consultaReseñas", {
-        method : 'POST',
-    })
-    .then(response => {
-        return response.json();
-    })
-    .then(data => {
-        mostrarReseñas(data);
-    })
-    .catch(error => {
-        console.error(error);
-    });
+        fetch("http://localhost/DAW/ikea/?controller=api&action=consultaReseñas", {
+            method : 'POST',
+        })
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            mostrarReseñas(data);
+        })
+        .catch(error => {
+            console.error(error);
+        });
 });
 
+
 function mostrarReseñas(reseñas){
-    const contenedor = document.getElementById('resenas');
-    contenedor.classList.add("col-8");
+    let sectionReseñas = document.getElementById('resenas');
+    sectionReseñas.classList.add("col-8");
 
     reseñas.forEach ((reseña) => {
         let article = document.createElement('article');
@@ -41,20 +42,22 @@ function mostrarReseñas(reseñas){
 
         let estrellasValoracion = generarValoracion(reseña.valoracion);
 
-        contenedor.appendChild(article);
+        sectionReseñas.appendChild(article);
         article.appendChild(div2);
         div2.appendChild(div3);
         div3.appendChild(titulo);
         div2.appendChild(estrellasValoracion);
-        div2.appendChild(pComentario);
+        div2.appendChild(pComentario);        
     });
 
+    let filtros = generarFiltros();
+    let contenedor = document.getElementById('contenidoPagina');
+    contenedor.appendChild(filtros);
 };
 
 function generarValoracion(valoracion){
     let div = document.createElement('div');
     div.classList.add("d-flex");
-    let temp;
     const estrella = `<div class="mb-3">
                         <svg width="20" height="20">
                             <path d="m11.9999 6 2.1245 3.6818 4.1255.9018-2.8125 3.1773L15.8626 18l-3.8627-1.7182L8.1372 18l.4252-4.2391-2.8125-3.1773 4.1255-.9018L11.9999 6z"></path>
@@ -85,4 +88,62 @@ function generarValoracion(valoracion){
         div.innerHTML = estrellaEmpty + estrellaEmpty + estrellaEmpty + estrellaEmpty + estrellaEmpty;
     }
     return div;
+};
+
+function generarFiltros(){
+    
+    let filtros = document.createElement('section');
+
+    filtros.classList.add("col-4");
+
+    filtros.innerHTML = `
+                    <div class="elementoLista1 p-3">
+                        <h3 class="filtrarReseñaTitulo m-0 align-items-center d-flex">Filtrar reseñas</h3>
+                    </div>
+    
+    
+                    <form id="filtroReseña" method="POST">
+                    <div class="col">
+                        <div id="estrellas" class="d-flex mt-4 p-0">
+
+                            <input id="valoracion" hidden />
+
+                            <div class="mb-3" onclick="asignarEstrella(1)">
+                                <svg width="20" height="20" class="star-icon">
+                                    <path d="m11.9999 6 2.1245 3.6818 4.1255.9018-2.8125 3.1773L15.8626 18l-3.8627-1.7182L8.1372 18l.4252-4.2391-2.8125-3.1773 4.1255-.9018L11.9999 6z"></path>
+                                </svg>
+                            </div>
+                            <div class="mb-3" onclick="asignarEstrella(2)">
+                                <svg width="20" height="20" class="star-icon">
+                                    <path d="m11.9999 6 2.1245 3.6818 4.1255.9018-2.8125 3.1773L15.8626 18l-3.8627-1.7182L8.1372 18l.4252-4.2391-2.8125-3.1773 4.1255-.9018L11.9999 6z"></path>
+                                </svg>
+                            </div>
+                            <div class="mb-3" onclick="asignarEstrella(3)">
+                                <svg width="20" height="20" class="star-icon">
+                                    <path d="m11.9999 6 2.1245 3.6818 4.1255.9018-2.8125 3.1773L15.8626 18l-3.8627-1.7182L8.1372 18l.4252-4.2391-2.8125-3.1773 4.1255-.9018L11.9999 6z"></path>
+                                </svg>
+                            </div>
+                            <div class="mb-3" onclick="asignarEstrella(4)">
+                                <svg width="20" height="20" class="star-icon">
+                                    <path d="m11.9999 6 2.1245 3.6818 4.1255.9018-2.8125 3.1773L15.8626 18l-3.8627-1.7182L8.1372 18l.4252-4.2391-2.8125-3.1773 4.1255-.9018L11.9999 6z"></path>
+                                </svg>
+                            </div>
+                            <div class="mb-3" onclick="asignarEstrella(5)">
+                                <svg width="20" height="20" class="star-icon">
+                                    <path d="m11.9999 6 2.1245 3.6818 4.1255.9018-2.8125 3.1773L15.8626 18l-3.8627-1.7182L8.1372 18l.4252-4.2391-2.8125-3.1773 4.1255-.9018L11.9999 6z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+    
+    
+    
+                    `;
+
+    return filtros;
+}
+
+function asignarEstrella(numero){
+    valoracion = numero;
 };

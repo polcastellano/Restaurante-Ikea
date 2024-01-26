@@ -33,7 +33,7 @@
                             <?php } ?>
                     </section>
                     <section class="p-0 col-lg-5">
-                            <div class="ps-5 col-lg-12">
+                            <div class="ps-5 quitarPadding col-lg-12">
                                 <h5 class="resumenPedido">Resumen del pedido</h5>
                                 <div class="mt-5 pb-4 border-3 border-bottom bordeResumenPed d-flex justify-content-between">
                                     <p class="textoPedidos">Precio de los productos</p>
@@ -69,7 +69,7 @@
                                 <div>
                                     <h3 class="textosTitulo justify-content-center mt-5 mb-5">Nueva reseña</h3>
                                     <form id="formReseña" method="POST">
-                                        <div class="row col">
+                                        <div class="row m-0">
                                             <input id="usuario_id" value="<?= $usuario_id?>" hidden />
                                             <input id="pedido_id" value="<?= $pedido_id?>" hidden />
                                             <label class="p-0">Comentario</label>
@@ -106,7 +106,7 @@
                                             </div>
                                                 
                                             
-                                            <button type="submit" class="btnLogin border-0 rounded-5 py-3 mt-5">
+                                            <button type="submit" class="btnLogin border-0 rounded-5 py-3 mt-3">
                                                 <div class="d-flex justify-content-center col-12">
                                                     <p class="m-0 btnIniciar">Dejar reseña</p>
                                                 </div>
@@ -114,9 +114,13 @@
                                         </div>
                                     </form>
                                 </div>
+                                <script src="./assets/js/insertarReseña.js"></script>
                                 <?php }else{ ?>
-                                    <h3 class="textosTitulo justify-content-center mt-5 mb-5">Este pedido ya tiene reseña</h3>
-
+                                    <input id="pedido_id2" value="<?= $pedido_id?>" hidden />
+                                    <input id="usuario_id2" value="<?= $usuario_id?>" hidden />
+                                    <section id="reseñaPed">
+                                    </section>
+                                <script src="./assets/js/mostrarReseña.js"></script>
                                 <?php }?>
                             </div>
                         </section>
@@ -124,4 +128,3 @@
                 </div>
         </div>
     </main>
-    <script src="./assets/js/insertarReseña.js"></script>
