@@ -21,6 +21,24 @@ class UsuarioDAO{
     
         return $result;
     }
+
+    public static function getInfoUsuario($usuario_id){
+        $con = DataBase::connect();
+    
+        // Consulta para obtener un usuario a partir del email y la contraseña proporcionados
+        $stmt = $con->prepare("SELECT * FROM usuarios WHERE usuario_id = ?");
+        $stmt->bind_param("i", $usuario_id);
+    
+        $stmt->execute();
+    
+        // Obtiene el resultado de la consulta y lo convierte en un objeto "Usuario"
+        $result = $stmt->get_result();
+        $result = $result->fetch_object("Usuario");
+    
+        $con->close();
+    
+        return $result;
+    }
     
     public static function crearUsuario($usuario, $email, $password){
         $con = DataBase::connect();
@@ -225,6 +243,33 @@ class UsuarioDAO{
     
         return $result;
     }
+
+    public static function acumularPuntos($usuario_id, $puntos2){
+        $con = DataBase::connect();
+       
+        // Obtener los puntos del usuario
+        $obtenerPts = $con->prepare(" SELECT puntos FROM usuarios WHERE usuario_id = ?;");
+        $obtenerPts->bind_param("i", $usuario_id);
+        $obtenerPts->execute();
+        $obtenerPts->bind_result($puntos);
+
+        // Obtener el resultado
+        $obtenerPts->fetch();
+        $obtenerPts->close();
+
+        // Ahora $puntos contiene la cantidad de puntos de la consulta
+        $puntosOld = $puntos;
+        
+        // Sumar los puntos a la variable
+        $puntos2 += $puntosOld;
+        $puntos2 = intval($puntos2);
+
+        // Actualizar los puntos del usuario
+        $stmt = $con->prepare("UPDATE usuarios SET puntos = ? WHERE usuario_id = ?;");
+        $stmt->bind_param("ii", $puntos2, $usuario_id);
+        $stmt->execute();
     
+        $con->close();
+    }    
 
 }

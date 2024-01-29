@@ -77,6 +77,13 @@
                                     <input type="text" id="inputPassword" name="password" class="form-control inputsUsuario" style="display:none;" required>
                                 </p>
                             </div>
+                            <div class="mb-4">
+                                <p class="m-0 titulosInfoPers">IKEA Points</p>
+                                <p>
+                                    <span id="puntos"><?= CalculadoraPrecios::formatPuntos($_SESSION['usuario']->getPuntos()) ?></span>
+                                    <input type="text" id="inputPuntos" name="puntos" class="form-control inputsUsuario" style="display:none;" disabled>
+                                </p>
+                            </div>
                             <div id="botones" style="display:none;">
                                 <button onclick="guardarCambios()" class="btn btn-primary btnGuardarCambios">Guardar cambios</button>
                                 <button onclick="cancelarEdicion(event)" class="btn btn-secondary btnCancelarCambios">Cancelar</button>

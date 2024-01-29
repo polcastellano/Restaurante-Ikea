@@ -44,4 +44,24 @@ Class CalculadoraPrecios{
         return $IVA;
     }
     
+    public static function calcularPuntosPedido($pedidos){
+        // Calcula el precio total de los pedidos sumando los precios individuales
+        $puntos = 0;
+        foreach ($pedidos as $pedido){
+            $puntos += $pedido->calculaPrecioCantidad() * 100;
+        }
+        return $puntos;        
+    }
+
+    public static function formatPuntos($puntos){
+        // Formatea el precio con una coma y un punto como separadores
+        $puntos_formateados = number_format($puntos, 2, ',', '.');
+        
+        // Obtiene la parte entera y decimal del precio formateado
+        $pos_coma = strpos($puntos_formateados, ',');
+        $puntosTotales = substr($puntos_formateados, 0, $pos_coma);
+        
+        // Retorna el precio formateado con un apóstrofe como separador entre la parte entera y la decimal
+        return "$puntosTotales";
+    }
 }

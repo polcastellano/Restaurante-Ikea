@@ -80,7 +80,7 @@
                                         <?= CalculadoraPrecios::formatPrecios(CalculadoraPrecios::calcularPrecioPedido($_SESSION['selecciones'])) ?>€
                                     </p>
                                 </div>
-                                <div class="mt-4 pb-4 border-bottom">
+                                <div class="mt-4 pb-4 border-2 bordeResumenPed border-bottom">
                                     <div class="d-flex justify-content-between">
                                         <p class="textoPedidosBold">Subtotal</p>
                                         <p class="precioSubtotal">
@@ -103,9 +103,19 @@
                                         </p>
                                     </div>
                                 </div>
+                                <div class="mt-4 pb-4 border-bottom">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="textoPedidos">IKEA points</p>
+                                        <p class="textoPedidosBold">
+                                            <!-- Formatea el precio -->
+                                            <?= CalculadoraPrecios::formatPuntos(CalculadoraPrecios::calcularPuntosPedido($_SESSION['selecciones'])) ?> 
+                                        </p>
+                                    </div>
+                                </div>
                                 <form class="mt-5" action="<?= url . "?controller=pedido&action=confirmar"?>" method="POST">
                                     <!-- Calcula el precio final del pedido -->
                                     <input name="precioFinal" value="<?= CalculadoraPrecios::calcularPrecioPedido($_SESSION['selecciones']) ?>" type="hidden" />
+                                    <input name="puntos" value="<?= CalculadoraPrecios::calcularPuntosPedido($_SESSION['selecciones']) ?>" type="hidden" />
                                         <button class="border-0 col-12" type="submit">
                                                 <div class="px-4 py-5 rounded-1 btnContinuar d-flex justify-content-between align-items-center">
                                                     <p class="m-0 continuarPedido">Continuar</p> 

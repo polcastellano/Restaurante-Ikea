@@ -11,18 +11,27 @@ class pedidoController{
         session_start();
 
         // Verifica si se ha enviado el precio final desde un formulario
-        if (isset($_POST['precioFinal'])){
-            // Obtiene el precio total del formulario POST
+        if (isset($_POST['precioFinal']) && isset($_POST['puntos'])){
+            // Obtiene el precio total y los puntos del formulario POST
             $precioTotal = $_POST['precioFinal'];
+            $puntos = $_POST['puntos'];
             
             // Obtiene el ID del usuario de la sesión actual
             $usuario_id = $_SESSION['usuario']->getUsuario_id();
             
             // Almacena el pedido en la base de datos utilizando el PedidoDAO
-            PedidoDAO::almacenaPedido($usuario_id, $precioTotal);
+            PedidoDAO::almacenaPedido($usuario_id, $precioTotal, $puntos);
 
             // Obtiene información sobre el último pedido realizado por el usuario
             $pedido = PedidoDAO::ultimoPedido($usuario_id);
+
+            //Acumula los puntos del pedido al usuario
+            UsuarioDAO::acumularPuntos($usuario_id, $puntos);
+
+            $usuarioActualizado = UsuarioDAO::getInfoUsuario($usuario_id);
+
+            unset($_SESSION['usuario']);
+            $_SESSION['usuario'] = $usuarioActualizado;
 
             // Borra la variable de sesión 'selecciones'
             unset($_SESSION['selecciones']);

@@ -65,6 +65,15 @@
                                         </p>
                                     </div>
                                 </div>
+                                <div class="mt-4 pb-4 border-bottom">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="textoPedidos">IKEA points</p>
+                                        <p class="textoPedidosBold">
+                                            <!-- Formatea el precio -->
+                                            <?= CalculadoraPrecios::formatPuntos(CalculadoraPrecios::calcularPuntosPedido($_SESSION['selecciones'])) ?> 
+                                        </p>
+                                    </div>
+                                </div>
                                 <?php if(!ResenaDAO::getReseña($pedido_id)){?>
                                 <div>
                                     <h3 class="textosTitulo justify-content-center mt-5 mb-5">Nueva reseña</h3>

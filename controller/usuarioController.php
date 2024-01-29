@@ -218,11 +218,11 @@ class usuarioController{
             
             // Actualiza la información del usuario en la base de datos
             UsuarioDAO::editarUsuario($nombre, $email, $contraseña_encriptada, $usuario_id);
-    
-            // Actualiza la información en la sesión del usuario
-            $_SESSION['usuario']->setNombre($nombre);
-            $_SESSION['usuario']->setEmail($email);
-            $_SESSION['usuario']->setPassword($contraseña_encriptada);
+            
+            $usuarioActualizado = UsuarioDAO::getInfoUsuario($usuario_id);
+
+            unset($_SESSION['usuario']);
+            $_SESSION['usuario'] = $usuarioActualizado;
     
             // Redirige al usuario a su panel
             header("Location:".url."?controller=usuario&action=logUsuarios");
