@@ -46,10 +46,7 @@ class APIController{
             $usuario_id = $data['usuario_id'];
 
             ResenaDAO::insertarReseña($usuario_id, $pedido_id, $comentario, $valoracion);
-
-            echo "se ha insertado";
-        }else{
-            echo "faltan datos";
+            return;
         }
     }
 

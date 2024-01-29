@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.text())
         .then(data => {
             // Haz algo con la respuesta de la API si es necesario
-            console.log(data);
+            location.reload();
         })
         .catch(error => {
             console.error(error);
@@ -72,3 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function asignarEstrella(numero){
     valoracion = numero;
 };
+
+  function success () {
+    notie.alert({ type: 1, text: 'La reseña se ha insertado correctamente!', time: 10 })
+  };

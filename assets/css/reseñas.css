@@ -25,3 +25,6 @@
 .iconosOrden.active{
     background-color: var(--bg-color4);
 }
+.notie-background-success {
+    background-color: var(--bg-color11) !important;
+  }
