@@ -1,32 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Obtén el formulario por su ID o cualquier otro selector
-    let formulario = document.getElementById('formReseña');
-
-    let starContainer = document.getElementById('estrellas');
-    let stars = starContainer.querySelectorAll('.star-icon');
-
-    stars.forEach(function(star, index) {
-
-        star.addEventListener('click', function() {
-        resetStars();
-        markStars(index);
-        star.classList.add('active');
-        document.getElementById('valoracion').value = index + 1; // Asigna el valor de la estrella al input hidden
-        });
-    });
-    
-
-    function resetStars() {
-        stars.forEach(function(star) {
-            star.classList.remove('active');
-        });
-    }
-    
-    function markStars(index) {
-        for (let i = 0; i <= index; i++) {
-            stars[i].classList.add('active');
-        }
-    }
 
     // Agrega un controlador de eventos para el evento 'submit' del formulario
     formulario.addEventListener('submit', function(event) {
@@ -61,7 +33,13 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.text())
         .then(data => {
             // Haz algo con la respuesta de la API si es necesario
-            location.reload();
+            resetStars();
+            let comentario = document.getElementById('comentario');
+            comentario.value = "";
+            setTimeout(() =>{
+                location.reload();
+            },3000);
+            
         })
         .catch(error => {
             console.error(error);
@@ -69,10 +47,40 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Obtén el formulario por su ID o cualquier otro selector
+let formulario = document.getElementById('formReseña');
+
+let starContainer = document.getElementById('estrellas');
+let stars = starContainer.querySelectorAll('.star-icon');
+
+stars.forEach(function(star, index) {
+
+    star.addEventListener('click', function() {
+    resetStars();
+    markStars(index);
+    star.classList.add('active');
+    document.getElementById('valoracion').value = index + 1; // Asigna el valor de la estrella al input hidden
+    });
+});
+
+
+function resetStars() {
+    stars.forEach(function(star) {
+        star.classList.remove('active');
+    });
+}
+
+function markStars(index) {
+    for (let i = 0; i <= index; i++) {
+        stars[i].classList.add('active');
+    }
+}
+
 function asignarEstrella(numero){
     valoracion = numero;
 };
 
-  function success () {
-    notie.alert({ type: 1, text: 'La reseña se ha insertado correctamente!', time: 10 })
-  };
+let reseña = document.getElementById('dejarReseña');
+reseña.addEventListener('click', function(){
+    notie.alert({ type: 1, text: 'La reseña se ha insertado correctamente!', time: 3 })
+});

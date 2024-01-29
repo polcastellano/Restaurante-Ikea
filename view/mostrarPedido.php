@@ -106,7 +106,7 @@
                                             </div>
                                                 
                                             
-                                            <button onclick="success()" type="submit" class="btnLogin border-0 rounded-5 py-3 mt-3">
+                                            <button id="dejarReseña" type="submit" class="btnLogin border-0 rounded-5 py-3 mt-3">
                                                 <div class="d-flex justify-content-center col-12">
                                                     <p class="m-0 btnIniciar">Dejar reseña</p>
                                                 </div>
