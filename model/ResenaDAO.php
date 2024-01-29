@@ -48,7 +48,7 @@ class ResenaDAO{
     public static function getReseña($pedido_id){
         $con = DataBase::connect();
         
-        $stmt = $con->prepare("SELECT * FROM reseñas WHERE pedido_id = ?");
+        $stmt = $con->prepare("SELECT reseña_id FROM pedidos_reseñas WHERE pedido_id = ? AND reseña_id IS NOT NULL;");
         $stmt->bind_param("i", $pedido_id);
 
         $stmt->execute();
@@ -71,10 +71,18 @@ class ResenaDAO{
     public static function insertarReseña($usuario_id, $pedido_id, $comentario, $valoracion){
         $con = DataBase::connect();
         
-        $stmt = $con->prepare("INSERT INTO reseñas (usuario_id, pedido_id, comentario, valoracion) VALUES (?,?,?,?);");
-        $stmt->bind_param("iisi", $usuario_id, $pedido_id, $comentario, $valoracion);
+        $stmt = $con->prepare("INSERT INTO reseñas (usuario_id, comentario, valoracion) VALUES (?,?,?);");
+        $stmt->bind_param("isi", $usuario_id, $comentario, $valoracion);
 
         $stmt->execute();
+
+        // Obtener el ID de la última fila insertada
+        $reseña_id = $stmt->insert_id;  
+
+        $stmt2 = $con->prepare(" UPDATE pedidos_reseñas SET reseña_id = ? WHERE pedido_id = ?;");
+        $stmt2->bind_param("ii", $reseña_id, $pedido_id);
+       
+        $stmt2->execute();
 
         $con->close();
         
@@ -83,16 +91,28 @@ class ResenaDAO{
     public static function getDatosReseña($pedido_id){
         $con = DataBase::connect();
         
-        $stmt = $con->prepare("SELECT * FROM reseñas WHERE pedido_id = ?");
+        $stmt = $con->prepare("SELECT reseña_id FROM pedidos_reseñas WHERE pedido_id = ?");
         $stmt->bind_param("i", $pedido_id);
 
         $stmt->execute();
 
         $result = $stmt->get_result();
 
+        // Obtener el reseña_id de la primera fila
+        $row = $result->fetch_assoc();
+        $reseña_id = $row['reseña_id'];
+
+        // Segunda consulta para obtener todos los datos de la reseña
+        $stmt2 = $con->prepare("SELECT * FROM reseñas WHERE reseña_id = ?");
+        $stmt2->bind_param("i", $reseña_id);
+
+        $stmt2->execute();
+
+        $result2 = $stmt2->get_result();
+
         $con->close();
         
-        $reseña = $result->fetch_object("Resena");
+        $reseña = $result2->fetch_object("Resena");
         
         return $reseña;
     }

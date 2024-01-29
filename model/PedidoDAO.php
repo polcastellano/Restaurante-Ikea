@@ -9,9 +9,17 @@ class PedidoDAO{
         $con = DataBase::connect();
     
         // Prepara y ejecuta la inserción del pedido
-        $stmt = $con->prepare("INSERT INTO pedidos (usuario_id, precio_total, reseña_id) VALUES (?, ?, null)");
+        $stmt = $con->prepare("INSERT INTO pedidos (usuario_id, precio_total) VALUES (?, ?)");
         $stmt->bind_param("id", $usuario_id, $precioTotal);
         $stmt->execute();
+
+        // Obtener el ID de la última fila insertada
+        $pedido_id = $stmt->insert_id; 
+
+        //Insertar el pedido_id en la tabla intermedia con las reseñas
+        $stmt2 = $con->prepare("INSERT INTO pedidos_reseñas (pedido_id) VALUES (?)");
+        $stmt2->bind_param("i", $pedido_id);
+        $stmt2->execute();
     
         // Itera sobre los elementos en 'selecciones' y guarda cada producto en la tabla de pedidos_productos
         foreach ($_SESSION['selecciones'] as $pedido) {

@@ -145,10 +145,26 @@ class UsuarioDAO{
     public static function borrarPedido($pedido_id){
         $con = DataBase::connect();
         
-        // Borrar las referencias del pedido en la tabla pedidos_productos
-        $borrarResPed = $con->prepare("DELETE FROM reseñas WHERE pedido_id = ?");
+        //Recogo la reseña_id
+        $cogerReseña_id = $con->prepare("SELECT reseña_id FROM pedidos_reseñas WHERE pedido_id = ?");
+        $cogerReseña_id->bind_param("i", $pedido_id);
+        $cogerReseña_id->execute();
+
+        $result = $cogerReseña_id->get_result();
+
+        // Obtener el reseña_id de la primera fila
+        $row = $result->fetch_assoc();
+        $reseña_id = $row['reseña_id'];
+
+        // Borrar la reseña de pedidos_reseña 
+        $borrarResPed = $con->prepare("DELETE FROM pedidos_reseñas WHERE pedido_id = ?");
         $borrarResPed->bind_param("i", $pedido_id);
         $borrarResPed->execute();
+
+        // Borrar la reseña
+        $borrarReseña = $con->prepare("DELETE FROM reseñas WHERE reseña_id = ?");
+        $borrarReseña->bind_param("i", $reseña_id);
+        $borrarReseña->execute();
         
         // Borrar el pedido de la tabla pedidos
         $borrarPedido = $con->prepare("DELETE FROM pedidos WHERE pedido_id = ?");
