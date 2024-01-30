@@ -105,10 +105,22 @@
                                 </div>
                                 <div class="mt-4 pb-4 border-bottom">
                                     <div class="d-flex justify-content-between">
-                                        <p class="textoPedidos">IKEA points</p>
+                                        <p class="textoPedidos">IKEA points del pedido</p>
                                         <p class="textoPedidosBold">
-                                            <!-- Formatea el precio -->
+                                            <!-- Formatea los puntos -->
                                             <?= CalculadoraPrecios::formatPuntos(CalculadoraPrecios::calcularPuntosPedido($_SESSION['selecciones'])) ?> 
+                                        </p>
+                                    </div>
+                                    <div class="d-flex justify-content-between" >
+                                        <p class="textoPedidos">Utiliza tus IKEA points</p>
+                                        <input id="usuario_id" hidden value="<?= $_SESSION['usuario']->getUsuario_id()?>" type="text">
+                                        <input id="tusPoints" class="textoPedidosBold" type="text">
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center my-2">
+                                        <p class="textoPedidos">Precio total con puntos</p>
+                                        <p class="textoPedidosBold">
+                                            <!-- Formatea los puntos -->
+                                            <?= CalculadoraPrecios::formatPrecios(CalculadoraPrecios::calcularPrecioPedido($_SESSION['selecciones'])) ?>€
                                         </p>
                                     </div>
                                 </div>
@@ -136,3 +148,4 @@
                     }?>
         </div>
     </main>
+    <script src="./assets/js/gestorPuntos.js"></script>

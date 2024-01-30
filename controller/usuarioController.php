@@ -192,7 +192,7 @@ class usuarioController{
             // Elimina el pedido con el ID proporcionado
             UsuarioDAO::borrarPedido($_POST['pedido_id']);
             // Redirige al usuario a su panel después de eliminar el pedido
-            self::logUsuarios();
+            header("Location:".url."?controller=usuario");
         }else{
             // Si no se envió el ID del pedido, redirige a la página de productos
             header("Location:".url."?controller=producto");
@@ -221,7 +221,6 @@ class usuarioController{
             
             $usuarioActualizado = UsuarioDAO::getInfoUsuario($usuario_id);
 
-            unset($_SESSION['usuario']);
             $_SESSION['usuario'] = $usuarioActualizado;
     
             // Redirige al usuario a su panel

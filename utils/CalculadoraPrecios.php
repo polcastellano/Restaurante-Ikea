@@ -62,6 +62,6 @@ Class CalculadoraPrecios{
         $puntosTotales = substr($puntos_formateados, 0, $pos_coma);
         
         // Retorna el precio formateado con un apóstrofe como separador entre la parte entera y la decimal
-        return "$puntosTotales";
+        return $puntosTotales;
     }
 }

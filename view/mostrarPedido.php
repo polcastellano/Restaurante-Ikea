@@ -42,7 +42,7 @@
                                         <?= CalculadoraPrecios::formatPrecios(CalculadoraPrecios::calcularPrecioPedido($ultimoPedido)) ?>€
                                     </p>
                                 </div>
-                                <div class="mt-4 pb-4 border-bottom">
+                                <div class="mt-4 pb-4 border-2 bordeResumenPed border-bottom">
                                     <div class="d-flex justify-content-between">
                                         <p class="textoPedidosBold">Subtotal</p>
                                         <p class="precioSubtotal">
@@ -70,7 +70,7 @@
                                         <p class="textoPedidos">IKEA points</p>
                                         <p class="textoPedidosBold">
                                             <!-- Formatea el precio -->
-                                            <?= CalculadoraPrecios::formatPuntos(CalculadoraPrecios::calcularPuntosPedido($_SESSION['selecciones'])) ?> 
+                                            <?= CalculadoraPrecios::formatPuntos(CalculadoraPrecios::calcularPuntosPedido($ultimoPedido)) ?> 
                                         </p>
                                     </div>
                                 </div>

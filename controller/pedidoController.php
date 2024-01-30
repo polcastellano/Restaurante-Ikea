@@ -30,7 +30,6 @@ class pedidoController{
 
             $usuarioActualizado = UsuarioDAO::getInfoUsuario($usuario_id);
 
-            unset($_SESSION['usuario']);
             $_SESSION['usuario'] = $usuarioActualizado;
 
             // Borra la variable de sesión 'selecciones'

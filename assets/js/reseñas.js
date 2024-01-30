@@ -71,7 +71,6 @@ let arrayReseñas;
 
 function mostrarReseñas(reseñas){
     arrayReseñas = reseñas;
-    let sectionReseñas = document.getElementById('resenas');
     montarReseñas(reseñas);
     
 };

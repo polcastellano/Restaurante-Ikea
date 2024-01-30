@@ -77,6 +77,27 @@ class APIController{
             
             echo json_encode($reseñasAsoc, JSON_UNESCAPED_UNICODE); 
             return; //return para salir de la funcion
-        }    
+        }        
+    }
+
+    public function conseguirPuntos(){
+        //Comprobar los datos
+        $inputJSON = file_get_contents('php://input');
+        $data = json_decode($inputJSON, TRUE); //convert JSON into array
+        
+        if (isset($data['usuario_id'])){
+            $usuario_id = $data['usuario_id'];
+            
+            $usuario = UsuarioDAO::getInfoUsuario($usuario_id);
+
+            $puntos = $usuario->getPuntos();
+
+            $puntosAsoc [] = [
+                'puntos' => $puntos,
+            ];
+
+            echo json_encode($puntosAsoc, JSON_UNESCAPED_UNICODE); 
+            return; //return para salir de la funcion
+        }
     }
 }
