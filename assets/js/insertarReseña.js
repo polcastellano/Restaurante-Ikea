@@ -53,27 +53,52 @@ let formulario = document.getElementById('formReseña');
 let starContainer = document.getElementById('estrellas');
 let stars = starContainer.querySelectorAll('.star-icon');
 
-stars.forEach(function(star, index) {
+let seleccionado;
+let estrellaSeleccionada;
 
+
+
+stars.forEach(function(star, index) {
+    
     star.addEventListener('click', function() {
-    resetStars();
+    resetStars(stars);
     markStars(index);
+    estrellaSeleccionada = index + 1;
     star.classList.add('active');
     document.getElementById('valoracion').value = index + 1; // Asigna el valor de la estrella al input hidden
+    seleccionado = index;
+    });
+
+    document.getElementsByClassName('hoverEstrellas')[index].addEventListener('mouseover', function() {
+        resetStars(stars);
+        markStars(this.id);
+        if (seleccionado == true) {
+            resetStars(stars);
+            markStars(estrellaSeleccionada);
+        }
+    });
+
+    document.getElementsByClassName('hoverEstrellas')[index].addEventListener('mouseout', function() {
+        resetStars(stars);
+        markStars(estrellaSeleccionada);
+        if(seleccionado == true){
+            resetStars(stars);
+            markStars(estrellaSeleccionada);
+        }
     });
 });
+
+function markStars(index) {
+    for (let i = 0; i < index; i++) {
+        stars[i].classList.add('active');
+    }
+}
 
 
 function resetStars() {
     stars.forEach(function(star) {
         star.classList.remove('active');
     });
-}
-
-function markStars(index) {
-    for (let i = 0; i <= index; i++) {
-        stars[i].classList.add('active');
-    }
 }
 
 function asignarEstrella(numero){

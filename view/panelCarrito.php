@@ -114,13 +114,14 @@
                                     <div class="d-flex justify-content-between" >
                                         <p class="textoPedidos">Utiliza tus IKEA points</p>
                                         <input id="usuario_id" hidden value="<?= $_SESSION['usuario']->getUsuario_id()?>" type="text">
-                                        <input id="tusPoints" class="textoPedidosBold" type="text">
+                                        <input id="tusPoints" class="textoPedidosBold" type="number" min="0" max="<?= $_SESSION['usuario']->getPuntos()?>" placeholder="<?= $_SESSION['usuario']->getPuntos()?>">
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center my-2">
-                                        <p class="textoPedidos">Precio total con puntos</p>
-                                        <p class="textoPedidosBold">
-                                            <!-- Formatea los puntos -->
-                                            <?= CalculadoraPrecios::formatPrecios(CalculadoraPrecios::calcularPrecioPedido($_SESSION['selecciones'])) ?>€
+                                        <p class="textoPedidos">Precio total con descuento</p>
+                                        <input id="inputPrecioDescuento" type="number" hidden value="<?= CalculadoraPrecios::calcularPrecioPedido($_SESSION['selecciones'])?>">
+                                        <p class="textoPedidosBold" id="precioDescuento" >
+                                            <!-- Formatea el precio -->
+                                            <!-- <?= CalculadoraPrecios::formatPrecios(CalculadoraPrecios::calcularPrecioPedido($_SESSION['selecciones'])) ?>€ -->
                                         </p>
                                     </div>
                                 </div>

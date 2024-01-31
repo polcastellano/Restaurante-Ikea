@@ -87,27 +87,27 @@
 
                                                 <input id="valoracion" hidden />
 
-                                                <div class="mb-3" onclick="asignarEstrella(1)">
+                                                <div id="1"class="hoverEstrellas mb-3" onclick="asignarEstrella(1)">
                                                     <svg width="20" height="20" class="star-icon">
                                                         <path d="m11.9999 6 2.1245 3.6818 4.1255.9018-2.8125 3.1773L15.8626 18l-3.8627-1.7182L8.1372 18l.4252-4.2391-2.8125-3.1773 4.1255-.9018L11.9999 6z"></path>
                                                     </svg>
                                                 </div>
-                                                <div class="mb-3" onclick="asignarEstrella(2)">
+                                                <div id="2"class="hoverEstrellas mb-3" onclick="asignarEstrella(2)">
                                                     <svg width="20" height="20" class="star-icon">
                                                         <path d="m11.9999 6 2.1245 3.6818 4.1255.9018-2.8125 3.1773L15.8626 18l-3.8627-1.7182L8.1372 18l.4252-4.2391-2.8125-3.1773 4.1255-.9018L11.9999 6z"></path>
                                                     </svg>
                                                 </div>
-                                                <div class="mb-3" onclick="asignarEstrella(3)">
+                                                <div id="3"class="hoverEstrellas mb-3" onclick="asignarEstrella(3)">
                                                     <svg width="20" height="20" class="star-icon">
                                                         <path d="m11.9999 6 2.1245 3.6818 4.1255.9018-2.8125 3.1773L15.8626 18l-3.8627-1.7182L8.1372 18l.4252-4.2391-2.8125-3.1773 4.1255-.9018L11.9999 6z"></path>
                                                     </svg>
                                                 </div>
-                                                <div class="mb-3" onclick="asignarEstrella(4)">
+                                                <div id="4"class="hoverEstrellas mb-3" onclick="asignarEstrella(4)">
                                                     <svg width="20" height="20" class="star-icon">
                                                         <path d="m11.9999 6 2.1245 3.6818 4.1255.9018-2.8125 3.1773L15.8626 18l-3.8627-1.7182L8.1372 18l.4252-4.2391-2.8125-3.1773 4.1255-.9018L11.9999 6z"></path>
                                                     </svg>
                                                 </div>
-                                                <div class="mb-3" onclick="asignarEstrella(5)">
+                                                <div id="5"class="hoverEstrellas mb-3" onclick="asignarEstrella(5)">
                                                     <svg width="20" height="20" class="star-icon">
                                                         <path d="m11.9999 6 2.1245 3.6818 4.1255.9018-2.8125 3.1773L15.8626 18l-3.8627-1.7182L8.1372 18l.4252-4.2391-2.8125-3.1773 4.1255-.9018L11.9999 6z"></path>
                                                     </svg>
