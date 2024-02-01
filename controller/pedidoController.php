@@ -10,7 +10,7 @@ class pedidoController{
         // Inicia la sesión para utilizar variables de sesión
         session_start();
 
-        // Verifica si se ha enviado el precio final desde un formulario
+        // Verifica si se ha enviado los datos desde un formulario
         if (isset($_POST['precioFinal']) && isset($_POST['puntos'])){
             // Obtiene el precio total y los puntos del formulario POST
             $precioTotal = $_POST['precioFinal'];
@@ -24,6 +24,9 @@ class pedidoController{
 
             // Obtiene información sobre el último pedido realizado por el usuario
             $pedido = PedidoDAO::ultimoPedido($usuario_id);
+
+            //Restar puntos al usuario
+            ResenaDAO::restarPuntosUsuario($puntos, $usuario_id);
 
             //Acumula los puntos del pedido al usuario
             UsuarioDAO::acumularPuntos($usuario_id, $puntos);

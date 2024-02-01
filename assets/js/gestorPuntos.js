@@ -9,8 +9,6 @@ document.addEventListener('DOMContentLoaded', function(){
     // Convertir el objeto a una cadena JSON
     let datosJSON = JSON.stringify(datos);
 
-    actualizarPrecio();
-
     fetch("http://localhost/DAW/ikea/?controller=api&action=conseguirPuntos", {
         method : 'POST',
         headers: {
@@ -23,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function(){
     })
     .then(data => {
         asignarPuntos(data);
+        actualizarPrecio();
         
     })
     .catch(error => {
@@ -41,32 +40,33 @@ function asignarPuntos(totalPuntos){
 
 function actualizarPrecio(){
     let puntos = document.getElementById('tusPoints');
+    calcularPrecio();
+    
+    puntos.onkeyup = () => {
+        
+        calcularPrecio();
+    };
+
+    puntos.onchange = () => {
+        
+        calcularPrecio();
+    };
+};
+
+function calcularPrecio(){
+    let puntos = document.getElementById('tusPoints');
+    let inputPrecioTotal = document.getElementById('inputPrecioTotal');
     let inputPrecioDescuento = document.getElementById('inputPrecioDescuento');
     let precioDescuento = document.getElementById('precioDescuento');
 
+    let descuento = puntos.value / 1000;
 
-    let puntosSeleccionados = puntos.value;
-        
-    let descuento = puntosSeleccionados / 100;
-
-    let preciototal = inputPrecioDescuento.value - descuento;
+    let preciototal = inputPrecioTotal.value - descuento;
     
-    if(descuento > inputPrecioDescuento.value){
+    if(descuento > inputPrecioTotal.value){
         preciototal = 0;
-    }
-    precioDescuento.innerHTML = `<?= CalculadoraPrecios::formatPrecios(CalculadoraPrecios::calcularPrecioPedido(${preciototal}) ?>€`;
-    
-    puntos.onchange = () => {
-        
-        puntosSeleccionados = puntos.value;
-        
-        descuento = puntosSeleccionados / 100;
-
-        preciototal = inputPrecioDescuento.value - descuento;
-        
-        if(descuento > inputPrecioDescuento.value){
-            preciototal = 0;
-        }
-        precioDescuento.innerHTML = `<?= CalculadoraPrecios::formatPrecios(CalculadoraPrecios::calcularPrecioPedido(${preciototal}) ?>€`;
     };
-}
+    precioDescuento.innerHTML = preciototal.toFixed(2);
+
+    inputPrecioDescuento.value = preciototal.toFixed(2);
+};

@@ -117,4 +117,30 @@ class ResenaDAO{
         return $reseña;
     }
 
+    public static function restarPuntosUsuario($puntos, $usuario_id){
+        $con = DataBase::connect();
+
+        $stmt = $con->prepare("SELECT puntos FROM usuarios WHERE usuario_id = ?");
+        $stmt->bind_param("i", $usuario_id);
+
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        // Obtener el reseña_id de la primera fila
+        $row = $result->fetch_assoc();
+        $puntosUsu = $row['puntos'];
+
+        $puntosTotales = $puntosUsu - $puntos;
+
+
+        //Actualizar los puntos del usuario
+        $stmt2 = $con->prepare("UPDATE usuarios SET puntos = ? WHERE usuario_id = ?;");
+        $stmt2->bind_param("ii", $puntosTotales, $usuario_id);
+       
+        $stmt2->execute();
+
+        $con->close();
+    }
+
 }

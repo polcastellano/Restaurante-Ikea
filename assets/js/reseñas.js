@@ -126,7 +126,7 @@ function asignarEstrella(numero){
     }
     
     let arrayFiltrado = arrayReseñas.filter((reseña) => reseña.valoracion == numero);
-    montarReseñas(arrayFiltrado);
+    montarReseñas(arrayFiltrado);   
 };
 
 //Reset de las estrellas para limpiar las estrellas cuando filtro por orden
