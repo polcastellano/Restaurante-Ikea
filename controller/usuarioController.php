@@ -46,6 +46,10 @@ class usuarioController{
             if(isset($_COOKIE['UltimoPedido'])){
                 $ultimoPedido = UsuarioDAO::ultimoPedido($_COOKIE['UltimoPedido']); 
             }
+
+            $usuarioActualizado = UsuarioDAO::getInfoUsuario($usuario_id);
+
+            $_SESSION['usuario'] = $usuarioActualizado;
     
             // Incluye la vista del panel del usuario
             include_once 'view/panelUsuario.php';

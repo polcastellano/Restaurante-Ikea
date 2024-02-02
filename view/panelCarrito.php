@@ -119,17 +119,17 @@
                                     <div class="d-flex justify-content-between align-items-center my-2">
                                         <p class="textoPedidos">Precio total con descuento</p>
                                         <input id="inputPrecioTotal" type="number" hidden value="<?= CalculadoraPrecios::calcularPrecioPedido($_SESSION['selecciones'])?>">
-                                        <input id="inputPrecioDescuento" name="inputPrecioDescuento" type="number" hidden>
                                         <p id="precioDescuento" class="textoPedidosBold">
                                             <!-- Formatea el precio -->
                                             
                                         </p>
                                     </div>
                                 </div>
-                                <form class="mt-5" action="<?= url . "?controller=pedido&action=confirmar"?>" method="POST">
+                                <form id="hacerPedido" class="mt-5" action="<?= url . "?controller=pedido&action=confirmar"?>" method="POST">
                                     <!-- Calcula el precio final del pedido -->
-                                    <input name="precioFinal" value="<?= CalculadoraPrecios::calcularPrecioPedido($_SESSION['selecciones']) ?>" type="hidden" />
-                                    <input name="puntos" value="<?= CalculadoraPrecios::calcularPuntosPedido($_SESSION['selecciones']) ?>" type="hidden" />
+                                    <input id="puntosUsados" type="hidden">
+                                    <input id="inputPrecioDescuento" type="hidden">
+                                    <input id="puntos" value="<?= CalculadoraPrecios::calcularPuntosPedido($_SESSION['selecciones']) ?>" type="hidden" />
                                         <button class="border-0 col-12" type="submit">
                                                 <div class="px-4 py-5 rounded-1 btnContinuar d-flex justify-content-between align-items-center">
                                                     <p class="m-0 continuarPedido">Continuar</p> 

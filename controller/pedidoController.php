@@ -10,11 +10,19 @@ class pedidoController{
         // Inicia la sesión para utilizar variables de sesión
         session_start();
 
+        //Comprobar los datos
+        $inputJSON = file_get_contents('php://input');
+        $data = json_decode($inputJSON, TRUE); //convert JSON into array
+
         // Verifica si se ha enviado los datos desde un formulario
-        if (isset($_POST['precioFinal']) && isset($_POST['puntos'])){
+        if (isset($data['preciototal']) && isset($data['puntos']) && isset($data['puntosUsados'])){
             // Obtiene el precio total y los puntos del formulario POST
-            $precioTotal = $_POST['precioFinal'];
-            $puntos = $_POST['puntos'];
+            $precioTotal = $data['preciototal'];
+            doubleval($precioTotal);
+            $puntos = $data['puntos'];
+            intval($puntos);
+            $puntosUsados = $data['puntosUsados'];
+            intval($puntosUsados);
             
             // Obtiene el ID del usuario de la sesión actual
             $usuario_id = $_SESSION['usuario']->getUsuario_id();
@@ -26,7 +34,7 @@ class pedidoController{
             $pedido = PedidoDAO::ultimoPedido($usuario_id);
 
             //Restar puntos al usuario
-            ResenaDAO::restarPuntosUsuario($puntos, $usuario_id);
+            ResenaDAO::restarPuntosUsuario($puntosUsados, $usuario_id);
 
             //Acumula los puntos del pedido al usuario
             UsuarioDAO::acumularPuntos($usuario_id, $puntos);

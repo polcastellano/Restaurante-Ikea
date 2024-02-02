@@ -19,7 +19,7 @@
                                 <input id="valoracion" hidden />
                                 
                                 <div id="1" class="hoverEstrellas" onclick="asignarEstrella(1)">
-                                    <svg width="20" height="20" class="star-icon">
+                                    <svg  width="20" height="20" class="star-icon">
                                         <path d="m11.9999 6 2.1245 3.6818 4.1255.9018-2.8125 3.1773L15.8626 18l-3.8627-1.7182L8.1372 18l.4252-4.2391-2.8125-3.1773 4.1255-.9018L11.9999 6z"></path>
                                     </svg>
                                 </div>

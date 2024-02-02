@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-
+    // Obtén el formulario por su ID o cualquier otro selector
+    let formulario = document.getElementById('formReseña');
+    
     // Agrega un controlador de eventos para el evento 'submit' del formulario
     formulario.addEventListener('submit', function(event) {
         // Evita que el formulario se envíe automáticamente
@@ -47,13 +49,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Obtén el formulario por su ID o cualquier otro selector
-let formulario = document.getElementById('formReseña');
+
 
 let starContainer = document.getElementById('estrellas');
 let stars = starContainer.querySelectorAll('.star-icon');
 
-let seleccionado;
 let estrellaSeleccionada;
 
 
@@ -66,25 +66,16 @@ stars.forEach(function(star, index) {
     estrellaSeleccionada = index + 1;
     star.classList.add('active');
     document.getElementById('valoracion').value = index + 1; // Asigna el valor de la estrella al input hidden
-    seleccionado = index;
     });
 
     document.getElementsByClassName('hoverEstrellas')[index].addEventListener('mouseover', function() {
         resetStars(stars);
         markStars(this.id);
-        if (seleccionado == true) {
-            resetStars(stars);
-            markStars(estrellaSeleccionada);
-        }
     });
 
     document.getElementsByClassName('hoverEstrellas')[index].addEventListener('mouseout', function() {
         resetStars(stars);
         markStars(estrellaSeleccionada);
-        if(seleccionado == true){
-            resetStars(stars);
-            markStars(estrellaSeleccionada);
-        }
     });
 });
 

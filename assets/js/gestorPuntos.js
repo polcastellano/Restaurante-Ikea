@@ -9,6 +9,44 @@ document.addEventListener('DOMContentLoaded', function(){
     // Convertir el objeto a una cadena JSON
     let datosJSON = JSON.stringify(datos);
 
+    let formulario = document.getElementById('hacerPedido');
+
+    // Agrega un controlador de eventos para el evento 'submit' del formulario
+    formulario.addEventListener('submit', function(event) {
+        // Evita que el formulario se envíe automáticamente
+        event.preventDefault();
+
+        let preciototal = document.getElementById('inputPrecioDescuento').value;
+        let puntos = document.getElementById('puntos').value;
+        let puntosUsados = document.getElementById('puntosUsados').value;
+        
+        // Crear un objeto con los datos
+        let datos = {
+            preciototal: preciototal,
+            puntos: puntos,
+            puntosUsados: puntosUsados,
+        };
+
+        // Convertir el objeto a una cadena JSON
+        let datosJSON = JSON.stringify(datos);
+
+        // Realiza la solicitud a la API utilizando los datos del formulario
+        fetch("http://localhost/DAW/ikea/?controller=pedido&action=confirmar", {
+            method: 'POST',
+            headers: {
+                'Content-Type':'application/json',
+            },
+            body: datosJSON,
+        })
+        .then(response => response.text())
+        .then(data => {
+            location.href = "http://localhost/DAW/ikea/?controller=usuario";
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    });
+
     fetch("http://localhost/DAW/ikea/?controller=api&action=conseguirPuntos", {
         method : 'POST',
         headers: {
@@ -55,6 +93,7 @@ function actualizarPrecio(){
 
 function calcularPrecio(){
     let puntos = document.getElementById('tusPoints');
+    let puntosUsados = document.getElementById('puntosUsados');
     let inputPrecioTotal = document.getElementById('inputPrecioTotal');
     let inputPrecioDescuento = document.getElementById('inputPrecioDescuento');
     let precioDescuento = document.getElementById('precioDescuento');
@@ -66,7 +105,10 @@ function calcularPrecio(){
     if(descuento > inputPrecioTotal.value){
         preciototal = 0;
     };
-    precioDescuento.innerHTML = preciototal.toFixed(2);
+    let precioFormat = preciototal.toFixed(2).replace(".", "'");
+    precioDescuento.innerHTML = precioFormat + " €";
 
     inputPrecioDescuento.value = preciototal.toFixed(2);
+
+    puntosUsados.value = puntos.value;
 };
