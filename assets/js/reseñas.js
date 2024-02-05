@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     orders.forEach(function(order) {
         order.addEventListener('click', function() {
+            resetStars(stars);
             // Eliminar la clase 'active' de todos los elementos
             orders.forEach(function(otherOrder) {
                 otherOrder.classList.remove('active');
