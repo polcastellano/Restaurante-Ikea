@@ -100,4 +100,17 @@ class APIController{
             return; //return para salir de la funcion
         }
     }
+
+    public function consultaProductos(){
+
+        $productos = ResenaDAO::getAllProductos();
+
+        $productos2 [] = [
+            'productos' => $productos,
+        ];
+
+        
+        echo json_encode($productos2, JSON_UNESCAPED_UNICODE); 
+            return; //return para salir de la funcion
+    }
 }

@@ -8,9 +8,12 @@
 
         <section class="pt-3 pb-4 border-bottom">
             <?php foreach (ProductoDAO::getAllCategorias() as $categoria){ ?>
-                <a class="text-decoration-none" href="#<?=$categoria[0]?>">
-                    <button class="py-2 px-4 me-3 rounded-5 border-0 categorias txtCategorias"><?=$categoria[0]?></button>
-                </a>
+                <div class="form-check">
+                    <label class="form-check-label" for="<?= $categoria[0]?>">
+                        <?= $categoria[0]?>
+                    </label>
+                    <input class="form-check-input filtrosProd" type="checkbox" value="<?= $categoria[0]?>" id="<?= $categoria[0]?>" checked>
+                </div>
             <?php } ?>
         </section>
 
@@ -204,4 +207,6 @@
 
     </div>
     </main>
+    <script src="./assets/js/filtroProductos.js"></script>
+
 </body>

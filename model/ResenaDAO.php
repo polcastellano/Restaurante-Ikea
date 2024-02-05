@@ -143,4 +143,24 @@ class ResenaDAO{
         $con->close();
     }
 
+    public static function getAllProductos(){
+        $con = DataBase::connect();
+    
+        // Consulta para obtener todos los productos
+        $stmt = $con->prepare("SELECT * FROM productos");
+    
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        $con->close();
+    
+        $res =[];
+    
+        // Crea un array con los productos
+        while($producto = $result->fetch_object("Producto")){
+            $res[] = $producto;
+        }
+        return $res;
+    }
+
 }
