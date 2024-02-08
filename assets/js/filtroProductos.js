@@ -76,6 +76,7 @@ function buscarFiltros() {
     allFiltros.forEach(filtro => {
         if (filtro.checked) {
             arrayFiltrado = arrayProductos.filter((producto) => producto.categoria_id == filtro.id);
+            console.log(arrayFiltrado)
             montarProductos(arrayFiltrado);
         }
 
@@ -83,6 +84,11 @@ function buscarFiltros() {
             if (this.checked) { 
                 arrayFiltrado = arrayProductos.filter((producto) => producto.categoria_id == filtro.id);
                 montarProductos(arrayFiltrado);
+            }else{
+                let body = document.getElementById('productos');
+                while (body.firstChild) {
+                    body.removeChild(body.firstChild);
+                }
             }
         });
     });
@@ -146,5 +152,4 @@ function montarProductos(arrayFiltrado){
         `;
         body.appendChild(contenidoProds);
     });
-    return contenidoProds;
 }
