@@ -4,6 +4,7 @@
 //Cargar Modelos necesarios BBDD
 include_once 'model/Resena.php';
 include_once 'model/ResenaDAO.php';
+include_once 'model/Producto.php';
 
 class APIController{    
 
@@ -105,12 +106,17 @@ class APIController{
 
         $productos = ResenaDAO::getAllProductos();
 
-        $productos2 [] = [
-            'productos' => $productos,
-        ];
+        $preciosE = ResenaDAO::getAllPreciosE();
 
+        $preciosD = ResenaDAO::getAllPreciosD();
         
-        echo json_encode($productos2, JSON_UNESCAPED_UNICODE); 
-            return; //return para salir de la funcion
+        for ($i = 0; $i < count($productos); $i++) {
+            // Agregar el campo adicional al objeto stdClass de producto
+            $productos[$i]->precioE = $preciosE[$i];
+            $productos[$i]->precioD = $preciosD[$i];
+        }
+
+        echo json_encode($productos, JSON_UNESCAPED_UNICODE);
+        return; //return para salir de la funcion
     }
 }

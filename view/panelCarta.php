@@ -7,18 +7,21 @@
 
 
         <section class="pt-3 pb-4 border-bottom">
-            <?php foreach (ProductoDAO::getAllCategorias() as $categoria){ ?>
+            <?php $index = 1; foreach (ProductoDAO::getAllCategorias() as $categoria){ ?>
                 <div class="form-check">
                     <label class="form-check-label" for="<?= $categoria[0]?>">
                         <?= $categoria[0]?>
                     </label>
-                    <input class="form-check-input filtrosProd" type="checkbox" value="<?= $categoria[0]?>" id="<?= $categoria[0]?>" checked>
+                    <input class="form-check-input filtrosProd" type="checkbox" value="<?= $categoria[0]?>" id="<?= $index?>" checked>
                 </div>
-            <?php } ?>
+            <?php $index++; } ?>
         </section>
 
         <h2 id="Plato" class="mt-5 textosTituloCat">Platos Principales</h2>
-        
+        <section id="productos">
+            
+        </section>
+        <!--
         <section class="contenido row p-0 m-0 mt-5">
             <?php foreach($platos as $plato){ ?>
                 <div class="card border-0 rounded-0 border-bottom col-12 col-sm-6 col-md-4 col-lg-3 mb-5 justify-content-center">
@@ -203,6 +206,7 @@
                 </div>
             <?php } ?>
         </section>
+        -->
 
 
     </div>

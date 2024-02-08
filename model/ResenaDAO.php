@@ -152,15 +152,59 @@ class ResenaDAO{
         $stmt->execute();
         $result = $stmt->get_result();
     
+        // Cierra la conexión después de obtener los resultados
         $con->close();
     
         $res =[];
     
         // Crea un array con los productos
-        while($producto = $result->fetch_object("Producto")){
+        while($producto = $result->fetch_object()){
             $res[] = $producto;
         }
         return $res;
     }
+
+    public static function getAllPreciosE(){
+        $con = DataBase::connect();
+    
+        // Consulta para obtener todos los productos
+        $stmt = $con->prepare("SELECT * FROM productos");
+    
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        // Cierra la conexión después de obtener los resultados
+        $con->close();
+    
+        $precioEntera =[];
+    
+        // Crea un array con los productos
+        while($producto = $result->fetch_object("Producto")){
+            $precioEntera[] = $producto->getPrecioEntera();
+        }
+        return $precioEntera;
+    }
+
+    public static function getAllPreciosD(){
+        $con = DataBase::connect();
+    
+        // Consulta para obtener todos los productos
+        $stmt = $con->prepare("SELECT * FROM productos");
+    
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        // Cierra la conexión después de obtener los resultados
+        $con->close();
+    
+        $precioDecimal =[];
+    
+        // Crea un array con los productos
+        while($producto = $result->fetch_object("Producto")){
+            $precioDecimal[] = $producto->getPrecioDecimal();
+        }
+        return $precioDecimal;
+    }
+    
 
 }
