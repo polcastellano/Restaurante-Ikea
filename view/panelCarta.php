@@ -17,10 +17,10 @@
             <?php $index++; } ?>
         </section>
 
-        <h2 id="Plato" class="mt-5 textosTituloCat">Platos Principales</h2>
-        <section id="productos">
+        <!-- <h2 id="Plato" class="mt-5 textosTituloCat">Platos Principales</h2> -->
+        <div id="productos">
             
-        </section>
+        </div>
         <!--
         <section class="contenido row p-0 m-0 mt-5">
             <?php foreach($platos as $plato){ ?>

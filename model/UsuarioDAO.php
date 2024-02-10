@@ -270,6 +270,6 @@ class UsuarioDAO{
         $stmt->execute();
     
         $con->close();
-    }    
+    }
 
 }

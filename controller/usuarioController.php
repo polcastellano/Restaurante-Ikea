@@ -1,6 +1,7 @@
 <?php
 include_once 'model/UsuarioDAO.php';
 include_once 'model/Usuario.php';
+include_once 'model/ProductoDAO.php';
 
 class usuarioController{
 
@@ -180,6 +181,7 @@ class usuarioController{
             $ultimoPedido = UsuarioDAO::verPedido($_POST['pedido_id']);
             $pedido_id = $_POST['pedido_id'];
             $usuario_id = $_SESSION['usuario']->getUsuario_id();
+            $precioDescuento = ProductoDAO::precioDescuento($_POST['pedido_id']);
             include_once 'view/mostrarPedido.php';
         }else{
             // Si no se envió el ID del pedido, redirige a la página de productos

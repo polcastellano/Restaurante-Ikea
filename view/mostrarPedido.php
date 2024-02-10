@@ -73,6 +73,12 @@
                                             <?= CalculadoraPrecios::formatPuntos(CalculadoraPrecios::calcularPuntosPedido($ultimoPedido)) ?> 
                                         </p>
                                     </div>
+                                    <div class="d-flex justify-content-between align-items-center my-2">
+                                        <p class="textoPedidos">Subtotal con descuento</p>
+                                        <p id="precioDescuento" class="precioSubtotal">
+                                            <?= CalculadoraPrecios::formatPrecios($precioDescuento) ?>€
+                                        </p>
+                                    </div>
                                 </div>
                                 <?php if(!ResenaDAO::getReseña($pedido_id)){?>
                                 <div>

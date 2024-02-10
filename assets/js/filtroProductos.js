@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function(){
-    
+
     fetch("http://localhost/DAW/ikea/?controller=api&action=consultaProductos", {
         method : 'POST',
     })
@@ -11,50 +11,102 @@ document.addEventListener('DOMContentLoaded', function(){
     .then(data => {
         // console.log(data);
         mostrarProductos(data);
+
+        // Obtén el formulario por su ID o cualquier otro selector
+        let formFav = document.getElementById('guardarFav');
+            
+        // Agrega un controlador de eventos para el evento 'submit' del formulario
+        formFav.addEventListener('submit', function(event) {
+            // Evita que el formulario se envíe automáticamente
+            event.preventDefault();
+
+            //Obtener los datos del formulario
+            let producto_id = document.getElementById('producto_id').value;
+            let categoria_id = document.getElementById('categoria_id').value;
+            
+            // Crear un objeto con los datos
+            let datos = {
+                producto_id: producto_id,
+                categoria_id: categoria_id,
+            };
+            
+            // Convertir el objeto a una cadena JSON
+            let datosJSON = JSON.stringify(datos);
+            console.log('Favorito, prodID, catID' + datosJSON);
+            // Realiza la solicitud a la API utilizando los datos del formulario
+            fetch("http://localhost/DAW/ikea/?controller=producto&action=favorito", {
+                method: 'POST',
+                headers: {
+                    'Content-Type':'application/json',
+                },
+                body: datosJSON,
+            })
+            .then(response => {
+                if (response.redirected) {
+                    // Si la respuesta es una redirección, obtén la URL de redirección
+                    const redirectedUrl = response.url;
+                    // Redirige a la URL obtenida
+                    window.location.href = redirectedUrl;
+                }else{
+                    return response.text();
+                    
+                }
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
+        });
+
+        // Obtén el formulario por su ID o cualquier otro selector
+        let formCarr = document.getElementById('guardarCarr');
+            
+        // Agrega un controlador de eventos para el evento 'submit' del formulario
+        formCarr.addEventListener('submit', function(event) {
+            // Evita que el formulario se envíe automáticamente
+            event.preventDefault();
+
+            //Obtener los datos del formulario
+            let producto_id = document.getElementById('producto_id').value;
+            let categoria_id = document.getElementById('categoria_id').value;
+            
+            // Crear un objeto con los datos
+            let datos = {
+                producto_id: producto_id,
+                categoria_id: categoria_id,
+            };
+            
+            // Convertir el objeto a una cadena JSON
+            let datosJSON = JSON.stringify(datos);
+            console.log('Carrito, prodID, catID' + datosJSON);
+            // Realiza la solicitud a la API utilizando los datos del formulario
+            fetch("http://localhost/DAW/ikea/?controller=producto&action=carrito", {
+                method: 'POST',
+                headers: {
+                    'Content-Type':'application/json',
+                },
+                body: datosJSON,
+            })
+            .then(response => {
+                if (response.redirected) {
+                    // Si la respuesta es una redirección, obtén la URL de redirección
+                    const redirectedUrl = response.url;
+                    // Redirige a la URL obtenida
+                    window.location.href = redirectedUrl;
+                }else{
+                    return response.text();
+                }
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
+        });
     })
     .catch(error => {
         console.error(error);
     });
 
-    // Obtén el formulario por su ID o cualquier otro selector
-    let formulario = document.getElementById('guardarFav');
-    
-    // Agrega un controlador de eventos para el evento 'submit' del formulario
-    formulario.addEventListener('submit', function(event) {
-        // Evita que el formulario se envíe automáticamente
-        event.preventDefault();
-
-        //Obtener los datos del formulario
-        let producto_id = document.getElementById('producto_id').value;
-        let categoria_id = document.getElementById('categoria_id').value;
-
-        // Crear un objeto con los datos
-        let datos = {
-            producto_id: producto_id,
-            categoria_id: categoria_id,
-        };
-
-        // Convertir el objeto a una cadena JSON
-        let datosJSON = JSON.stringify(datos);
-
-        // Realiza la solicitud a la API utilizando los datos del formulario
-        fetch("http://localhost/DAW/ikea/?controller=producto&action=favorito", {
-            method: 'POST',
-            headers: {
-                'Content-Type':'application/json',
-            },
-            body: datosJSON,
-        })
-        .then(response => response.text())
-        .then(data => {
-            // Haz algo con la respuesta de la API si es necesario
-            
-        })
-        .catch(error => {
-            console.error(error);
-        });
-
-    });
 });
 
 
@@ -76,7 +128,6 @@ function buscarFiltros() {
     allFiltros.forEach(filtro => {
         if (filtro.checked) {
             arrayFiltrado = arrayProductos.filter((producto) => producto.categoria_id == filtro.id);
-            console.log(arrayFiltrado)
             montarProductos(arrayFiltrado);
         }
 
@@ -92,23 +143,17 @@ function buscarFiltros() {
             }
         });
     });
-
-    
-         /*   let filtrado = arrayProductos.filter((producto) => {
-                
-                
-                producto.categoria_id == filtro.id;
-
-            });
-            console.log(filtrado)
-            filtroFinal.concat(filtrado);*/
-        }
+}
 
 function montarProductos(arrayFiltrado){
     let body = document.getElementById('productos');
-    body.classList.add("contenido", "row", "p-0", "m-0", "mt-5");
     console.log(arrayFiltrado)
+    let seccion = document.createElement('section');
+    seccion.setAttribute('id', 1)
+    seccion.classList.add("contenido", "row", "p-0", "m-0", "mt-5");
+    body.appendChild(seccion);
     arrayFiltrado.forEach( producto => {
+        
         let contenidoProds = document.createElement('div');
         contenidoProds.classList.add("card", "border-0", "rounded-0", "border-bottom", "col-12", "col-sm-6", "col-md-4", "col-lg-3", "mb-5", "justify-content-center");
         contenidoProds.innerHTML = `
@@ -125,8 +170,8 @@ function montarProductos(arrayFiltrado){
                     </span>
                     <div class="w-auto d-flex justify-content-end">
                         <form id="guardarFav" method="post">
-                            <input id="producto_id" name="producto_id" value="${producto.producto_id}" hidden />
-                            <input id="categoria_id" name="categoria_id" value="${producto.categoria_id}" hidden />
+                            <input id="producto_id" value="${producto.producto_id}" hidden />
+                            <input id="categoria_id" value="${producto.categoria_id}" hidden />
                             <button type="submit" class="border-0 rounded-circle btnProdFav me-2">
                                 <a>
                                 <svg width="24" height="24" viewBox="0 0 24 24">
@@ -135,9 +180,9 @@ function montarProductos(arrayFiltrado){
                                 </a>
                             </button>
                         </form>
-                        <form id="guardarCarr" action=<?=url."?controller=producto&action=carrito"?> method="post">
-                            <input id="producto_id" name="producto_id" value="${producto.producto_id}" hidden />
-                            <input id="categoria_id" name="categoria_id" value="${producto.categoria_id}" hidden />
+                        <form id="guardarCarr" method="post">
+                            <input id="producto_id" value="${producto.producto_id}" hidden />
+                            <input id="categoria_id" value="${producto.categoria_id}" hidden />
                             <button type="submit" class="border-0 rounded-circle btnProdCarrito me-2">
                                 <a>
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
@@ -150,6 +195,6 @@ function montarProductos(arrayFiltrado){
                 </div>
             </div>
         `;
-        body.appendChild(contenidoProds);
+        seccion.appendChild(contenidoProds);
     });
 }

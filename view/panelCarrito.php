@@ -77,6 +77,7 @@
                                     <p class="textoPedidos">Precio de los productos</p>
                                     <p class="textoPedidosBold">
                                         <!-- Formatea el precio -->
+                                        <input id="inputPrecioPed" value="<?= CalculadoraPrecios::calcularPrecioPedido($_SESSION['selecciones']) ?>" hidden>
                                         <?= CalculadoraPrecios::formatPrecios(CalculadoraPrecios::calcularPrecioPedido($_SESSION['selecciones'])) ?>€
                                     </p>
                                 </div>
@@ -111,17 +112,40 @@
                                             <?= CalculadoraPrecios::formatPuntos(CalculadoraPrecios::calcularPuntosPedido($_SESSION['selecciones'])) ?> 
                                         </p>
                                     </div>
-                                    <div class="d-flex justify-content-between" >
+                                    <div class="d-flex justify-content-between">
+                                        <p class="textoPedidos">Tus IKEA points</p>
+                                        <span id="tusPoints2"></span>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
                                         <p class="textoPedidos">Utiliza tus IKEA points</p>
                                         <input id="usuario_id" hidden value="<?= $_SESSION['usuario']->getUsuario_id()?>" type="text">
-                                        <input id="tusPoints" class="textoPedidosBold" type="number" min="0" max="<?= $_SESSION['usuario']->getPuntos()?>" >
+                                        <input id="tusPoints" class="textoPedidosBold inputRango" type="range">
+                                    </div>
+                                    <div class="d-flex justify-content-end mb-3">
+                                        <span id="tusPoints3" class="textoPedidosBold"></span>
+                                    </div>
+                                    <div class="d-flex justify-content-between form-check form-switch p-0 mb-2">
+                                        <label id="tituloPropina" class="form-check-label textoPedidos" for="flexSwitchCheckChecked">Propinas</label><!-- Cambia el texto por defecto -->
+                                        <input id="quieresPropina" class="form-check-input" type="checkbox" role="switch" checked > <!-- Marcado por defecto -->
+                                    </div>
+                                    <div id="botonesPropina" class="justify-content-around" style="display: flex;">
+                                        <button id="btn3Porciento" type="button" class="btnPropina rounded-2 border-0 p-2"> <!-- Agrega la clase 'active' -->
+                                            <p class="m-0 propinas">3%</p>
+                                        </button>
+                                        <button type="button" class="btnPropina rounded-2 border-0 p-2 ms-2">
+                                            <p class="m-0 propinas">20%</p>
+                                        </button>
+                                        <button type="button" class="btnPropina rounded-2 border-0 p-2 ms-2">
+                                            <p class="m-0 propinas">35%</p>
+                                        </button>
+                                        <button type="button" class="btnPropina rounded-2 border-0 p-2 ms-2">
+                                            <p class="m-0 propinas">50%</p>
+                                        </button>
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center my-2">
-                                        <p class="textoPedidos">Precio total con descuento</p>
+                                        <p class="textoPedidosBold">Subtotal con descuento</p>
                                         <input id="inputPrecioTotal" type="number" hidden value="<?= CalculadoraPrecios::calcularPrecioPedido($_SESSION['selecciones'])?>">
-                                        <p id="precioDescuento" class="textoPedidosBold">
-                                            <!-- Formatea el precio -->
-                                            
+                                        <p id="precioDescuento" class="precioSubtotal">
                                         </p>
                                     </div>
                                 </div>

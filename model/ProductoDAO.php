@@ -130,5 +130,25 @@ class ProductoDAO{
     
         return $categorias;
     }
+
+    public static function precioDescuento($pedido_id){
+        $con = DataBase::connect();
+    
+        // Consulta para obtener los productos y cantidades asociadas a un pedido específico
+        $stmt = $con->prepare("SELECT precio_total FROM pedidos WHERE pedido_id = ?");
+        $stmt->bind_param("i", $pedido_id);
+    
+        $stmt->execute();
+    
+        $result = $stmt->get_result();
+
+        // Obtener el nombre del resultado
+        if ($row = $result->fetch_assoc()) {
+            $precio = $row['precio_total'];
+            return $precio;
+            $con->close();
+        }
+        $con->close();
+    }
     
 }

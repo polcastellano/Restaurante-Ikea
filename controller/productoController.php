@@ -70,15 +70,20 @@ class productoController{
         // Verifica si no hay un usuario autenticado, redirige al inicio de sesión
         if (!isset($_SESSION['usuario'])){
             header("Location:".url."?controller=usuario&action=logUsuarios");
+            exit();
         } else {
             // Verifica si no hay selecciones guardadas en la sesión, las inicializa como un array vacío
             if (!isset($_SESSION['selecciones'])){
                 $_SESSION['selecciones'] = array();
             } else {
-                // Verifica si se han enviado los IDs de producto y categoría por POST
-                if (isset($_POST['producto_id']) && isset($_POST['categoria_id'])){
-                    $producto_id = $_POST['producto_id'];
-                    $categoria_id = $_POST['categoria_id'];
+                //Comprobar los datos
+                $inputJSON = file_get_contents('php://input');
+                $data = json_decode($inputJSON, TRUE); //convert JSON into array
+
+                // Si se envían datos de producto y categoría por POST, se añade el favorito
+                if (isset($data['producto_id']) && isset($data['categoria_id'])){
+                    $producto_id = $data['producto_id'];
+                    $categoria_id = $data['categoria_id'];
     
                     $pedido_existe = false;
     
@@ -100,6 +105,7 @@ class productoController{
     
                     // Redirige de vuelta a la página de la carta de productos
                     header("Location:".url."?controller=producto&action=carta");
+                    exit();
                 } else {
                     // Si no se enviaron los IDs de producto y categoría por POST, redirige a la carta de productos
                     header("Location:".url."?controller=producto&action=carta");
@@ -252,24 +258,32 @@ class productoController{
         // Verifica si el usuario está autenticado, si no, lo redirige al inicio de sesión
         if (!isset($_SESSION['usuario'])){
             header("Location:".url."?controller=usuario&action=logUsuarios");
+            exit();
         } else {
             // Si no hay favoritos, se inicializa un array para almacenarlos en la sesión
             if (!isset($_SESSION['favoritos'])){
                 $_SESSION['favoritos'] = array();
             } else {
+
+                //Comprobar los datos
+                $inputJSON = file_get_contents('php://input');
+                $data = json_decode($inputJSON, TRUE); //convert JSON into array
+
                 // Si se envían datos de producto y categoría por POST, se añade el favorito
-                if (isset($_POST['producto_id']) && isset($_POST['categoria_id'])){
-                    $producto_id = $_POST['producto_id'];
-                    $categoria_id = $_POST['categoria_id'];
+                if (isset($data['producto_id']) && isset($data['categoria_id'])){
+                    $producto_id = $data['producto_id'];
+                    intval($producto_id);
+                    $categoria_id = $data['categoria_id'];
+                    intval($categoria_id);
+
     
                     // Crea un nuevo Favorito con el producto obtenido del ProductoDAO y lo agrega a la sesión
                     $favorito = new Favorito(ProductoDAO::getProductoById($producto_id, $categoria_id));
-                    array_push($_SESSION['favoritos'], $favorito);  
-    
-                    // Luego de añadir el favorito, muestra la vista correspondiente
-                    include_once 'view/cabecera.php';
-                    include_once 'view/panelFavorito.php';
-                    include_once 'view/footer.php';
+                    array_push($_SESSION['favoritos'], $favorito); 
+                    
+                    header("Location:".url."?controller=producto&action=irFavorito");
+                    exit();
+
                 } else {
                     // Si no se proporcionan datos de producto y categoría, redirige a la página de productos
                     header("Location:".url."?controller=producto&action=carta");
