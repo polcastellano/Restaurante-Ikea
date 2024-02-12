@@ -129,13 +129,13 @@
                                         </div>
                                     </form>
                                 </div>
-                                <script src="./assets/js/insertarReseña.js"></script>
+                                <script src="./assets/js/insertarResena.js"></script>
                                 <?php }else{ ?>
                                     <input id="pedido_id2" value="<?= $pedido_id?>" hidden />
                                     <input id="usuario_id2" value="<?= $usuario_id?>" hidden />
                                     <section id="reseñaPed">
                                     </section>
-                                <script src="./assets/js/mostrarReseña.js"></script>
+                                <script src="./assets/js/mostrarResena.js"></script>
                                 <?php }?>
                             </div>
                         </section>

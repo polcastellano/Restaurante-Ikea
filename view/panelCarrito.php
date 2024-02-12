@@ -129,17 +129,17 @@
                                         <input id="quieresPropina" class="form-check-input" type="checkbox" role="switch" checked > <!-- Marcado por defecto -->
                                     </div>
                                     <div id="botonesPropina" class="justify-content-around" style="display: flex;">
-                                        <button id="btn3Porciento" type="button" class="btnPropina rounded-2 border-0 p-2"> <!-- Agrega la clase 'active' -->
-                                            <p class="m-0 propinas">3%</p>
+                                        <button value="3" id="btn3Porciento" type="button" class="btnPropina rounded-2 border-0 p-2 propinas"> <!-- Agrega la clase 'active' -->
+                                            3%
                                         </button>
-                                        <button type="button" class="btnPropina rounded-2 border-0 p-2 ms-2">
-                                            <p class="m-0 propinas">20%</p>
+                                        <button value="20" type="button" class="btnPropina rounded-2 border-0 p-2 ms-2 propinas">
+                                            20%
                                         </button>
-                                        <button type="button" class="btnPropina rounded-2 border-0 p-2 ms-2">
-                                            <p class="m-0 propinas">35%</p>
+                                        <button value="35" type="button" class="btnPropina rounded-2 border-0 p-2 ms-2 propinas">
+                                            35%
                                         </button>
-                                        <button type="button" class="btnPropina rounded-2 border-0 p-2 ms-2">
-                                            <p class="m-0 propinas">50%</p>
+                                        <button value="50" type="button" class="btnPropina rounded-2 border-0 p-2 ms-2 propinas">
+                                            50%
                                         </button>
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center my-2">
@@ -147,6 +147,9 @@
                                         <input id="inputPrecioTotal" type="number" hidden value="<?= CalculadoraPrecios::calcularPrecioPedido($_SESSION['selecciones'])?>">
                                         <p id="precioDescuento" class="precioSubtotal">
                                         </p>
+                                    </div>
+                                    <div class="d-flex justify-content-end mb-3">
+                                        <span id="tusPropinas" class="textoPedidosBold"></span>
                                     </div>
                                 </div>
                                 <form id="hacerPedido" class="mt-5" action="<?= url . "?controller=pedido&action=confirmar"?>" method="POST">

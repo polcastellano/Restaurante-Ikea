@@ -22,7 +22,7 @@
 <link href="assets/css/modificarProductos.css" rel="stylesheet" type="text/css" media="screen">
 <link href="assets/css/productos.css" rel="stylesheet" type="text/css" media="screen">
 <link href="assets/css/query.css" rel="stylesheet" type="text/css" media="screen">
-<link href="assets/css/reseñas.css" rel="stylesheet" type="text/css" media="screen">
+<link href="assets/css/resenas.css" rel="stylesheet" type="text/css" media="screen">
 <link rel="icon" href="assets/images/logo.svg" type="image/svg">
 
 <link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">

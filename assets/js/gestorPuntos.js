@@ -59,8 +59,59 @@ document.addEventListener('DOMContentLoaded', function(){
     })
     .then(data => {
         asignarPuntos(data);
-        actualizarPrecio();
+        
+        // Obtener referencia al botón de 3%
+        let btn3Porciento = document.getElementById('btn3Porciento');
+        let botonesPropina = document.querySelectorAll('.btnPropina');
+        let botonSeleccionado;
 
+        // Obtener referencia al div de botones de propina
+        let botonesPropinaDiv = document.getElementById('botonesPropina');
+
+        // Agregar evento change al checkbox
+        propinasCheckbox.addEventListener('change', function() {
+            // Mostrar u ocultar el div de botones de propina según el estado del checkbox
+            if (propinasCheckbox.checked) {
+                botonesPropinaDiv.style.display = 'flex'; // Mostrar el div
+                document.getElementById('tituloPropina').textContent = 'Propinas'; // Cambiar el texto
+                botonesPropina.forEach(function(boton) {
+                    boton.classList.remove('active');
+                });
+                btn3Porciento.classList.add('active');
+                botonSeleccionado = btn3Porciento.value;
+                propina = calcularDescuentoPropina(botonSeleccionado);
+                calcularPrecio(propina);
+                tusPropinas.textContent = 'Propina: ' + propina + ' €';
+            } else {
+                botonesPropinaDiv.style.display = 'none'; // Ocultar el div
+                document.getElementById('tituloPropina').textContent = 'Quieres dejar propina?'; // Restaurar el texto
+                propina = 0;
+                calcularPrecio(propina);
+                tusPropinas.textContent = '';
+            }
+        }); 
+
+        // Agregar la clase 'active' al botón de 3%
+        btn3Porciento.classList.add('active');
+        botonSeleccionado = btn3Porciento.value;
+        let propina = calcularDescuentoPropina(botonSeleccionado);
+        let tusPropinas = document.getElementById('tusPropinas');
+        tusPropinas.textContent = 'Propina: ' + propina + ' €';
+        botonesPropina.forEach(function(boton) {
+            
+            boton.addEventListener('click', function() {
+                botonesPropina.forEach(function(boton) {
+                    boton.classList.remove('active');
+                });
+                boton.classList.add('active');
+                botonSeleccionado = boton.value;
+                propina = calcularDescuentoPropina(botonSeleccionado);
+                tusPropinas.textContent = 'Propina: ' + propina + ' €';
+                calcularPrecio(propina);
+            });
+        });
+            
+        calcularPrecio(propina);
         
     })
     .catch(error => {
@@ -82,37 +133,25 @@ function asignarPuntos(totalPuntos){
     precioPedido = precioPedido * 1000;
     let inputPuntos = document.getElementById('tusPoints');
     let puntosUtilizados = document.getElementById('tusPoints3');
-    
+
     if(precioPedido > puntos){
         inputPuntos.setAttribute('max', puntos);
     }else{
         inputPuntos.setAttribute('max', precioPedido);
     }
-    
+
     inputPuntos.value = 0;
     puntosUtilizados.textContent = 'Puntos utilizados: ' + inputPuntos.value;
+
+
     inputPuntos.addEventListener('input', function(){
         puntosUtilizados.textContent = 'Puntos utilizados: ' + inputPuntos.value;
-        actualizarPrecio();
+        propina = 0;
+        calcularPrecio(propina);
     });
 };
 
-function actualizarPrecio(){
-    let puntos = document.getElementById('tusPoints');
-    calcularPrecio();
-    
-    puntos.onkeyup = () => {
-        
-        calcularPrecio();
-    };
-
-    puntos.onchange = () => {
-        
-        calcularPrecio();
-    };
-};
-
-function calcularPrecio(){
+function calcularPrecio(propina) {
     let puntos = document.getElementById('tusPoints');
     let puntosUsados = document.getElementById('puntosUsados');
     let inputPrecioTotal = document.getElementById('inputPrecioTotal');
@@ -121,54 +160,29 @@ function calcularPrecio(){
 
     let descuento = puntos.value / 1000;
 
-    let preciototal = inputPrecioTotal.value - descuento;
-    
-    if(descuento > inputPrecioTotal.value){
-        preciototal = 0;
-    };
-    let precioFormat = preciototal.toFixed(2).replace(".", "'");
-    precioDescuento.innerHTML = precioFormat + " €";
+    let preciototal = parseFloat(inputPrecioTotal.value) - descuento; // Convertir a número flotante
 
-    inputPrecioDescuento.value = preciototal.toFixed(2);
+    preciototal += parseFloat(propina); // Sumar la propina al precio total
 
-    puntosUsados.value = puntos.value;
-};
+    preciototal = preciototal.toFixed(2); // Redondear a dos decimales
+    let precioFormat = preciototal.replace(".", "'"); // Reemplazar el punto decimal con comillas simples
 
+    precioDescuento.innerHTML = precioFormat + " €"; // Mostrar el precio con el formato deseado en el HTML
 
-    // Obtener referencia al checkbox
-    let propinasCheckbox = document.getElementById('quieresPropina');
+    inputPrecioDescuento.value = preciototal; // Establecer el valor del input con el precio total
 
-    // Obtener referencia al botón de 3%
-    let btn3Porciento = document.getElementById('btn3Porciento');
+    puntosUsados.value = puntos.value; // Establecer el valor de los puntos usados
+}  
 
-    // Obtener referencia al div de botones de propina
-    let botonesPropinaDiv = document.getElementById('botonesPropina');
-
-    // Agregar evento change al checkbox
-    propinasCheckbox.addEventListener('change', function() {
-        // Mostrar u ocultar el div de botones de propina según el estado del checkbox
-        if (propinasCheckbox.checked) {
-            botonesPropinaDiv.style.display = 'flex'; // Mostrar el div
-            document.getElementById('tituloPropina').textContent = 'Propinas'; // Cambiar el texto
-        } else {
-            botonesPropinaDiv.style.display = 'none'; // Ocultar el div
-            document.getElementById('tituloPropina').textContent = 'Quieres dejar propina?'; // Restaurar el texto
-        }
-    });
-
-    // Obtener referencia a todos los botones de propina
-    let botonesPropina = document.querySelectorAll('.btnPropina');
-
-    // Agregar evento click a cada botón de propina
-    botonesPropina.forEach(function(boton) {
-        // Agregar la clase 'active' al botón de 3%
-    btn3Porciento.classList.add('active');
-        boton.addEventListener('click', function() {
-            // Quitar la clase 'active' de todos los botones
-            botonesPropina.forEach(function(boton) {
-                boton.classList.remove('active');
-            });
-            // Agregar la clase 'active' al botón clickeado
-            boton.classList.add('active');
-        });
-    });
+// Obtener referencia al checkbox
+let propinasCheckbox = document.getElementById('quieresPropina');
+function calcularDescuentoPropina(botonSeleccionado) {
+    let descPropinas = 0;
+    if (propinasCheckbox.checked) {
+        descPropinas = (botonSeleccionado / 100) * inputPrecioTotal.value;
+        return parseFloat(descPropinas.toFixed(2));
+    }else{
+        descPropinas = 0;
+        return parseFloat(descPropinas.toFixed(2));
+    }
+}

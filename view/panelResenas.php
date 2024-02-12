@@ -68,5 +68,5 @@
     </main>
 
         
-<script src="./assets/js/reseñas.js"></script>
+<script src="./assets/js/resenas.js"></script>
 </body>
