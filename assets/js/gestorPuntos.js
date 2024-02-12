@@ -139,6 +139,7 @@ function asignarPuntos(totalPuntos){
     }else{
         inputPuntos.setAttribute('max', precioPedido);
     }
+    
 
     inputPuntos.value = 0;
     puntosUtilizados.textContent = 'Puntos utilizados: ' + inputPuntos.value;
