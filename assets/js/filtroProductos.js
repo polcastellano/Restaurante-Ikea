@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
         // Obtén el formulario por su ID o cualquier otro selector
         let formCarr = document.getElementsByClassName('guardarCarr');
-            
+        console.log(formCarr);
         // Agrega un controlador de eventos para el evento 'submit' del formulario
         formCarr.addEventListener('submit', function(event) {
             // Evita que el formulario se envíe automáticamente
