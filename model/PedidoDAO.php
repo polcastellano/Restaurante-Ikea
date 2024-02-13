@@ -4,13 +4,13 @@ include_once 'config/dataBase.php';
 
 class PedidoDAO{
 
-    public static function almacenaPedido($usuario_id, $precioTotal, $puntos){
+    public static function almacenaPedido($usuario_id, $precioTotal, $puntos, $precioPropina){
         // Establece la conexión a la base de datos
         $con = DataBase::connect();
     
         // Prepara y ejecuta la inserción del pedido
-        $stmt = $con->prepare("INSERT INTO pedidos (usuario_id, precio_total, puntos) VALUES (?, ?, ?)");
-        $stmt->bind_param("idi", $usuario_id, $precioTotal, $puntos);
+        $stmt = $con->prepare("INSERT INTO pedidos (usuario_id, precio_total, puntos, propinas) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("idid", $usuario_id, $precioTotal, $puntos, $precioPropina);
         $stmt->execute();
 
         // Obtener el ID de la última fila insertada

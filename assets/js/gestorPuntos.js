@@ -1,3 +1,4 @@
+let propina;
 document.addEventListener('DOMContentLoaded', function(){
     let usuario_id = document.getElementById('usuario_id').value;
 
@@ -19,12 +20,14 @@ document.addEventListener('DOMContentLoaded', function(){
         let preciototal = document.getElementById('inputPrecioDescuento').value;
         let puntos = document.getElementById('puntos').value;
         let puntosUsados = document.getElementById('puntosUsados').value;
-        
+        let inputPropina = document.getElementById('inputPropina').value;
+
         // Crear un objeto con los datos
         let datos = {
             preciototal: preciototal,
             puntos: puntos,
             puntosUsados: puntosUsados,
+            inputPropina: inputPropina,
         };
 
         // Convertir el objeto a una cadena JSON
@@ -64,6 +67,7 @@ document.addEventListener('DOMContentLoaded', function(){
         let btn3Porciento = document.getElementById('btn3Porciento');
         let botonesPropina = document.querySelectorAll('.btnPropina');
         let botonSeleccionado;
+        let inputPropina = document.getElementById('inputPropina');
 
         // Obtener referencia al div de botones de propina
         let botonesPropinaDiv = document.getElementById('botonesPropina');
@@ -80,12 +84,14 @@ document.addEventListener('DOMContentLoaded', function(){
                 btn3Porciento.classList.add('active');
                 botonSeleccionado = btn3Porciento.value;
                 propina = calcularDescuentoPropina(botonSeleccionado);
+                inputPropina.value =  calcularDescuentoPropina(botonSeleccionado);
                 calcularPrecio(propina);
                 tusPropinas.textContent = 'Propina: ' + propina + ' €';
             } else {
                 botonesPropinaDiv.style.display = 'none'; // Ocultar el div
                 document.getElementById('tituloPropina').textContent = 'Quieres dejar propina?'; // Restaurar el texto
                 propina = 0;
+                inputPropina.value = 0;
                 calcularPrecio(propina);
                 tusPropinas.textContent = '';
             }
@@ -94,7 +100,9 @@ document.addEventListener('DOMContentLoaded', function(){
         // Agregar la clase 'active' al botón de 3%
         btn3Porciento.classList.add('active');
         botonSeleccionado = btn3Porciento.value;
-        let propina = calcularDescuentoPropina(botonSeleccionado);
+        propina = calcularDescuentoPropina(botonSeleccionado);
+        inputPropina.value =  calcularDescuentoPropina(botonSeleccionado);
+
         let tusPropinas = document.getElementById('tusPropinas');
         tusPropinas.textContent = 'Propina: ' + propina + ' €';
         botonesPropina.forEach(function(boton) {
@@ -106,6 +114,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 boton.classList.add('active');
                 botonSeleccionado = boton.value;
                 propina = calcularDescuentoPropina(botonSeleccionado);
+                inputPropina.value =  calcularDescuentoPropina(botonSeleccionado);
                 tusPropinas.textContent = 'Propina: ' + propina + ' €';
                 calcularPrecio(propina);
             });
@@ -147,7 +156,6 @@ function asignarPuntos(totalPuntos){
 
     inputPuntos.addEventListener('input', function(){
         puntosUtilizados.textContent = 'Puntos utilizados: ' + inputPuntos.value;
-        propina = 0;
         calcularPrecio(propina);
     });
 };

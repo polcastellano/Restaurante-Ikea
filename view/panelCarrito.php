@@ -149,6 +149,7 @@
                                         </p>
                                     </div>
                                     <div class="d-flex justify-content-end mb-3">
+                                        <input id="inputPropina" hidden>
                                         <span id="tusPropinas" class="textoPedidosBold"></span>
                                     </div>
                                 </div>

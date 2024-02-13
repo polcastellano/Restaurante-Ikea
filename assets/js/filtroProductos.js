@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', function(){
         mostrarProductos(data);
 
         // Obtén el formulario por su ID o cualquier otro selector
-        let formFav = document.getElementById('guardarFav');
+        let formFav = document.getElementsByClassName('guardarFav');
+        console.log(formFav);
             
         // Agrega un controlador de eventos para el evento 'submit' del formulario
         formFav.addEventListener('submit', function(event) {
@@ -59,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function(){
         });
 
         // Obtén el formulario por su ID o cualquier otro selector
-        let formCarr = document.getElementById('guardarCarr');
+        let formCarr = document.getElementsByClassName('guardarCarr');
             
         // Agrega un controlador de eventos para el evento 'submit' del formulario
         formCarr.addEventListener('submit', function(event) {
@@ -169,7 +170,7 @@ function montarProductos(arrayFiltrado){
                         <p class="card-text precioDecProd">,${producto.precioD}€</p>
                     </span>
                     <div class="w-auto d-flex justify-content-end">
-                        <form id="guardarFav" method="post">
+                        <form class="guardarFav" method="post">
                             <input id="producto_id" value="${producto.producto_id}" hidden />
                             <input id="categoria_id" value="${producto.categoria_id}" hidden />
                             <button type="submit" class="border-0 rounded-circle btnProdFav me-2">
@@ -180,7 +181,7 @@ function montarProductos(arrayFiltrado){
                                 </a>
                             </button>
                         </form>
-                        <form id="guardarCarr" method="post">
+                        <form class="guardarCarr" method="post">
                             <input id="producto_id" value="${producto.producto_id}" hidden />
                             <input id="categoria_id" value="${producto.categoria_id}" hidden />
                             <button type="submit" class="border-0 rounded-circle btnProdCarrito me-2">

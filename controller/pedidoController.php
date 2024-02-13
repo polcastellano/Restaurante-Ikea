@@ -15,7 +15,7 @@ class pedidoController{
         $data = json_decode($inputJSON, TRUE); //convert JSON into array
 
         // Verifica si se ha enviado los datos desde un formulario
-        if (isset($data['preciototal']) && isset($data['puntos']) && isset($data['puntosUsados'])){
+        if (isset($data['preciototal']) && isset($data['puntos']) && isset($data['puntosUsados']) && isset($data['inputPropina'])){
             // Obtiene el precio total y los puntos del formulario POST
             $precioTotal = $data['preciototal'];
             doubleval($precioTotal);
@@ -23,12 +23,14 @@ class pedidoController{
             intval($puntos);
             $puntosUsados = $data['puntosUsados'];
             intval($puntosUsados);
+            $precioPropina = $data['inputPropina'];
+            doubleval($precioPropina);
             
             // Obtiene el ID del usuario de la sesión actual
             $usuario_id = $_SESSION['usuario']->getUsuario_id();
             
             // Almacena el pedido en la base de datos utilizando el PedidoDAO
-            PedidoDAO::almacenaPedido($usuario_id, $precioTotal, $puntos);
+            PedidoDAO::almacenaPedido($usuario_id, $precioTotal, $puntos, $precioPropina);
 
             // Obtiene información sobre el último pedido realizado por el usuario
             $pedido = PedidoDAO::ultimoPedido($usuario_id);

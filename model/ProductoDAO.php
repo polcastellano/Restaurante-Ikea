@@ -151,4 +151,23 @@ class ProductoDAO{
         $con->close();
     }
     
+    public static function getPropina($pedido_id){
+        $con = DataBase::connect();
+    
+        // Consulta para obtener los productos y cantidades asociadas a un pedido específico
+        $stmt = $con->prepare("SELECT propinas FROM pedidos WHERE pedido_id = ?");
+        $stmt->bind_param("i", $pedido_id);
+    
+        $stmt->execute();
+    
+        $result = $stmt->get_result();
+
+        // Obtener el nombre del resultado
+        if ($row = $result->fetch_assoc()) {
+            $propina = $row['propinas'];
+            return $propina;
+            $con->close();
+        }
+        $con->close();
+    }
 }

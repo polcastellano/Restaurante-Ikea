@@ -144,7 +144,7 @@
         </div>
 
         <div class="d-flex border-top align-items-center justify-content-between py-4">
-                <p class="m-0 textIkeaFooter">© Inter IKEA Systems B.V 1999-2023</p>
+                <p class="m-0 textIkeaFooter">© Inter IKEA Systems B.V 1999-2024</p>
             <div class="ocultos d-flex justify-content-end">
                 <a href="" class="link-underline link-underline-opacity-0"><p class="ms-3 mb-0 textFooter">Política de privacidad</p></a>
                 <a href="" class="link-underline link-underline-opacity-0"><p class="ms-3 mb-0 textFooter">Política de cookies</p></a>
