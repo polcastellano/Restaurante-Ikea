@@ -12,97 +12,104 @@ document.addEventListener('DOMContentLoaded', function(){
         // console.log(data);
         mostrarProductos(data);
 
-        // Obtén el formulario por su ID o cualquier otro selector
+        // Obtén todos los formularios por su clase
         let formFav = document.getElementsByClassName('guardarFav');
-        console.log(formFav);
-            
-        // Agrega un controlador de eventos para el evento 'submit' del formulario
-        formFav.addEventListener('submit', function(event) {
-            // Evita que el formulario se envíe automáticamente
-            event.preventDefault();
 
-            //Obtener los datos del formulario
-            let producto_id = document.getElementById('producto_id').value;
-            let categoria_id = document.getElementById('categoria_id').value;
-            
-            // Crear un objeto con los datos
-            let datos = {
-                producto_id: producto_id,
-                categoria_id: categoria_id,
-            };
-            
-            // Convertir el objeto a una cadena JSON
-            let datosJSON = JSON.stringify(datos);
-            console.log('Favorito, prodID, catID' + datosJSON);
-            // Realiza la solicitud a la API utilizando los datos del formulario
-            fetch("http://localhost/DAW/ikea/?controller=producto&action=favorito", {
-                method: 'POST',
-                headers: {
-                    'Content-Type':'application/json',
-                },
-                body: datosJSON,
-            })
-            .then(response => {
-                if (response.redirected) {
-                    // Si la respuesta es una redirección, obtén la URL de redirección
-                    const redirectedUrl = response.url;
-                    // Redirige a la URL obtenida
-                    window.location.href = redirectedUrl;
-                }else{
-                    return response.text();
-                    
-                }
-            })
-            .catch(error => {
-                console.error(error);
+        // Itera sobre cada formulario
+        for (let i = 0; i < formFav.length; i++) {
+            // Agrega un controlador de eventos para el evento 'submit' de cada formulario
+            formFav[i].addEventListener('submit', function(event) {
+                // Evita que el formulario se envíe automáticamente
+                event.preventDefault();
+
+                // Obtener los datos del formulario actual
+                let producto_id = formFav[i].querySelector('#producto_id').value;
+                let categoria_id = formFav[i].querySelector('#categoria_id').value;
+
+                // Crear un objeto con los datos
+                let datos = {
+                    producto_id: producto_id,
+                    categoria_id: categoria_id,
+                };
+
+                // Convertir el objeto a una cadena JSON
+                let datosJSON = JSON.stringify(datos);
+                console.log('Carrito, prodID, catID' + datosJSON);
+                // Realiza la solicitud a la API utilizando los datos del formulario
+                fetch("http://localhost/DAW/ikea/?controller=producto&action=favorito", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type':'application/json',
+                    },
+                    body: datosJSON,
+                })
+                .then(response => {
+                    if (response.redirected) {
+                        // Si la respuesta es una redirección, obtén la URL de redirección
+                        const redirectedUrl = response.url;
+                        // Redirige a la URL obtenida
+                        window.location.href = redirectedUrl;
+                    } else {
+                        return response.text();
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+
             });
+        }
 
-        });
 
-        // Obtén el formulario por su ID o cualquier otro selector
+        // Obtén todos los formularios por su clase
         let formCarr = document.getElementsByClassName('guardarCarr');
-        console.log(formCarr);
-        // Agrega un controlador de eventos para el evento 'submit' del formulario
-        formCarr.addEventListener('submit', function(event) {
-            // Evita que el formulario se envíe automáticamente
-            event.preventDefault();
 
-            //Obtener los datos del formulario
-            let producto_id = document.getElementById('producto_id').value;
-            let categoria_id = document.getElementById('categoria_id').value;
-            
-            // Crear un objeto con los datos
-            let datos = {
-                producto_id: producto_id,
-                categoria_id: categoria_id,
-            };
-            
-            // Convertir el objeto a una cadena JSON
-            let datosJSON = JSON.stringify(datos);
-            console.log('Carrito, prodID, catID' + datosJSON);
-            // Realiza la solicitud a la API utilizando los datos del formulario
-            fetch("http://localhost/DAW/ikea/?controller=producto&action=carrito", {
-                method: 'POST',
-                headers: {
-                    'Content-Type':'application/json',
-                },
-                body: datosJSON,
-            })
-            .then(response => {
-                if (response.redirected) {
-                    // Si la respuesta es una redirección, obtén la URL de redirección
-                    const redirectedUrl = response.url;
-                    // Redirige a la URL obtenida
-                    window.location.href = redirectedUrl;
-                }else{
-                    return response.text();
-                }
-            })
-            .catch(error => {
-                console.error(error);
+        // Itera sobre cada formulario
+        for (let i = 0; i < formCarr.length; i++) {
+            // Agrega un controlador de eventos para el evento 'submit' de cada formulario
+            formCarr[i].addEventListener('submit', function(event) {
+                // Evita que el formulario se envíe automáticamente
+                event.preventDefault();
+
+                // Obtener los datos del formulario actual
+                let producto_id = formCarr[i].querySelector('#producto_id').value;
+                let categoria_id = formCarr[i].querySelector('#categoria_id').value;
+
+                // Crear un objeto con los datos
+                let datos = {
+                    producto_id: producto_id,
+                    categoria_id: categoria_id,
+                };
+
+                // Convertir el objeto a una cadena JSON
+                let datosJSON = JSON.stringify(datos);
+                console.log('Carrito, prodID, catID' + datosJSON);
+                // Realiza la solicitud a la API utilizando los datos del formulario
+                fetch("http://localhost/DAW/ikea/?controller=producto&action=carrito", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type':'application/json',
+                    },
+                    body: datosJSON,
+                })
+                .then(response => {
+                    if (response.redirected) {
+                        // Si la respuesta es una redirección, obtén la URL de redirección
+                        const redirectedUrl = response.url;
+                        // Redirige a la URL obtenida
+                        window.location.href = redirectedUrl;
+                    } else {
+                        return response.text();
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+
             });
+        }
 
-        });
+
     })
     .catch(error => {
         console.error(error);
@@ -148,7 +155,6 @@ function buscarFiltros() {
 
 function montarProductos(arrayFiltrado){
     let body = document.getElementById('productos');
-    console.log(arrayFiltrado)
     let seccion = document.createElement('section');
     seccion.setAttribute('id', 1)
     seccion.classList.add("contenido", "row", "p-0", "m-0", "mt-5");
