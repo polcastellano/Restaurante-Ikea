@@ -183,6 +183,7 @@ class usuarioController{
             $usuario_id = $_SESSION['usuario']->getUsuario_id();
             $precioDescuento = ProductoDAO::precioDescuento($_POST['pedido_id']);
             $propina = ProductoDAO::getPropina($_POST['pedido_id']);
+            $puntosUsados = ProductoDAO::getPuntosUsados($_POST['pedido_id']);
             include_once 'view/mostrarPedido.php';
         }else{
             // Si no se envió el ID del pedido, redirige a la página de productos

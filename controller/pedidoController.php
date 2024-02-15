@@ -30,7 +30,7 @@ class pedidoController{
             $usuario_id = $_SESSION['usuario']->getUsuario_id();
             
             // Almacena el pedido en la base de datos utilizando el PedidoDAO
-            PedidoDAO::almacenaPedido($usuario_id, $precioTotal, $puntos, $precioPropina);
+            PedidoDAO::almacenaPedido($usuario_id, $precioTotal, $puntos, $precioPropina, $puntosUsados);
 
             // Obtiene información sobre el último pedido realizado por el usuario
             $pedido = PedidoDAO::ultimoPedido($usuario_id);

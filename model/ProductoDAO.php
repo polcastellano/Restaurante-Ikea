@@ -170,4 +170,23 @@ class ProductoDAO{
         }
         $con->close();
     }
+    public static function getPuntosUsados($pedido_id){
+        $con = DataBase::connect();
+    
+        // Consulta para obtener los productos y cantidades asociadas a un pedido específico
+        $stmt = $con->prepare("SELECT puntos_usados FROM pedidos WHERE pedido_id = ?");
+        $stmt->bind_param("i", $pedido_id);
+    
+        $stmt->execute();
+    
+        $result = $stmt->get_result();
+
+        // Obtener el nombre del resultado
+        if ($row = $result->fetch_assoc()) {
+            $puntosUsados = $row['puntos_usados'];
+            return $puntosUsados;
+            $con->close();
+        }
+        $con->close();
+    }
 }

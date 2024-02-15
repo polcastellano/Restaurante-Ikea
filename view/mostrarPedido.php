@@ -74,6 +74,12 @@
                                         </p>
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center my-2">
+                                        <p class="textoPedidosBold">IKEA points usados</p>
+                                        <p class="textoPedidosBold">
+                                            <?= $puntosUsados ?>
+                                        </p>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center my-2">
                                         <p class="textoPedidosBold">Subtotal con descuento</p>
                                         <p id="precioDescuento" class="precioSubtotal">
                                             <?= CalculadoraPrecios::formatPrecios($precioDescuento) ?>€
