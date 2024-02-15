@@ -106,10 +106,31 @@ class productoController{
                     // Redirige de vuelta a la página de la carta de productos
                     header("Location:".url."?controller=producto&action=carta");
                     exit();
-                } else {
-                    // Si no se enviaron los IDs de producto y categoría por POST, redirige a la carta de productos
+                } else if (isset($_POST['producto_id']) && isset($_POST['categoria_id'])){
+                    $producto_id = $_POST['producto_id'];
+                    $categoria_id = $_POST['categoria_id'];
+    
+                    $pedido_existe = false;
+    
+                    // Busca si el producto ya está en el carrito; si sí, aumenta su cantidad
+                    foreach ($_SESSION['selecciones'] as $pedido) {
+                        if($pedido->getProducto()->getProducto_id() == $producto_id && $pedido->getProducto()->getCategoria_id() == $categoria_id){
+                            $pedido->setCantidad($pedido->getCantidad() + 1);
+                            $pedido_existe = true;
+                            break;
+                        }
+                    }
+                    
+                    // Si el producto no existe en el carrito, lo agrega a las selecciones
+                    if($pedido_existe == false){
+                        $pedido = new Pedido(ProductoDAO::getProductoById($producto_id, $categoria_id));
+                    
+                        array_push($_SESSION['selecciones'], $pedido);
+                    }
+    
+                    // Redirige de vuelta a la página de la carta de productos
                     header("Location:".url."?controller=producto&action=carta");
-                } 
+                }
             }
         }
     }

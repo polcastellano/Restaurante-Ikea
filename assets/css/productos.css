@@ -19,3 +19,12 @@
     font-size: 14px;
     color: var(--bg-color5);
 }
+.notie-background-info {
+    background-color: var(--bg-color11) !important;
+}
+.notie-background-error {
+    background-color: var(--bg-color6) !important;
+}
+.checkBoxFiltros.active{
+    background-color: var(--bg-color4);
+}

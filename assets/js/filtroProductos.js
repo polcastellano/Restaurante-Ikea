@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function(){
 
                 // Convertir el objeto a una cadena JSON
                 let datosJSON = JSON.stringify(datos);
-                console.log('Carrito, prodID, catID' + datosJSON);
                 // Realiza la solicitud a la API utilizando los datos del formulario
                 fetch("http://localhost/DAW/ikea/?controller=producto&action=favorito", {
                     method: 'POST',
@@ -83,7 +82,6 @@ document.addEventListener('DOMContentLoaded', function(){
 
                 // Convertir el objeto a una cadena JSON
                 let datosJSON = JSON.stringify(datos);
-                console.log('Carrito, prodID, catID' + datosJSON);
                 // Realiza la solicitud a la API utilizando los datos del formulario
                 fetch("http://localhost/DAW/ikea/?controller=producto&action=carrito", {
                     method: 'POST',
@@ -122,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 //Array para guardar los productos y filtrar estos mismos
 let arrayProductos;
-let filtroFinal =[];
+// let filtroFinal =[];
 
 function mostrarProductos(productos){
     arrayProductos = productos;
@@ -135,28 +133,98 @@ function buscarFiltros() {
 
     allFiltros.forEach(filtro => {
         if (filtro.checked) {
-            arrayFiltrado = arrayProductos.filter((producto) => producto.categoria_id == filtro.id);
+            let arrayFiltrado = arrayProductos.filter((producto) => producto.categoria_id == filtro.id);
             montarProductos(arrayFiltrado);
+            filtro.parentElement.classList.add('active');
         }
 
         filtro.addEventListener('change', function(e) {
-            if (this.checked) { 
-                arrayFiltrado = arrayProductos.filter((producto) => producto.categoria_id == filtro.id);
-                montarProductos(arrayFiltrado);
-            }else{
-                let body = document.getElementById('productos');
-                while (body.firstChild) {
-                    body.removeChild(body.firstChild);
+            if (this.checked) {
+                filtro.parentElement.classList.add('active');
+                // Agregar la clase activa solo al filtro actual
+                this.classList.add('active');
+                // Seleccionar el elemento seccion con la clase 'categoriaX'
+                let seccion = document.querySelector('.categoria' + filtro.id);
+                // Hacer invisible el elemento seccion
+                seccion.style.display = 'flex';
+                // Obtener el elemento h2 hermano anterior de la sección
+                let h2Element = seccion.previousElementSibling;
+
+                // Verificar si el elemento h2 existe
+                if (h2Element && h2Element.tagName.toLowerCase() === 'h2') {
+                    // Hacer invisible el elemento h2
+                    h2Element.style.display = 'flex';
+                }
+
+            } else {
+                // Verificar si aún hay algún filtro activo
+                if (document.querySelectorAll('.filtrosProd:checked').length === 0) {
+                    // Si no hay, volver a marcar este checkbox
+                    this.checked = true;
+                    notie.force({
+                        type: 3,
+                        text: 'Debe mínimo un filtro seleccionado',
+                        buttonText: 'Continuar',
+                      })
+                } else {
+                    filtro.parentElement.classList.remove('active');
+                    // Seleccionar el elemento seccion con la clase 'categoriaX'
+                    let seccion = document.querySelector('.categoria' + filtro.id);
+                    // Hacer invisible el elemento seccion
+                    seccion.style.display = 'none';
+                    // Obtener el elemento h2 hermano anterior de la sección
+                    let h2Element = seccion.previousElementSibling;
+
+                    // Verificar si el elemento h2 existe
+                    if (h2Element && h2Element.tagName.toLowerCase() === 'h2') {
+                        // Hacer invisible el elemento h2
+                        h2Element.style.display = 'none';
+                    }
                 }
             }
         });
     });
 }
 
+
+
+
 function montarProductos(arrayFiltrado){
     let body = document.getElementById('productos');
     let seccion = document.createElement('section');
-    seccion.setAttribute('id', 1)
+    seccion.classList.add('categoria'+arrayFiltrado[0]['categoria_id']);
+    // Crear el elemento 'h2'
+    let tituloCat = document.createElement('h2');
+    // Obtener el padre de 'seccion'
+    let parentElement = document.getElementById('productos');
+    switch (arrayFiltrado[0]['categoria_id']){
+        case 1:
+            
+            tituloCat.classList.add('mt-5', 'textosTituloCat');
+            tituloCat.textContent = "Platos Principales";
+            parentElement.appendChild(tituloCat);
+            
+            break;
+        case 2:
+            
+            tituloCat.classList.add('mt-5', 'textosTituloCat');
+            tituloCat.textContent = "Desayunos";
+            parentElement.appendChild(tituloCat);
+            break;
+        case 3:
+            
+            tituloCat.classList.add('mt-5', 'textosTituloCat');
+            tituloCat.textContent = "Entrantes";
+            parentElement.appendChild(tituloCat);
+            break;
+        case 4:
+            
+            tituloCat.classList.add('mt-5', 'textosTituloCat');
+            tituloCat.textContent = "Pizzas";
+            parentElement.appendChild(tituloCat);
+            break;
+        default:
+    }
     seccion.classList.add("contenido", "row", "p-0", "m-0", "mt-5");
     body.appendChild(seccion);
     arrayFiltrado.forEach( producto => {
