@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-01-2024 a las 13:24:46
+-- Tiempo de generación: 16-02-2024 a las 00:06:32
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -77,16 +77,11 @@ CREATE TABLE `pedidos` (
   `pedido_id` int(11) NOT NULL,
   `usuario_id` int(11) NOT NULL,
   `fecha` datetime NOT NULL DEFAULT current_timestamp(),
-  `precio_total` double NOT NULL
+  `precio_total` double NOT NULL,
+  `propinas` double DEFAULT NULL,
+  `puntos` int(11) NOT NULL,
+  `puntos_usados` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `pedidos`
---
-
-INSERT INTO `pedidos` (`pedido_id`, `usuario_id`, `fecha`, `precio_total`) VALUES
-(93, 1, '2023-12-19 18:13:53', 14.47),
-(94, 1, '2023-12-25 14:05:24', 7.98);
 
 -- --------------------------------------------------------
 
@@ -114,14 +109,16 @@ CREATE TABLE `pedidos_productos` (
   `precio_total` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- --------------------------------------------------------
+
 --
--- Volcado de datos para la tabla `pedidos_productos`
+-- Estructura de tabla para la tabla `pedidos_reseñas`
 --
 
-INSERT INTO `pedidos_productos` (`pedido_id`, `producto_id`, `cantidad`, `precio_total`) VALUES
-(93, 1, 2, 5.98),
-(93, 2, 1, 8.49),
-(94, 3, 2, 7.98);
+CREATE TABLE `pedidos_reseñas` (
+  `pedido_id` int(11) NOT NULL,
+  `reseña_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -163,6 +160,19 @@ INSERT INTO `productos` (`producto_id`, `categoria_id`, `nombre`, `descripcion`,
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `reseñas`
+--
+
+CREATE TABLE `reseñas` (
+  `reseña_id` int(11) NOT NULL,
+  `usuario_id` int(11) NOT NULL,
+  `comentario` varchar(255) NOT NULL,
+  `valoracion` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuarios`
 --
 
@@ -171,16 +181,18 @@ CREATE TABLE `usuarios` (
   `nombre` varchar(100) NOT NULL,
   `email` varchar(255) NOT NULL,
   `permisos` int(1) NOT NULL,
-  `password` varchar(100) NOT NULL
+  `password` varchar(100) NOT NULL,
+  `puntos` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`usuario_id`, `nombre`, `email`, `permisos`, `password`) VALUES
-(1, 'Pol Castellano', 'pol@gmail.com', 1, '$2y$10$JbxM0yHWp0EpFxXEFv.z0eHQRhzrofj1Itd49qzkIsO9cG68t0gIi'),
-(2, 'Adria Lasala', 'adria@gmail.com', 0, '$2y$10$Cy2oNWlRQXUDSVufsYmBwOXiOADzaQHeYTyn3Ovbip2fRP7PasUAW');
+INSERT INTO `usuarios` (`usuario_id`, `nombre`, `email`, `permisos`, `password`, `puntos`) VALUES
+(1, 'Pol Castellano', 'pol@gmail.com', 1, '$2y$10$slQJ4DdD397PyjrR259LV.GHir49dE3tBYM5QwjXPr5GqC0zcxql.', 3525),
+(2, 'Adria Lasala', 'adria@gmail.com', 0, '$2y$10$Cy2oNWlRQXUDSVufsYmBwOXiOADzaQHeYTyn3Ovbip2fRP7PasUAW', 846),
+(18, 'Barbara', 'barbara@gmail.com', 0, '$2y$10$7tB8rFE5ts4yn93ndOLTKuLUQFV0cizClMsteJlK9lcVGRJyX8Z56', 0);
 
 --
 -- Índices para tablas volcadas
@@ -229,11 +241,25 @@ ALTER TABLE `pedidos_productos`
   ADD KEY `FK_PEPR_PRO_PROD_ID` (`producto_id`);
 
 --
+-- Indices de la tabla `pedidos_reseñas`
+--
+ALTER TABLE `pedidos_reseñas`
+  ADD KEY `FK_PEDRES_PED_PED_ID` (`pedido_id`),
+  ADD KEY `FK_PEDRES_RES_RES_ID` (`reseña_id`);
+
+--
 -- Indices de la tabla `productos`
 --
 ALTER TABLE `productos`
   ADD PRIMARY KEY (`producto_id`),
   ADD KEY `FK_PR_CA_CAT_ID` (`categoria_id`);
+
+--
+-- Indices de la tabla `reseñas`
+--
+ALTER TABLE `reseñas`
+  ADD PRIMARY KEY (`reseña_id`),
+  ADD KEY `FK_RES_USU_USU_ID` (`usuario_id`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -255,7 +281,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `pedido_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `pedido_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=212;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
@@ -264,10 +290,33 @@ ALTER TABLE `productos`
   MODIFY `producto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
+-- AUTO_INCREMENT de la tabla `reseñas`
+--
+ALTER TABLE `reseñas`
+  MODIFY `reseña_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+
+--
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `usuario_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `usuario_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `pedidos_reseñas`
+--
+ALTER TABLE `pedidos_reseñas`
+  ADD CONSTRAINT `FK_PEDRES_PED_PED_ID` FOREIGN KEY (`pedido_id`) REFERENCES `pedidos` (`pedido_id`),
+  ADD CONSTRAINT `FK_PEDRES_RES_RES_ID` FOREIGN KEY (`reseña_id`) REFERENCES `reseñas` (`reseña_id`);
+
+--
+-- Filtros para la tabla `reseñas`
+--
+ALTER TABLE `reseñas`
+  ADD CONSTRAINT `FK_RES_USU_USU_ID` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`usuario_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

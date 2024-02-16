@@ -119,4 +119,10 @@ class APIController{
         echo json_encode($productos, JSON_UNESCAPED_UNICODE);
         return; //return para salir de la funcion
     }
+
+    public function verQR(){
+        // include 'view/cabecera.php';
+        include 'view/verQR.php';
+        // include 'view/footer.php';
+    }
 }

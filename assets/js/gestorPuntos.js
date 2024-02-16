@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function(){
         })
         .then(response => response.text())
         .then(data => {
-            location.href = "http://localhost/DAW/ikea/?controller=usuario";
+            location.href = "http://localhost/DAW/ikea/?controller=API&action=verQR";
         })
         .catch(error => {
             console.error(error);

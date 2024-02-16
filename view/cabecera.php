@@ -27,6 +27,12 @@
 
 <link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">
 <!-- script para utilizar el notieJS -->
+
+
+<!-- Incluye la biblioteca QRCodeJS desde jsDelivr -->
+<script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
+
+
 </head>
 
 <body>
