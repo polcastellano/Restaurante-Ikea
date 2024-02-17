@@ -115,12 +115,21 @@ document.addEventListener('DOMContentLoaded', function(){
 
 });
 
-
+// Función para guardar los filtros seleccionados en el localStorage
+function guardarFiltrosSeleccionados() {
+    const filtrosSeleccionados = [];
+    // Obtiene todos los filtros marcados
+    const allFiltros = document.querySelectorAll('.filtrosProd:checked');
+    allFiltros.forEach(filtro => {
+        filtrosSeleccionados.push(filtro.id);
+    });
+    // Guarda los filtros seleccionados en el localStorage
+    localStorage.setItem('filtrosSeleccionados', JSON.stringify(filtrosSeleccionados));
+}
 
 
 //Array para guardar los productos y filtrar estos mismos
 let arrayProductos;
-// let filtroFinal =[];
 
 function mostrarProductos(productos){
     arrayProductos = productos;
@@ -130,31 +139,29 @@ function mostrarProductos(productos){
 
 function buscarFiltros() {
     let allFiltros = document.querySelectorAll('.filtrosProd:checked');
+    // Intenta obtener los filtros guardados del localStorage
+    const filtrosGuardados = JSON.parse(localStorage.getItem('filtrosSeleccionados'));
+    console.log(filtrosGuardados)
 
     allFiltros.forEach(filtro => {
+        
         if (filtro.checked) {
             let arrayFiltrado = arrayProductos.filter((producto) => producto.categoria_id == filtro.id);
             montarProductos(arrayFiltrado);
             filtro.parentElement.classList.add('active');
+            actualizarEstadoFiltro(filtro, true);
+            
+        }
+        if(filtrosGuardados !== null && !filtrosGuardados.includes(filtro.id)){
+                filtro.parentElement.classList.remove('active');
+                actualizarEstadoFiltro(filtro, false);
+                filtro.checked = false;
         }
 
         filtro.addEventListener('change', function(e) {
             if (this.checked) {
                 filtro.parentElement.classList.add('active');
-                // Agregar la clase activa solo al filtro actual
-                this.classList.add('active');
-                // Seleccionar el elemento seccion con la clase 'categoriaX'
-                let seccion = document.querySelector('.categoria' + filtro.id);
-                // Hacer invisible el elemento seccion
-                seccion.style.display = 'flex';
-                // Obtener el elemento h2 hermano anterior de la sección
-                let h2Element = seccion.previousElementSibling;
-
-                // Verificar si el elemento h2 existe
-                if (h2Element && h2Element.tagName.toLowerCase() === 'h2') {
-                    // Hacer invisible el elemento h2
-                    h2Element.style.display = 'flex';
-                }
+                actualizarEstadoFiltro(this, true);
 
             } else {
                 // Verificar si aún hay algún filtro activo
@@ -168,26 +175,28 @@ function buscarFiltros() {
                       })
                 } else {
                     filtro.parentElement.classList.remove('active');
-                    // Seleccionar el elemento seccion con la clase 'categoriaX'
-                    let seccion = document.querySelector('.categoria' + filtro.id);
-                    // Hacer invisible el elemento seccion
-                    seccion.style.display = 'none';
-                    // Obtener el elemento h2 hermano anterior de la sección
-                    let h2Element = seccion.previousElementSibling;
-
-                    // Verificar si el elemento h2 existe
-                    if (h2Element && h2Element.tagName.toLowerCase() === 'h2') {
-                        // Hacer invisible el elemento h2
-                        h2Element.style.display = 'none';
-                    }
+                    actualizarEstadoFiltro(this, false);
                 }
             }
+            guardarFiltrosSeleccionados();
         });
     });
 }
 
-
-
+function actualizarEstadoFiltro(filtro, estado) {
+    // Seleccionar el elemento seccion con la clase 'categoriaX'
+    let seccion = document.querySelector('.categoria' + filtro.id);
+    // Verificar si la sección existe
+    if (seccion) {
+        seccion.style.display = estado ? 'flex' : 'none';
+        // Obtener el elemento h2 hermano anterior de la sección
+        let h2Element = seccion.previousElementSibling;
+        // Verificar si el elemento h2 existe
+        if (h2Element && h2Element.tagName.toLowerCase() === 'h2') {
+            h2Element.style.display = estado ? 'flex' : 'none';
+        }
+    }
+}
 
 function montarProductos(arrayFiltrado){
     let body = document.getElementById('productos');

@@ -7,8 +7,8 @@
 
         <section class="pt-3 pb-4 border-bottom d-flex">
             <?php $index = 1; foreach (ProductoDAO::getAllCategorias() as $categoria){ ?>
-                <div class="form-check checkBoxFiltros rounded-5 pe-4 py-2 me-2">
-                    <label class="form-check-label" for="<?= $index?>">
+                <div class="form-check checkBoxFiltros rounded-5 pe-4 pt-1 pb-2 me-2">
+                    <label class="form-check-label txtCategorias" for="<?= $index?>">
                         <?= $categoria[0]?>
                     </label>
                     <input class="form-check-input filtrosProd" type="checkbox" value="<?= $categoria[0]?>" id="<?= $index?>" checked hidden>

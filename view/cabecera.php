@@ -29,10 +29,6 @@
 <!-- script para utilizar el notieJS -->
 
 
-<!-- Incluye la biblioteca QRCodeJS desde jsDelivr -->
-<script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
-
-
 </head>
 
 <body>
@@ -175,3 +171,4 @@
     </header>
 
 <script src="./assets/js/bootstrap.bundle.min.js"></script>
+<script src="./assets/davidshimjs-qrcodejs-04f46c6/qrcode.min.js"></script>

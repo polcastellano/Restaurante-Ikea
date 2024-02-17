@@ -272,4 +272,23 @@ class UsuarioDAO{
         $con->close();
     }
 
+    public static function verUltimoPedido($usuario_id){
+        $con = DataBase::connect();
+    
+        // Consulta para obtener el último pedido con un ID específico
+        $stmt = $con->prepare("SELECT pedido_id FROM pedidos WHERE usuario_id = ? ORDER BY fecha DESC LIMIT 1");
+        $stmt->bind_param("i", $usuario_id);
+    
+        $stmt->execute();
+    
+        // Obtiene el resultado de la consulta y lo almacena en la variable $pedido_id
+        $stmt->bind_result($pedido_id);
+        $stmt->fetch();
+    
+        $con->close();
+    
+        return $pedido_id;
+    }
+    
+
 }

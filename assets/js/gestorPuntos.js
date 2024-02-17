@@ -33,6 +33,20 @@ document.addEventListener('DOMContentLoaded', function(){
         // Convertir el objeto a una cadena JSON
         let datosJSON = JSON.stringify(datos);
 
+        const url = `http://localhost/DAW/ikea/?controller=API&action=verQR&usuario_id=${usuario_id}`;
+
+        // Genero el QR
+        const qr = new QRCode(document.createElement('div'), {
+            text: url, // Aquí usamos la variable url en lugar de la cadena "url"
+            width: 350,
+            height: 350, // Corregido el nombre de la propiedad
+        });
+
+        // Añadir el codigo qr a una ventana emergente
+        const qrWindow = window.open('', 'Codigo QR', 'width:350, height:350');
+        qrWindow.document.body.appendChild(qr._el);
+
+
         // Realiza la solicitud a la API utilizando los datos del formulario
         fetch("http://localhost/DAW/ikea/?controller=pedido&action=confirmar", {
             method: 'POST',
@@ -42,8 +56,9 @@ document.addEventListener('DOMContentLoaded', function(){
             body: datosJSON,
         })
         .then(response => response.text())
-        .then(data => {
-            location.href = "http://localhost/DAW/ikea/?controller=API&action=verQR";
+        .then(data => {           
+
+            location.href = "http://localhost/DAW/ikea/?controller=usuario";
         })
         .catch(error => {
             console.error(error);

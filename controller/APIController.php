@@ -5,6 +5,9 @@
 include_once 'model/Resena.php';
 include_once 'model/ResenaDAO.php';
 include_once 'model/Producto.php';
+include_once 'model/UsuarioDAO.php';
+include_once 'model/ProductoDAO.php';
+
 
 class APIController{    
 
@@ -121,8 +124,12 @@ class APIController{
     }
 
     public function verQR(){
-        // include 'view/cabecera.php';
+        $usuario_id = $_GET['usuario_id'];
+        $pedido_id = UsuarioDAO::verUltimoPedido($usuario_id);
+        $ultimoPedido = UsuarioDAO::verPedido($pedido_id);
+        $precioDescuento = ProductoDAO::precioDescuento($pedido_id);
+        $propina = ProductoDAO::getPropina($pedido_id);
+        $puntosUsados = ProductoDAO::getPuntosUsados($pedido_id);
         include 'view/verQR.php';
-        // include 'view/footer.php';
     }
 }
