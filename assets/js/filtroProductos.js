@@ -170,7 +170,7 @@ function buscarFiltros() {
                     this.checked = true;
                     notie.force({
                         type: 3,
-                        text: 'Debe mínimo un filtro seleccionado',
+                        text: 'Debe haber mínimo un filtro seleccionado',
                         buttonText: 'Continuar',
                       })
                 } else {
