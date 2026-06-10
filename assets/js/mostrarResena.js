@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function(){
     // Convertir el objeto a una cadena JSON
     let datosJSON = JSON.stringify(datos);
 
-    fetch("http://localhost/DAW/ikea/?controller=api&action=consultaReseña", {
+    fetch(BASE_URL + "?controller=api&action=consultaReseña", {
         method: 'POST',
             headers: {
                 'Content-Type':'application/json',

@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function(){
         });
     });
 
-    fetch("http://localhost/DAW/ikea/?controller=api&action=consultaReseñas", {
+    fetch(BASE_URL + "?controller=api&action=consultaReseñas", {
         method : 'POST',
     })
     .then(response => {

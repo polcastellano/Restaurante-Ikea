@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function(){
 
-    fetch("http://localhost/DAW/ikea/?controller=api&action=consultaProductos", {
+    fetch(BASE_URL + "?controller=api&action=consultaProductos", {
         method : 'POST',
     })
     .then(response => {
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 // Convertir el objeto a una cadena JSON
                 let datosJSON = JSON.stringify(datos);
                 // Realiza la solicitud a la API utilizando los datos del formulario
-                fetch("http://localhost/DAW/ikea/?controller=producto&action=favorito", {
+                fetch(BASE_URL + "?controller=producto&action=favorito", {
                     method: 'POST',
                     headers: {
                         'Content-Type':'application/json',
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 // Convertir el objeto a una cadena JSON
                 let datosJSON = JSON.stringify(datos);
                 // Realiza la solicitud a la API utilizando los datos del formulario
-                fetch("http://localhost/DAW/ikea/?controller=producto&action=carrito", {
+                fetch(BASE_URL + "?controller=producto&action=carrito", {
                     method: 'POST',
                     headers: {
                         'Content-Type':'application/json',

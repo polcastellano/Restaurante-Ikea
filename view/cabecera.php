@@ -27,7 +27,9 @@
 
 <link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">
 <!-- script para utilizar el notieJS -->
-
+<script>
+  const BASE_URL = "<?php echo url; ?>";
+</script>
 
 </head>
 

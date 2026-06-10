@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let datosJSON = JSON.stringify(datos);
 
         // Realiza la solicitud a la API utilizando los datos del formulario
-        fetch("http://localhost/DAW/ikea/?controller=api&action=addResena", {
+        fetch(BASE_URL + "?controller=api&action=addResena", {
             method: 'POST',
             headers: {
                 'Content-Type':'application/json',
