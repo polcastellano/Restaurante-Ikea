@@ -2,7 +2,7 @@
 
 class DataBase{
     //Declaramos funcion con valores por defecto
-    public static function connect($host = 'localhost', $user = 'root', $password = '', $db = 'ikea_db'){
+    public static function connect($host = '127.0.0.1', $user = 'root', $password = '', $db = 'ikea_db'){
         $con = new mysqli($host, $user, $password, $db);
 
         if($con == false){
